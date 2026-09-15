@@ -1,0 +1,171 @@
+{
+  "brand": "Kense",
+  "accent": "#4e60ff",
+  "ink": "#0b0a0e",
+  "paper": "#ffffff",
+  "convention": {
+    "light": "用于浅色背景，标志主体为深色。",
+    "dark": "用于深色背景，标志主体为白色。",
+    "transparent": "不带背景；根据实际承载背景选择 light 或 dark。",
+    "horizontal": "官网导航、邮件签名、名片、横幅。",
+    "vertical": "海报、封面、品牌展示、竖向版面。",
+    "icon": "头像、应用图标、网站图标；周围留白适合圆形裁切。",
+    "svg": "纯矢量路径，不依赖字体，适合任意尺寸输出。",
+    "png": "高清 RGBA 位图，透明底文件保留 alpha 通道。"
+  },
+  "variants": [
+    {
+      "name": "kense-horizontal-light",
+      "layout": "horizontal",
+      "background_use": "light",
+      "transparent": false,
+      "svg": "svg/kense-horizontal-light.svg",
+      "png": "png/kense-horizontal-light.png",
+      "png_size": [
+        2120,
+        880
+      ]
+    },
+    {
+      "name": "kense-horizontal-light-transparent",
+      "layout": "horizontal",
+      "background_use": "light",
+      "transparent": true,
+      "svg": "svg/kense-horizontal-light-transparent.svg",
+      "png": "png/kense-horizontal-light-transparent.png",
+      "png_size": [
+        2120,
+        880
+      ]
+    },
+    {
+      "name": "kense-horizontal-dark",
+      "layout": "horizontal",
+      "background_use": "dark",
+      "transparent": false,
+      "svg": "svg/kense-horizontal-dark.svg",
+      "png": "png/kense-horizontal-dark.png",
+      "png_size": [
+        2120,
+        880
+      ]
+    },
+    {
+      "name": "kense-horizontal-dark-transparent",
+      "layout": "horizontal",
+      "background_use": "dark",
+      "transparent": true,
+      "svg": "svg/kense-horizontal-dark-transparent.svg",
+      "png": "png/kense-horizontal-dark-transparent.png",
+      "png_size": [
+        2120,
+        880
+      ]
+    },
+    {
+      "name": "kense-vertical-light",
+      "layout": "vertical",
+      "background_use": "light",
+      "transparent": false,
+      "svg": "svg/kense-vertical-light.svg",
+      "png": "png/kense-vertical-light.png",
+      "png_size": [
+        1600,
+        1760
+      ]
+    },
+    {
+      "name": "kense-vertical-light-transparent",
+      "layout": "vertical",
+      "background_use": "light",
+      "transparent": true,
+      "svg": "svg/kense-vertical-light-transparent.svg",
+      "png": "png/kense-vertical-light-transparent.png",
+      "png_size": [
+        1600,
+        1760
+      ]
+    },
+    {
+      "name": "kense-vertical-dark",
+      "layout": "vertical",
+      "background_use": "dark",
+      "transparent": false,
+      "svg": "svg/kense-vertical-dark.svg",
+      "png": "png/kense-vertical-dark.png",
+      "png_size": [
+        1600,
+        1760
+      ]
+    },
+    {
+      "name": "kense-vertical-dark-transparent",
+      "layout": "vertical",
+      "background_use": "dark",
+      "transparent": true,
+      "svg": "svg/kense-vertical-dark-transparent.svg",
+      "png": "png/kense-vertical-dark-transparent.png",
+      "png_size": [
+        1600,
+        1760
+      ]
+    },
+    {
+      "name": "kense-icon-light",
+      "layout": "icon",
+      "background_use": "light",
+      "transparent": false,
+      "svg": "svg/kense-icon-light.svg",
+      "png": "png/kense-icon-light.png",
+      "png_size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "kense-icon-light-transparent",
+      "layout": "icon",
+      "background_use": "light",
+      "transparent": true,
+      "svg": "svg/kense-icon-light-transparent.svg",
+      "png": "png/kense-icon-light-transparent.png",
+      "png_size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "kense-icon-dark",
+      "layout": "icon",
+      "background_use": "dark",
+      "transparent": false,
+      "svg": "svg/kense-icon-dark.svg",
+      "png": "png/kense-icon-dark.png",
+      "png_size": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "kense-icon-dark-transparent",
+      "layout": "icon",
+      "background_use": "dark",
+      "transparent": true,
+      "svg": "svg/kense-icon-dark-transparent.svg",
+      "png": "png/kense-icon-dark-transparent.png",
+      "png_size": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "web_icon_sizes": [
+    32,
+    48,
+    64,
+    180,
+    192,
+    512
+  ],
+  "note": "基于低分辨率参考图重绘版本派生，非原始品牌设计源文件。"
+}
