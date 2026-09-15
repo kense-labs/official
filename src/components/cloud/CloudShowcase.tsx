@@ -125,7 +125,7 @@ export function CloudShowcase() {
   return (
     <>
       <SnapPanel id="cloud" className="snap-panel--cloud-hero snap-panel--fill bg-bg-elevated/30">
-        <div className="cloud-hero cloud-hero--stacked relative gap-4 py-2">
+        <div className="cloud-hero cloud-hero-stage cloud-hero--stacked relative gap-4 py-2">
           {fx ? <HeroLightBeam targetSelector=".cloud-console-frame" /> : null}
 
           <div className="container-pricing relative z-[5]">

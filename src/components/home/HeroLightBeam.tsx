@@ -65,30 +65,35 @@ export function HeroLightBeam({
     const shaft = shaftRef.current;
     if (!root || !video || !shaft) return;
 
-    const stage =
-      root.closest('.cloud-hero-stage') ?? root.parentElement ?? root;
+    const posRoot =
+      root.closest('.cloud-hero') ?? root.parentElement ?? root;
+    const panel =
+      root.closest('.snap-panel--cloud-hero') ??
+      root.closest('.cloud-hero-stage') ??
+      posRoot;
 
     const sync = () => {
-      const section = stage.closest('section') ?? stage;
+      const section = panel.closest('section') ?? panel;
       const product = section.querySelector<HTMLElement>(targetSelector);
       if (!product) return;
 
-      const stageRect = stage.getBoundingClientRect();
+      const parentRect = (posRoot as HTMLElement).getBoundingClientRect();
+      const panelRect = (panel as HTMLElement).getBoundingClientRect();
       const pr = product.getBoundingClientRect();
       const prodW = Math.max(pr.width, 1);
 
-      const productLeft = pr.left - stageRect.left;
+      const productLeft = pr.left - parentRect.left;
       const beamAnchorX =
         productLeft + prodW * IMPACT_X_RATIO + BEAM_OFFSET_X;
-      // Settled layout top (ignores in-flight Reveal translateY).
+      // Height from the Cloud panel top so the bloom is not a needle.
       const beamAnchorY = Math.max(
         0,
-        settledTop(product, stage) + BEAM_OFFSET_Y,
+        settledTop(product, panel) + BEAM_OFFSET_Y,
       );
 
       const videoW = prodW * 1.04;
       const videoH = Math.max(beamAnchorY / PLATE_TOP_RATIO, 1);
-      const top = 0;
+      const top = panelRect.top - parentRect.top;
       const left = beamAnchorX - BEAM_X_RATIO * videoW;
 
       root.style.width = `${Math.round(videoW)}px`;
@@ -98,7 +103,7 @@ export function HeroLightBeam({
 
       const shaftWidth = Math.max(2.5, prodW * 0.0055);
       shaft.style.left = `${Math.round(beamAnchorX - shaftWidth / 2)}px`;
-      shaft.style.top = '0px';
+      shaft.style.top = `${Math.round(top)}px`;
       shaft.style.width = `${shaftWidth}px`;
       shaft.style.height = `${Math.round(beamAnchorY + 8)}px`;
     };
@@ -116,11 +121,12 @@ export function HeroLightBeam({
     );
 
     const ro = new ResizeObserver(() => sync());
-    const section = stage.closest('section') ?? stage;
+    const section = panel.closest('section') ?? panel;
     const product = section.querySelector<HTMLElement>(targetSelector);
     const reveal = product?.closest('.reveal') ?? null;
     if (product) ro.observe(product);
-    ro.observe(stage);
+    ro.observe(panel);
+    ro.observe(posRoot);
 
     const onRevealTransition = (e: TransitionEvent) => {
       if (e.propertyName === 'transform' || e.propertyName === 'opacity') {
@@ -141,7 +147,7 @@ export function HeroLightBeam({
     }
 
     sync();
-    io.observe(stage);
+    io.observe(panel);
     window.addEventListener('resize', sync);
     window.addEventListener('scroll', sync, { passive: true });
     video.addEventListener('loadedmetadata', sync);
