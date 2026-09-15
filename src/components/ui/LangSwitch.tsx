@@ -7,7 +7,7 @@ export function LangSwitch({ className = '' }: { className?: string }) {
     <div
       role="group"
       aria-label={t.lang.switchTo}
-      className={`inline-flex items-center rounded-md border border-white/10 bg-white/[0.03] p-0.5 text-xs font-medium ${className}`}
+      className={`inline-flex w-fit items-center rounded-md border border-white/10 bg-white/[0.03] p-0.5 text-xs font-medium ${className}`}
     >
       <button
         type="button"

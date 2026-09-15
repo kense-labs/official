@@ -64,6 +64,18 @@ export type Messages = {
       workspaceWritable: string;
       docs: Array<{ name: string; kind: 'word' | 'excel' | 'ppt' | 'pdf' | 'md' }>;
     };
+    workContacts: {
+      user: string;
+      search: string;
+      plugins: string;
+      chats: Array<{
+        id: 'docs' | 'code' | 'science' | 'finance';
+        name: string;
+        preview: string;
+        time: string;
+        unread?: boolean;
+      }>;
+    };
   };
   logos: {
     label: string;

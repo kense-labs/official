@@ -1,12 +1,11 @@
-import { useScroll } from 'ahooks';
 import { useI18n } from '../../i18n/useI18n';
+import { useScrolled } from '../../lib/media';
 
 const SHOW_AFTER = 480;
 
 export function BackToTop() {
   const { t } = useI18n();
-  const scroll = useScroll(() => document);
-  const visible = (scroll?.top ?? 0) > SHOW_AFTER;
+  const visible = useScrolled(SHOW_AFTER);
 
   return (
     <button

@@ -1,9 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { LazyVideo } from '../motion/LazyVideo';
 import { Ripple } from '../canvasui/Ripple';
 import { publicUrl } from '../../lib/publicUrl';
+import { useDesktopFx } from '../../lib/media';
 
-function StarField({ count = 100 }: { count?: number }) {
+function StarField({ count = 36 }: { count?: number }) {
   const stars = useMemo(
     () =>
       Array.from({ length: count }, (_, i) => {
@@ -48,9 +49,35 @@ type BlackHoleProps = {
   variant?: 'hero' | 'cta';
 };
 
+function RippleIfDesktop({ children }: { children: ReactNode }) {
+  const fx = useDesktopFx();
+  if (!fx) return children;
+  return (
+    <Ripple
+      className="hero-black-hole-ripple"
+      trigger="none"
+      amplitude={0.85}
+      speed={0.5}
+      wavelength={110}
+      rings={3}
+      decay={0.75}
+      refraction={140}
+      dispersion={0.6}
+      shine={0.65}
+      interval={3.2}
+      ambientOrigin="center"
+      ambientX={0.51}
+      ambientY={0.5}
+    >
+      {children}
+    </Ripple>
+  );
+}
+
 export function BlackHole({ className = '', variant = 'hero' }: BlackHoleProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const fx = useDesktopFx();
 
   useEffect(() => {
     const el = rootRef.current;
@@ -73,22 +100,7 @@ export function BlackHole({ className = '', variant = 'hero' }: BlackHoleProps) 
       } ${className}`}
       aria-hidden
     >
-      <Ripple
-        className="hero-black-hole-ripple"
-        trigger="none"
-        amplitude={0.85}
-        speed={0.5}
-        wavelength={110}
-        rings={3}
-        decay={0.75}
-        refraction={140}
-        dispersion={0.6}
-        shine={0.65}
-        interval={3.2}
-        ambientOrigin="center"
-        ambientX={0.51}
-        ambientY={0.5}
-      >
+      <RippleIfDesktop>
         <div className="hero-black-hole-media">
           <LazyVideo
             className={variant === 'cta' ? 'lazy-video-cta' : ''}
@@ -97,9 +109,9 @@ export function BlackHole({ className = '', variant = 'hero' }: BlackHoleProps) 
               { src: publicUrl('/motion/blackhole.mp4'), type: 'video/mp4' },
             ]}
           />
-          <StarField />
+          <StarField count={fx ? 64 : 20} />
         </div>
-      </Ripple>
+      </RippleIfDesktop>
     </div>
   );
 }

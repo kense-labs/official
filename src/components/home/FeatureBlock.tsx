@@ -34,15 +34,8 @@ export function FeatureBlock({
       <div className="container-pricing relative z-[1]">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            {data.brand ? (
-              <p className="text-xs font-medium tracking-[0.1em] text-primary-soft md:text-sm">
-                {data.brand}
-              </p>
-            ) : null}
             <h2
               className={`font-medium leading-tight tracking-[-0.4px] text-white ${
-                data.brand ? 'mt-2' : ''
-              } ${
                 compact
                   ? 'text-[24px] md:text-[32px] max-sm:text-[22px]'
                   : 'text-[28px] md:text-[36px] max-sm:text-[24px]'

@@ -4,9 +4,9 @@ import { publicUrl } from '../../lib/publicUrl';
 /**
  * Huly hero beam video — behind the product, mix-blend-lighten.
  *
- * Width stays locked to the product (shaft stays thin). Height is sized so the
- * impact plate lands on the product, while the beam stays inside the stage
- * (never spills above the Cloud section top).
+ * Width stays locked to the product. Height is sized so the impact plate
+ * lands on the product, while the beam starts at the stage top (never
+ * cropped into a needle).
  *
  * Frame geometry (hero.mp4 @ 1920×1438):
  * - plate / impact line ≈ 50.63% from top
@@ -16,11 +16,6 @@ const PLATE_TOP_RATIO = 0.5063;
 const BEAM_X_RATIO = 0.5529;
 /** Beam core across the product (0=left, 1=right). */
 const IMPACT_X_RATIO = 0.88;
-/**
- * Nudge beam only (product stays put).
- * Screen: +X right, +Y down onto the frame top.
- * “Dashboard 往左下 / 贴顶” → move beam right (+X) and down (+Y).
- */
 const BEAM_OFFSET_X = -64;
 const BEAM_OFFSET_Y = 0;
 
@@ -91,10 +86,7 @@ export function HeroLightBeam({
         settledTop(product, stage) + BEAM_OFFSET_Y,
       );
 
-      // Width locked to product — do not upscale horizontally
       const videoW = prodW * 1.04;
-
-      // Start at stage top (0); size so the impact plate lands on the product.
       const videoH = Math.max(beamAnchorY / PLATE_TOP_RATIO, 1);
       const top = 0;
       const left = beamAnchorX - BEAM_X_RATIO * videoW;
@@ -105,13 +97,10 @@ export function HeroLightBeam({
       root.style.top = `${Math.round(top)}px`;
 
       const shaftWidth = Math.max(2.5, prodW * 0.0055);
-      const shaftTop = 0;
-      const shaftHeight = Math.max(0, beamAnchorY + 8);
-
       shaft.style.left = `${Math.round(beamAnchorX - shaftWidth / 2)}px`;
-      shaft.style.top = `${Math.round(shaftTop)}px`;
+      shaft.style.top = '0px';
       shaft.style.width = `${shaftWidth}px`;
-      shaft.style.height = `${Math.round(shaftHeight)}px`;
+      shaft.style.height = `${Math.round(beamAnchorY + 8)}px`;
     };
 
     const io = new IntersectionObserver(

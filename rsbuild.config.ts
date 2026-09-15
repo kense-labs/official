@@ -23,6 +23,7 @@ export default defineConfig({
     title: 'Kense — AI-native OS for Agent work',
     favicon: './public/logo/web-icons/favicon-light.ico',
     meta: {
+      viewport: 'width=device-width, initial-scale=1',
       description:
         'Building an AI-native operating system for the Agent era. Turn every personal contribution into crystal intelligence the team can call next time.',
       'theme-color': '#0b0c11',

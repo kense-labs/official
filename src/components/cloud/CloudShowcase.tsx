@@ -3,6 +3,7 @@ import { HeroLightBeam } from '../home/HeroLightBeam';
 import { SnapPanel } from '../layout/SnapPanel';
 import { CloudArchitectureDiagram } from './CloudArchitectureDiagram';
 import { useI18n } from '../../i18n/useI18n';
+import { useDesktopFx } from '../../lib/media';
 
 function stageTone(state: string) {
   const s = state.toLowerCase();
@@ -119,20 +120,18 @@ export function CloudShowcase() {
   const { t } = useI18n();
   const p = t.cloudPage;
   const cloud = t.cloud;
+  const fx = useDesktopFx();
 
   return (
     <>
       <SnapPanel id="cloud" className="snap-panel--cloud-hero snap-panel--fill bg-bg-elevated/30">
         <div className="cloud-hero cloud-hero--stacked relative gap-4 py-2">
-          <HeroLightBeam targetSelector=".cloud-console-frame" />
+          {fx ? <HeroLightBeam targetSelector=".cloud-console-frame" /> : null}
 
           <div className="container-pricing relative z-[5]">
             <Reveal>
               <div className="cloud-hero-copy mx-auto max-w-2xl text-center">
-                <p className="text-xs font-medium tracking-[0.1em] text-primary-soft md:text-sm">
-                  {p.brand}
-                </p>
-                <h2 className="mt-2 text-[26px] font-medium leading-[1.15] tracking-[-0.6px] text-white max-sm:text-[22px] md:text-[34px]">
+                <h2 className="text-[26px] font-medium leading-[1.15] tracking-[-0.6px] text-white max-sm:text-[22px] md:text-[34px]">
                   {cloud.title}
                 </h2>
                 <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-ink-muted md:text-[15px]">
@@ -145,28 +144,25 @@ export function CloudShowcase() {
           <Reveal delayMs={100} className="cloud-console-reveal cloud-console-reveal--stacked">
             <div className="cloud-console-wrap">
               <CloudConsole />
+              <div className="cloud-proof-cards">
+                {cloud.items.map((item, i) => (
+                  <Reveal key={item.title} delayMs={i * 40} className="min-w-0">
+                    <article className="h-full rounded-xl border border-white/8 bg-white/[0.02] px-3.5 py-3">
+                      <h3 className="text-sm font-medium text-white">{item.title}</h3>
+                      <p className="mt-1 text-xs leading-5 text-ink-muted">
+                        {item.description}
+                      </p>
+                    </article>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </Reveal>
-
-          <div className="container-pricing relative z-[5]">
-            <div className="grid gap-2 md:grid-cols-3">
-              {cloud.items.map((item, i) => (
-                <Reveal key={item.title} delayMs={i * 40}>
-                  <article className="rounded-xl border border-white/8 bg-white/[0.02] px-3.5 py-2.5">
-                    <h3 className="text-sm font-medium text-white">{item.title}</h3>
-                    <p className="mt-1 text-xs leading-5 text-ink-muted">
-                      {item.description}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
         </div>
       </SnapPanel>
 
-      <SnapPanel id="architecture" className="snap-panel--center snap-panel--fill">
-        <div className="container-pricing flex h-full flex-col justify-center gap-5 py-5 md:gap-6 md:py-6">
+      <SnapPanel id="architecture" className="snap-panel--center snap-panel--fill snap-panel--arch">
+        <div className="arch-panel-stack container-pricing flex h-auto flex-col justify-start gap-5 md:gap-6">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary-soft">

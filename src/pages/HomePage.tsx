@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import { Hero } from '../components/home/Hero';
 import { FeatureBlock } from '../components/home/FeatureBlock';
 import { WorkBotStage } from '../components/home/WorkBotStage';
@@ -10,6 +11,52 @@ import { Liquid } from '../components/canvasui/Liquid';
 import { Blaze } from '../components/canvasui/Blaze';
 import { useI18n } from '../i18n/useI18n';
 import { kenseFx } from '../lib/canvasEffects';
+import { useDesktopFx } from '../lib/media';
+
+function WorkPanel({ children }: { children: ReactNode }) {
+  const fx = useDesktopFx();
+  if (!fx) return children;
+  return (
+    <Liquid
+      color={kenseFx.accent}
+      rainbow={false}
+      intensity={1.05}
+      blend={2}
+      distortion={0.24}
+      force={0.75}
+      radius={0.26}
+      densityDissipation={0.97}
+      style={{ minHeight: '100%', height: '100%' }}
+    >
+      {children}
+    </Liquid>
+  );
+}
+
+function ClosingFx({ children }: { children: ReactNode }) {
+  const fx = useDesktopFx();
+  if (!fx) return children;
+  return (
+    <Blaze
+      height={0.72}
+      distortion={0.45}
+      distortionScale={0.55}
+      speed={0.9}
+      sparks={0.65}
+      sparkDensity={1.35}
+      sparkSize={1.1}
+      layers={5}
+      smoke={0.55}
+      glow={1.35}
+      sparkColor={kenseFx.spark}
+      smokeColor={kenseFx.smoke}
+      className="flex min-h-0 flex-1 flex-col"
+      style={{ minHeight: 0, height: '100%' }}
+    >
+      {children}
+    </Blaze>
+  );
+}
 
 export function HomePage() {
   const { t } = useI18n();
@@ -21,25 +68,15 @@ export function HomePage() {
         <Hero />
       </SnapPanel>
 
-      <SnapPanel id="work" className="snap-panel--fill">
-        <Liquid
-          color={kenseFx.accent}
-          rainbow={false}
-          intensity={1.05}
-          blend={2}
-          distortion={0.24}
-          force={0.75}
-          radius={0.26}
-          densityDissipation={0.97}
-          style={{ minHeight: '100%', height: '100%' }}
-        >
-          <div className="flex h-full flex-col justify-center gap-4 py-2">
+      <SnapPanel id="work" className="snap-panel--fill snap-panel--work">
+        <WorkPanel>
+          <div className="work-panel-stack flex h-full flex-col justify-center gap-4 py-2 max-sm:gap-3">
             <FeatureBlock data={t.work} compact showQuote={false} />
             <div className="container-pricing">
               <WorkBotStage />
             </div>
           </div>
-        </Liquid>
+        </WorkPanel>
       </SnapPanel>
 
       <CloudShowcase />
@@ -49,23 +86,8 @@ export function HomePage() {
         className="snap-panel--fill snap-panel--cta snap-panel--closing"
       >
         <div className="flex h-full min-h-0 flex-col">
-          <Blaze
-            height={0.72}
-            distortion={0.45}
-            distortionScale={0.55}
-            speed={0.9}
-            sparks={0.65}
-            sparkDensity={1.35}
-            sparkSize={1.1}
-            layers={5}
-            smoke={0.55}
-            glow={1.35}
-            sparkColor={kenseFx.spark}
-            smokeColor={kenseFx.smoke}
-            className="flex min-h-0 flex-1 flex-col"
-            style={{ minHeight: 0, height: '100%' }}
-          >
-            <div className="flex h-full min-h-0 flex-col justify-center gap-4 py-3 max-sm:gap-3 md:gap-5 md:py-4">
+          <ClosingFx>
+            <div className="closing-stack flex h-full min-h-0 flex-col justify-start gap-4 max-sm:gap-3 md:gap-5">
               <FeatureBlock data={t.security} compact showQuote={false} />
 
               <Reveal delayMs={40}>
@@ -110,7 +132,7 @@ export function HomePage() {
                 </div>
               </Reveal>
             </div>
-          </Blaze>
+          </ClosingFx>
 
           <div className="relative z-[2] shrink-0">
             <Footer bare compact />

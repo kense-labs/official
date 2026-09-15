@@ -21,14 +21,14 @@ const PATHS = {
 type Phase = 'drawing' | 'leaving' | 'hidden';
 
 /**
- * Full-viewport route loader — progressively strokes the Kense K mark (≥1s).
+ * Brand flash on first paint and on pathname changes.
+ * Does not lock overflow — the scrollbar stays visible.
  */
 export function PageLoader() {
   const { pathname } = useLocation();
   const uid = useId().replace(/:/g, '');
   const [phase, setPhase] = useState<Phase>('drawing');
   const [ticket, setTicket] = useState(0);
-  const [reduced, setReduced] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const isFirstRoute = useRef(true);
 
@@ -45,11 +45,6 @@ export function PageLoader() {
     const svg = svgRef.current;
     if (!svg) return;
 
-    const prefersReduced =
-      typeof matchMedia === 'function' &&
-      matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setReduced(prefersReduced);
-
     const paths = Array.from(
       svg.querySelectorAll<SVGPathElement>('[data-draw]'),
     );
@@ -57,11 +52,11 @@ export function PageLoader() {
       const len = path.getTotalLength();
       path.style.setProperty('--path-len', `${len}`);
       path.style.strokeDasharray = `${len}`;
-      path.style.strokeDashoffset = prefersReduced ? '0' : `${len}`;
+      path.style.strokeDashoffset = `${len}`;
       path.style.setProperty('--draw-delay', `${i * 70}ms`);
     });
 
-    const drawMs = prefersReduced ? 0 : 780;
+    const drawMs = 780;
     const hold = Math.max(MIN_MS, drawMs + 180);
 
     const leaveTimer = window.setTimeout(() => {
@@ -78,26 +73,11 @@ export function PageLoader() {
     };
   }, [ticket]);
 
-  // Lock scroll only while the loader covers the page; unlock when it hides.
-  useEffect(() => {
-    if (phase === 'hidden') {
-      document.body.style.overflow = '';
-      return;
-    }
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = prevOverflow || '';
-    };
-  }, [phase]);
-
   if (phase === 'hidden') return null;
 
   return (
     <div
-      className={`page-loader${phase === 'leaving' ? ' is-leaving' : ''}${
-        reduced ? ' is-reduced' : ''
-      }`}
+      className={`page-loader${phase === 'leaving' ? ' is-leaving' : ''}`}
       role="status"
       aria-live="polite"
       aria-label="Loading"

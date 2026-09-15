@@ -1,10 +1,35 @@
+import { type ReactNode } from 'react';
 import { Button } from '../ui/Button';
 import { Reveal } from '../ui/Reveal';
 import { ParticleReveal } from '../canvasui/ParticleReveal';
 import { BlackHole } from './BlackHole';
+import { HeroProductMobile } from './HeroProductMobile';
 import { ExpertPack } from '../bot/ExpertPack';
 import { useI18n } from '../../i18n/useI18n';
 import { kenseFx } from '../../lib/canvasEffects';
+import { useDesktopFx } from '../../lib/media';
+
+function HeroCopyFx({ children }: { children: ReactNode }) {
+  const fx = useDesktopFx();
+  if (!fx) return <div className="relative z-[2]">{children}</div>;
+  return (
+    <ParticleReveal
+      background={kenseFx.bg}
+      radius={280}
+      softness={0.7}
+      scatter={32}
+      drift={0.85}
+      aberration={28}
+      bend={36}
+      fade={0.8}
+      threshold={0.08}
+      smoothing={0.22}
+      className="relative z-[2]"
+    >
+      {children}
+    </ParticleReveal>
+  );
+}
 
 function DocIcon({ kind }: { kind: 'word' | 'excel' | 'ppt' | 'pdf' | 'md' }) {
   const label =
@@ -198,19 +223,7 @@ export function Hero() {
 
   return (
     <section className="hero-section relative overflow-visible pb-8 pt-12 max-sm:pb-6 max-sm:pt-4 md:pb-10 md:pt-16 lg:pt-20">
-      <ParticleReveal
-        background={kenseFx.bg}
-        radius={280}
-        softness={0.7}
-        scatter={32}
-        drift={0.85}
-        aberration={28}
-        bend={36}
-        fade={0.8}
-        threshold={0.08}
-        smoothing={0.22}
-        className="relative z-[2]"
-      >
+      <HeroCopyFx>
         <div className="container-pricing text-center">
           <Reveal>
             <h1 className="mx-auto max-w-4xl text-[36px] font-medium leading-[1.2] tracking-[-0.96px] text-white max-sm:text-[28px] max-sm:tracking-[-0.8px] md:text-[48px] md:leading-[1.38]">
@@ -240,7 +253,7 @@ export function Hero() {
             </a>
           </Reveal>
         </div>
-      </ParticleReveal>
+      </HeroCopyFx>
 
       <div className="hero-visual">
         <div className="hero-stage" aria-hidden>
@@ -248,8 +261,11 @@ export function Hero() {
         </div>
 
         <Reveal delayMs={260}>
-          <div className="hero-product-wrap">
+          <div className="hero-product-wrap hidden lg:block">
             <HeroProduct />
+          </div>
+          <div className="hero-product-wrap lg:hidden">
+            <HeroProductMobile />
           </div>
         </Reveal>
       </div>

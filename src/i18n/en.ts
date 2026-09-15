@@ -62,6 +62,38 @@ export const en: Messages = {
         { name: 'Markdown', kind: 'md' },
       ],
     },
+    workContacts: {
+      user: 'roylin',
+      search: 'Search',
+      plugins: 'Plugins',
+      chats: [
+        {
+          id: 'docs',
+          name: 'Docs Expert',
+          preview: 'Need your yes on the Friday all-hands deck.',
+          time: '7:34',
+          unread: true,
+        },
+        {
+          id: 'code',
+          name: 'Code Expert',
+          preview: "Repro'd the checkout crash. Write-up's in the ticket.",
+          time: 'Yesterday',
+        },
+        {
+          id: 'science',
+          name: 'Science Expert',
+          preview: "Checkout's clean on staging, 3 bugs closed.",
+          time: '11:18',
+        },
+        {
+          id: 'finance',
+          name: 'Finance Expert',
+          preview: '14 receipts in. Still missing your Uber from Tuesday.',
+          time: '9:04',
+        },
+      ],
+    },
   },
   logos: {
     label: 'Teams that choose Kense',

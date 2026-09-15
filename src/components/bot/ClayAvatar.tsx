@@ -315,7 +315,6 @@ export function ClayAvatar({
   const eyeRRef = useRef<SVGGElement>(null);
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const s = createSprings();
     let mood: ClayMood = moodProp ?? 'idle';
     let playlistIdx = bot === 'docs' ? 0 : bot === 'code' ? 3 : bot === 'science' ? 6 : 9;
@@ -389,35 +388,33 @@ export function ClayAvatar({
       const dt = Math.min((now - last) / 1000, 1 / 30);
       last = now;
 
-      if (!reduce) {
-        if (moodProp) {
-          if (moodProp !== mood) {
-            mood = moodProp;
-            applyPose(s, mood);
-          }
-        } else if (autoPlay && now >= until) {
-          playlistIdx = (playlistIdx + 1) % PLAYLIST.length;
-          mood = PLAYLIST[playlistIdx];
+      if (moodProp) {
+        if (moodProp !== mood) {
+          mood = moodProp;
           applyPose(s, mood);
-          const hold = POSES[mood].holdMs;
-          until = now + rand(hold[0], hold[1]);
-          if (mood === 'bounce' || mood === 'surprised') {
-            setSpring(s.squashY, 1.16);
-            setSpring(s.squashX, 0.88);
-          }
-          if (mood === 'nod') {
-            setSpring(s.bob, 7);
-          }
         }
-
-        if (mood === 'idle' && !moodProp) {
-          setSpring(s.bob, Math.sin(now / 780) * 1.4);
-          setSpring(s.gazeX, Math.sin(now / 2100) * 0.12);
-          setSpring(s.gazeY, Math.sin(now / 2600) * 0.08);
+      } else if (autoPlay && now >= until) {
+        playlistIdx = (playlistIdx + 1) % PLAYLIST.length;
+        mood = PLAYLIST[playlistIdx];
+        applyPose(s, mood);
+        const hold = POSES[mood].holdMs;
+        until = now + rand(hold[0], hold[1]);
+        if (mood === 'bounce' || mood === 'surprised') {
+          setSpring(s.squashY, 1.16);
+          setSpring(s.squashX, 0.88);
         }
-
-        for (const springState of Object.values(s)) stepSpring(springState, dt);
+        if (mood === 'nod') {
+          setSpring(s.bob, 7);
+        }
       }
+
+      if (mood === 'idle' && !moodProp) {
+        setSpring(s.bob, Math.sin(now / 780) * 1.4);
+        setSpring(s.gazeX, Math.sin(now / 2100) * 0.12);
+        setSpring(s.gazeY, Math.sin(now / 2600) * 0.08);
+      }
+
+      for (const springState of Object.values(s)) stepSpring(springState, dt);
 
       paint();
       raf = requestAnimationFrame(tick);

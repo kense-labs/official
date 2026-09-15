@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSnapshot } from 'valtio';
-import { useScroll, useResponsive } from 'ahooks';
+import { useResponsive } from 'ahooks';
+import { useScrolled } from '../../lib/media';
 import { Button } from '../ui/Button';
 import { Logo } from '../ui/Logo';
 import { LangSwitch } from '../ui/LangSwitch';
@@ -12,9 +13,8 @@ export function Header() {
   const snap = useSnapshot(uiStore);
   const { t } = useI18n();
   const location = useLocation();
-  const scroll = useScroll(() => document);
   const responsive = useResponsive();
-  const scrolled = (scroll?.top ?? 0) > 8;
+  const scrolled = useScrolled(8);
   const isDesktop = Boolean(responsive?.lg);
 
   const nav = [
@@ -135,7 +135,7 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <div className="mt-6 flex flex-col gap-3">
+          <div className="mt-6 flex flex-col items-start gap-3">
             <LangSwitch />
             <Button variant="outline" className="w-full">
               {t.nav.demo}

@@ -258,7 +258,6 @@ export function VinylBot({
   const label = ariaLabel ?? `Kense Bot ${composition.id}`;
 
   useEffect(() => {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const s = createFace();
     let last = performance.now();
     let raf = 0;
@@ -381,8 +380,7 @@ export function VinylBot({
     const tick = (now: number) => {
       const dt = Math.min((now - last) / 1000, 1 / 30);
       last = now;
-      if (!reduce) {
-        if (autoPlay && now >= moodUntil) {
+      if (autoPlay && now >= moodUntil) {
           mood = (mood + 1) % moods.length;
           const m = moods[mood];
           setSpring(s.tilt, m.tilt);
@@ -405,7 +403,6 @@ export function VinylBot({
         }
         if (mood % 4 === 0) setSpring(s.bob, Math.sin(now / 850) * 1.2 + moods[0].bob);
         for (const springState of Object.values(s)) stepSpring(springState, dt);
-      }
       paint();
       raf = requestAnimationFrame(tick);
     };

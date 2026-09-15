@@ -11,6 +11,7 @@ export function WorkBotStage() {
       <div className="work-bot-stage">
         <div className="work-bot-stage-head">
           <h3 className="work-bot-stage-title">{t.work.bot.title}</h3>
+          <p className="work-bot-stage-caption">{t.work.bot.caption}</p>
         </div>
 
         <div className="work-bot-squad" aria-label={t.work.bot.aria}>
@@ -31,8 +32,6 @@ export function WorkBotStage() {
             );
           })}
         </div>
-
-        <p className="work-bot-stage-caption">{t.work.bot.caption}</p>
       </div>
     </Reveal>
   );

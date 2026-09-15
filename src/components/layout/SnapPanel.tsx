@@ -1,9 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  type ReactNode,
-  type HTMLAttributes,
-} from 'react';
+import { useEffect, type ReactNode, type HTMLAttributes } from 'react';
 
 const HEADER_OFFSET = 'var(--site-header-h, 72px)';
 
@@ -13,7 +8,7 @@ type SnapPanelProps = HTMLAttributes<HTMLElement> & {
   as?: 'section' | 'div';
 };
 
-/** One full-viewport homepage panel for scroll snapping. */
+/** One homepage panel. Desktop uses CSS proximity snap; mobile is natural flow. */
 export function SnapPanel({
   id,
   children,
@@ -33,123 +28,27 @@ export function SnapPanel({
 }
 
 /**
- * Enables full-page scroll on the homepage: each .snap-panel is one screen,
- * wheel / keys move one panel at a time. Disabled below lg — natural scroll.
+ * Desktop-only CSS class for proximity snap.
+ * Wheel is left to the browser — JS hijacking was the main scroll hitch.
  */
 export function useHomeFullpage(enabled: boolean) {
-  const indexRef = useRef(0);
-  const lockedRef = useRef(false);
-
   useEffect(() => {
     if (!enabled) return;
 
-    const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const desktopMq = window.matchMedia('(min-width: 1024px)');
     const root = document.documentElement;
-    root.classList.add('home-fullpage-active');
+    const desktopMq = window.matchMedia('(min-width: 1024px)');
 
-    const panels = () =>
-      Array.from(document.querySelectorAll<HTMLElement>('.snap-panel'));
-
-    const nearestIndex = () => {
-      const list = panels();
-      if (!list.length) return 0;
-      const y = window.scrollY + 8;
-      let best = 0;
-      let bestDist = Infinity;
-      list.forEach((el, i) => {
-        const d = Math.abs(el.offsetTop - y);
-        if (d < bestDist) {
-          bestDist = d;
-          best = i;
-        }
-      });
-      return best;
+    const sync = () => {
+      // Compact desktop layout stays on even when motion is reduced.
+      // Snap itself is disabled in CSS for prefers-reduced-motion.
+      root.classList.toggle('home-fullpage-active', desktopMq.matches);
     };
 
-    const goTo = (next: number) => {
-      const list = panels();
-      if (!list.length) return;
-      const i = Math.max(0, Math.min(list.length - 1, next));
-      indexRef.current = i;
-      lockedRef.current = true;
-      list[i]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      window.setTimeout(() => {
-        lockedRef.current = false;
-      }, 720);
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      if (!desktopMq.matches || reduceMq.matches) return;
-      if (Math.abs(e.deltaY) < 8) return;
-      if (lockedRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      const list = panels();
-      const i = nearestIndex();
-      const panel = list[i];
-      if (!panel) return;
-
-      const inner = panel.querySelector<HTMLElement>('.snap-panel-inner');
-      const scroller = inner ?? panel;
-      const canScroll = scroller.scrollHeight > scroller.clientHeight + 2;
-      if (canScroll) {
-        const top = scroller.scrollTop;
-        const max = scroller.scrollHeight - scroller.clientHeight;
-        if (e.deltaY > 0 && top < max - 1) return;
-        if (e.deltaY < 0 && top > 1) return;
-      }
-
-      const dir = e.deltaY > 0 ? 1 : -1;
-      const next = i + dir;
-      if (next < 0 || next >= list.length) return;
-
-      e.preventDefault();
-      goTo(next);
-    };
-
-    const onKey = (e: KeyboardEvent) => {
-      if (!desktopMq.matches || reduceMq.matches) return;
-      if (lockedRef.current) return;
-      const target = e.target as HTMLElement | null;
-      if (
-        target &&
-        (target.tagName === 'INPUT' ||
-          target.tagName === 'TEXTAREA' ||
-          target.isContentEditable)
-      ) {
-        return;
-      }
-
-      let dir = 0;
-      if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
-        dir = 1;
-      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-        dir = -1;
-      } else if (e.key === 'Home') {
-        e.preventDefault();
-        goTo(0);
-        return;
-      } else if (e.key === 'End') {
-        e.preventDefault();
-        goTo(panels().length - 1);
-        return;
-      }
-      if (!dir) return;
-      e.preventDefault();
-      goTo(nearestIndex() + dir);
-    };
-
-    indexRef.current = nearestIndex();
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('keydown', onKey);
-
+    sync();
+    desktopMq.addEventListener('change', sync);
     return () => {
       root.classList.remove('home-fullpage-active');
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('keydown', onKey);
+      desktopMq.removeEventListener('change', sync);
     };
   }, [enabled]);
 }

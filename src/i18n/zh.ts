@@ -61,6 +61,38 @@ export const zh: Messages = {
         { name: 'Markdown', kind: 'md' },
       ],
     },
+    workContacts: {
+      user: 'roylin',
+      search: '搜索',
+      plugins: '插件',
+      chats: [
+        {
+          id: 'docs',
+          name: '文档专家',
+          preview: '周五全员会的稿，需要你点个头',
+          time: '7:34',
+          unread: true,
+        },
+        {
+          id: 'code',
+          name: '代码专家',
+          preview: '结账崩溃已复现，说明写进工单了',
+          time: '昨天',
+        },
+        {
+          id: 'science',
+          name: '科研专家',
+          preview: '实验组数据对上了，3 个问题已关',
+          time: '11:18',
+        },
+        {
+          id: 'finance',
+          name: '金融专家',
+          preview: '14 张发票已入账，还差周二那笔',
+          time: '9:04',
+        },
+      ],
+    },
   },
   logos: {
     label: '已有团队选择 Kense',
