@@ -34,7 +34,7 @@ export function SnapPanel({
 
 /**
  * Enables full-page scroll on the homepage: each .snap-panel is one screen,
- * wheel / keys move one panel at a time.
+ * wheel / keys move one panel at a time. Disabled below lg — natural scroll.
  */
 export function useHomeFullpage(enabled: boolean) {
   const indexRef = useRef(0);
@@ -43,15 +43,10 @@ export function useHomeFullpage(enabled: boolean) {
   useEffect(() => {
     if (!enabled) return;
 
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const desktopMq = window.matchMedia('(min-width: 1024px)');
     const root = document.documentElement;
     root.classList.add('home-fullpage-active');
-
-    if (reduce) {
-      return () => {
-        root.classList.remove('home-fullpage-active');
-      };
-    }
 
     const panels = () =>
       Array.from(document.querySelectorAll<HTMLElement>('.snap-panel'));
@@ -84,9 +79,8 @@ export function useHomeFullpage(enabled: boolean) {
       }, 720);
     };
 
-    indexRef.current = nearestIndex();
-
     const onWheel = (e: WheelEvent) => {
+      if (!desktopMq.matches || reduceMq.matches) return;
       if (Math.abs(e.deltaY) < 8) return;
       if (lockedRef.current) {
         e.preventDefault();
@@ -117,6 +111,7 @@ export function useHomeFullpage(enabled: boolean) {
     };
 
     const onKey = (e: KeyboardEvent) => {
+      if (!desktopMq.matches || reduceMq.matches) return;
       if (lockedRef.current) return;
       const target = e.target as HTMLElement | null;
       if (
@@ -147,6 +142,7 @@ export function useHomeFullpage(enabled: boolean) {
       goTo(nearestIndex() + dir);
     };
 
+    indexRef.current = nearestIndex();
     window.addEventListener('wheel', onWheel, { passive: false });
     window.addEventListener('keydown', onKey);
 

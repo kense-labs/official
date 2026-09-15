@@ -133,6 +133,14 @@
   padding-inline: 20px;
 }
 
+@media (max-width: 639px) {
+  .container-site,
+  .container-prose,
+  .container-pricing {
+    padding-inline: 16px;
+  }
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -436,7 +444,44 @@
   position: absolute;
   z-index: 1;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
+  /* Soften the video frame edge — hard left cut was reading as a vertical seam */
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 10%,
+      #000 22%,
+      #000 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 6%,
+      #000 92%,
+      transparent 100%
+    );
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.35) 10%,
+      #000 22%,
+      #000 100%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      #000 6%,
+      #000 92%,
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 .hero-light-beam-media {
@@ -694,6 +739,12 @@
     0 40px 80px rgba(0, 0, 0, 0.35);
 }
 
+@media (max-width: 639px) {
+  .work-preview {
+    min-height: 420px;
+  }
+}
+
 @media (min-width: 900px) {
   .work-preview {
     grid-template-columns: 200px 1fr;
@@ -836,6 +887,12 @@
   background: transparent;
 }
 
+@media (max-width: 639px) {
+  .work-preview-main {
+    padding: 24px 12px 20px;
+  }
+}
+
 @media (min-width: 900px) {
   .work-preview-main {
     padding: 48px 36px 36px;
@@ -848,6 +905,14 @@
   justify-content: center;
   gap: 8px;
   margin-bottom: 22px;
+}
+
+@media (max-width: 639px) {
+  .work-preview-greeting {
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding-inline: 4px;
+  }
 }
 
 .work-preview-bot {
@@ -874,6 +939,15 @@
   letter-spacing: -0.02em;
   line-height: 1;
   white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .work-preview-greeting h3 {
+    font-size: clamp(18px, 4.5vw, 30px);
+    line-height: 1.2;
+    white-space: normal;
+    text-align: left;
+  }
 }
 
 .work-preview-composer {
@@ -2306,11 +2380,118 @@
   }
 
   .home-fullpage-active .expert-pack-shell {
-    min-height: 200px;
+    min-height: 180px;
+    padding: 8px 6px;
+  }
+
+  .home-fullpage-active .expert-pack-figure {
+    min-height: 88px;
+  }
+
+  .home-fullpage-active .expert-pack-figure .clay-avatar {
+    width: min(70%, 84px) !important;
   }
 
   .home-fullpage-active .hero-product-wrap {
-    transform: scale(0.84);
+    transform: scale(0.78);
+  }
+
+  .home-fullpage-active .hero-stage {
+    height: 160px;
+  }
+
+  .home-fullpage-active .work-bot-stage {
+    margin-top: 20px;
+    padding: 14px 10px 12px;
+  }
+
+  .home-fullpage-active .work-bot-squad {
+    gap: 6px 8px;
+    margin-top: 14px;
+  }
+
+  .hero-product {
+    width: min(1280px, calc(100% - 16px));
+  }
+
+  .cloud-console-reveal--stacked {
+    padding-inline: 16px;
+  }
+
+  .cloud-arch-node {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Below lg: natural document scroll — no locked viewport clipping */
+@media (max-width: 1023px) {
+  html.home-fullpage-active {
+    scroll-snap-type: none;
+  }
+
+  .snap-panel {
+    height: auto;
+    max-height: none;
+    min-height: 100dvh;
+    overflow: visible;
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+
+  .snap-panel-inner {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 2rem;
+  }
+
+  .snap-panel--fill > .snap-panel-inner > * {
+    flex: 0 1 auto;
+    min-height: 0;
+  }
+
+  .snap-panel--hero {
+    overflow: visible;
+  }
+
+  .snap-panel--hero .snap-panel-inner > section:first-child {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .snap-panel--footer,
+  .snap-panel--footer .snap-panel-inner {
+    min-height: 0;
+  }
+
+  .snap-panel--closing .snap-panel-inner > * {
+    flex: 0 1 auto;
+  }
+
+  .home-fullpage-active .hero-visual {
+    transform: translateY(-8px);
+  }
+
+  .home-fullpage-active .hero-product-wrap {
+    transform: scale(0.82);
+    transform-origin: top center;
+  }
+
+  .home-fullpage-active .cloud-hero--stacked {
+    height: auto;
+    justify-content: flex-start;
+    gap: 1.25rem;
+    padding-block: 0.75rem 1.5rem;
+  }
+
+  .home-fullpage-active .cloud-console-main {
+    padding: 14px 12px 16px;
+  }
+
+  .cloud-console-path {
+    flex-wrap: wrap;
   }
 }
 

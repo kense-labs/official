@@ -197,7 +197,7 @@ export function Hero() {
   const { t } = useI18n();
 
   return (
-    <section className="hero-section relative overflow-visible pb-8 pt-12 md:pb-10 md:pt-16 lg:pt-20">
+    <section className="hero-section relative overflow-visible pb-8 pt-12 max-sm:pb-6 max-sm:pt-4 md:pb-10 md:pt-16 lg:pt-20">
       <ParticleReveal
         background={kenseFx.bg}
         radius={280}
@@ -213,19 +213,19 @@ export function Hero() {
       >
         <div className="container-pricing text-center">
           <Reveal>
-            <h1 className="mx-auto max-w-4xl text-[36px] font-medium leading-[1.2] tracking-[-0.96px] text-white md:text-[48px] md:leading-[1.38]">
+            <h1 className="mx-auto max-w-4xl text-[36px] font-medium leading-[1.2] tracking-[-0.96px] text-white max-sm:text-[28px] max-sm:tracking-[-0.8px] md:text-[48px] md:leading-[1.38]">
               {t.hero.title}
             </h1>
           </Reveal>
           <Reveal delayMs={80}>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-ink-muted max-sm:mt-4 max-sm:text-sm max-sm:leading-6 md:text-lg">
               {t.hero.subtitle}
             </p>
           </Reveal>
           <Reveal delayMs={140}>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button className="h-11 px-5">{t.hero.ctaPrimary}</Button>
-              <Button variant="outline" className="h-11 px-5">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-sm:mt-6 max-sm:gap-2.5">
+              <Button className="h-11 px-5 max-sm:h-10 max-sm:px-4">{t.hero.ctaPrimary}</Button>
+              <Button variant="outline" className="h-11 px-5 max-sm:h-10 max-sm:px-4">
                 {t.hero.ctaSecondary}
               </Button>
             </div>
@@ -233,7 +233,7 @@ export function Hero() {
           <Reveal delayMs={200}>
             <a
               href="#work"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary-soft transition-colors hover:text-white"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-primary-soft transition-colors hover:text-white max-sm:mt-6"
             >
               {t.hero.discover}
               <span aria-hidden>↓</span>

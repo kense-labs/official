@@ -1,0 +1,21 @@
+suite "kense-mobile-cua" {
+    version = 1
+
+    scenario "safari-kense-mobile" {
+        name = "CUA attaches Safari and verifies kense home in a narrow window"
+        surface = "gui"
+        timeout_ms = 120000
+
+        expect "brand" {
+            text = "Kense"
+        }
+
+        expect "cta" {
+            text = "免费开始"
+        }
+
+        screenshot "cua-home" {
+            path = "screenshots/cua-home.png"
+        }
+    }
+}

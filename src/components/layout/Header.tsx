@@ -53,7 +53,7 @@ export function Header() {
               document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
             }
           }}
-          className="relative z-[2] shrink-0"
+          className="relative z-[2] min-w-0 shrink-0"
         >
           <Logo layout="horizontal" size={36} />
         </Link>
@@ -89,21 +89,33 @@ export function Header() {
 
         <button
           type="button"
-          className="relative z-[2] flex h-10 w-10 items-center justify-center rounded-md border border-white/10 lg:hidden"
-          aria-label="Menu"
+          className="relative z-[2] flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-white/10 lg:hidden"
+          aria-label={snap.mobileNavOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={snap.mobileNavOpen}
           onClick={() => uiActions.toggleMobileNav()}
         >
           <span className="sr-only">Menu</span>
-          <div className="flex w-4 flex-col gap-1.5">
-            <span className="h-px w-full bg-white" />
-            <span className="h-px w-full bg-white" />
-            <span className="h-px w-full bg-white" />
-          </div>
+          {snap.mobileNavOpen ? (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+              <path
+                d="M3.5 3.5l9 9M12.5 3.5l-9 9"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+          ) : (
+            <div className="flex w-4 flex-col gap-1.5">
+              <span className="h-px w-full bg-white" />
+              <span className="h-px w-full bg-white" />
+              <span className="h-px w-full bg-white" />
+            </div>
+          )}
         </button>
       </div>
 
       {snap.mobileNavOpen ? (
-        <div className="border-t border-white/8 bg-bg px-5 py-6 lg:hidden">
+        <div className="max-h-[calc(100dvh-var(--site-header-h))] overflow-y-auto border-t border-white/8 bg-bg px-5 py-6 lg:hidden">
           <ul className="flex flex-col gap-1">
             {nav.map((item) => (
               <li key={item.label}>

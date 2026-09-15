@@ -44,8 +44,8 @@ export function FeatureBlock({
                 data.brand ? 'mt-2' : ''
               } ${
                 compact
-                  ? 'text-[24px] md:text-[32px]'
-                  : 'text-[28px] md:text-[36px]'
+                  ? 'text-[24px] md:text-[32px] max-sm:text-[22px]'
+                  : 'text-[28px] md:text-[36px] max-sm:text-[24px]'
               }`}
             >
               {data.title}
@@ -66,7 +66,7 @@ export function FeatureBlock({
 
         <div
           className={`grid gap-3 md:grid-cols-3 md:gap-4 ${
-            compact ? 'mt-6' : 'mt-10'
+            compact ? 'mt-6 max-sm:mt-5' : 'mt-10'
           }`}
         >
           {data.items.map((item, index) => (

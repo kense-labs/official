@@ -132,7 +132,7 @@ export function CloudShowcase() {
                 <p className="text-xs font-medium tracking-[0.1em] text-primary-soft md:text-sm">
                   {p.brand}
                 </p>
-                <h2 className="mt-2 text-[26px] font-medium leading-[1.15] tracking-[-0.6px] text-white md:text-[34px]">
+                <h2 className="mt-2 text-[26px] font-medium leading-[1.15] tracking-[-0.6px] text-white max-sm:text-[22px] md:text-[34px]">
                   {cloud.title}
                 </h2>
                 <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-ink-muted md:text-[15px]">
@@ -172,7 +172,7 @@ export function CloudShowcase() {
               <p className="text-xs font-medium uppercase tracking-[0.14em] text-primary-soft">
                 {p.architecture.eyebrow}
               </p>
-              <h2 className="mt-2 text-[26px] font-medium leading-tight tracking-[-0.5px] text-white md:text-[34px]">
+              <h2 className="mt-2 text-[26px] font-medium leading-tight tracking-[-0.5px] text-white max-sm:text-[22px] md:text-[34px]">
                 {p.architecture.title}
               </h2>
               <p className="mt-3 text-sm leading-6 text-ink-muted md:text-[15px]">

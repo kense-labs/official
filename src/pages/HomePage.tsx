@@ -65,21 +65,21 @@ export function HomePage() {
             className="flex min-h-0 flex-1 flex-col"
             style={{ minHeight: 0, height: '100%' }}
           >
-            <div className="flex h-full min-h-0 flex-col justify-center gap-4 py-3 md:gap-5 md:py-4">
+            <div className="flex h-full min-h-0 flex-col justify-center gap-4 py-3 max-sm:gap-3 md:gap-5 md:py-4">
               <FeatureBlock data={t.security} compact showQuote={false} />
 
               <Reveal delayMs={40}>
                 <div className="container-pricing">
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4">
+                  <div className="grid grid-cols-2 gap-3 max-sm:gap-2.5 sm:grid-cols-4 md:gap-4">
                     {t.scale.stats.map((stat) => (
                       <div
                         key={stat.label}
-                        className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-3.5 text-center md:py-4"
+                        className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-3.5 text-center max-sm:px-2.5 max-sm:py-3 md:py-4"
                       >
-                        <div className="text-xl font-medium tracking-tight text-white md:text-2xl">
+                        <div className="text-xl font-medium tracking-tight text-white max-sm:text-lg md:text-2xl">
                           {stat.value}
                         </div>
-                        <div className="mt-1 text-[11px] text-ink-muted md:text-xs">
+                        <div className="mt-1 text-[11px] text-ink-muted max-sm:text-[10px] md:text-xs">
                           {stat.label}
                         </div>
                       </div>
@@ -92,9 +92,9 @@ export function HomePage() {
                 <div className="container-pricing">
                   <div
                     id="cta"
-                    className="rounded-2xl border border-white/8 bg-[linear-gradient(135deg,rgba(28,20,76,0.45),rgba(11,12,17,0.75))] px-5 py-5 text-center md:px-8 md:py-6"
+                    className="rounded-2xl border border-white/8 bg-[linear-gradient(135deg,rgba(28,20,76,0.45),rgba(11,12,17,0.75))] px-5 py-5 text-center max-sm:px-4 max-sm:py-4 md:px-8 md:py-6"
                   >
-                    <h2 className="text-[22px] font-medium tracking-[-0.4px] text-white md:text-[28px]">
+                    <h2 className="text-[22px] font-medium tracking-[-0.4px] text-white max-sm:text-[20px] md:text-[28px]">
                       {t.cta.title}
                     </h2>
                     <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-ink-muted">

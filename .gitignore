@@ -17,3 +17,8 @@ bun.lockb
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# A3S Test runtime
+.a3s-test/agent-sessions/
+.a3s-test/runs/
+.a3s-test/mcp-sessions/
