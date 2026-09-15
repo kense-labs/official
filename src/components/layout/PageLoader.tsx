@@ -1,5 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useI18n } from '../../i18n/useI18n';
 
 const MIN_MS = 1000;
 const FADE_MS = 320;
@@ -21,25 +22,26 @@ const PATHS = {
 type Phase = 'drawing' | 'leaving' | 'hidden';
 
 /**
- * Brand flash on first paint and on pathname changes.
+ * Brand flash on first paint, route changes, and language switches.
  * Does not lock overflow — the scrollbar stays visible.
  */
 export function PageLoader() {
   const { pathname } = useLocation();
+  const { locale } = useI18n();
   const uid = useId().replace(/:/g, '');
   const [phase, setPhase] = useState<Phase>('drawing');
   const [ticket, setTicket] = useState(0);
   const svgRef = useRef<SVGSVGElement>(null);
-  const isFirstRoute = useRef(true);
+  const isFirstFlash = useRef(true);
 
   useEffect(() => {
-    if (isFirstRoute.current) {
-      isFirstRoute.current = false;
+    if (isFirstFlash.current) {
+      isFirstFlash.current = false;
       return;
     }
     setPhase('drawing');
     setTicket((n) => n + 1);
-  }, [pathname]);
+  }, [pathname, locale]);
 
   useLayoutEffect(() => {
     const svg = svgRef.current;

@@ -851,21 +851,11 @@ export function createLiquid(
   wake = start;
   start();
 
-  const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let reducedMotion = motionQuery.matches;
-
-  function onMotionChange() {
-    reducedMotion = motionQuery.matches;
-    if (!reducedMotion) start();
-  }
-  motionQuery.addEventListener("change", onMotionChange);
-
   const pointers = new Map<number, { x: number; y: number }>();
 
   const rectCache = createRectCache(output);
 
   function onPointerMove(event: PointerEvent) {
-    if (reducedMotion) return;
     const rect = rectCache.current;
     const px = event.clientX - rect.left;
     const py = event.clientY - rect.top;
@@ -883,7 +873,6 @@ export function createLiquid(
   }
 
   function onPointerDown(event: PointerEvent) {
-    if (reducedMotion) return;
     const rect = output.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -930,7 +919,6 @@ export function createLiquid(
 
   return {
     splat(x, y, dx, dy) {
-      if (reducedMotion) return;
       queued.push([x, y, dx, dy]);
       start();
     },
@@ -967,7 +955,6 @@ export function createLiquid(
       cancelAnimationFrame(raf);
       observer.disconnect();
       intersection.disconnect();
-      motionQuery.removeEventListener("change", onMotionChange);
       releaseTargets(fluidTargets);
       gl!.deleteTexture(contentTexture);
       programs.forEach((program) => gl!.deleteProgram(program));

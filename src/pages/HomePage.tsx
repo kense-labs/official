@@ -38,7 +38,7 @@ function ClosingFx({ children }: { children: ReactNode }) {
   if (!fx) return children;
   return (
     <Blaze
-      height={0.72}
+      height={1}
       distortion={0.45}
       distortionScale={0.55}
       speed={0.9}
@@ -50,8 +50,7 @@ function ClosingFx({ children }: { children: ReactNode }) {
       glow={1.35}
       sparkColor={kenseFx.spark}
       smokeColor={kenseFx.smoke}
-      className="flex min-h-0 flex-1 flex-col"
-      style={{ minHeight: 0, height: '100%' }}
+      className="flex flex-col"
     >
       {children}
     </Blaze>
@@ -85,59 +84,57 @@ export function HomePage() {
         id="platform"
         className="snap-panel--fill snap-panel--cta snap-panel--closing"
       >
-        <div className="flex h-full min-h-0 flex-col">
-          <ClosingFx>
-            <div className="closing-stack flex h-full min-h-0 flex-col justify-start gap-4 max-sm:gap-3 md:gap-5">
-              <FeatureBlock data={t.security} compact showQuote={false} />
+        <ClosingFx>
+          <div className="closing-stack flex flex-col justify-start gap-4 pb-8 max-sm:gap-3 md:gap-5">
+            <FeatureBlock data={t.security} compact showQuote={false} />
 
-              <Reveal delayMs={40}>
-                <div className="container-pricing">
-                  <div className="grid grid-cols-2 gap-3 max-sm:gap-2.5 sm:grid-cols-4 md:gap-4">
-                    {t.scale.stats.map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-3.5 text-center max-sm:px-2.5 max-sm:py-3 md:py-4"
-                      >
-                        <div className="text-xl font-medium tracking-tight text-white max-sm:text-lg md:text-2xl">
-                          {stat.value}
-                        </div>
-                        <div className="mt-1 text-[11px] text-ink-muted max-sm:text-[10px] md:text-xs">
-                          {stat.label}
-                        </div>
+            <Reveal delayMs={40}>
+              <div className="container-pricing">
+                <div className="grid grid-cols-2 gap-3 max-sm:gap-2.5 sm:grid-cols-4 md:gap-4">
+                  {t.scale.stats.map((stat) => (
+                    <div
+                      key={stat.label}
+                      className="rounded-xl border border-white/8 bg-white/[0.02] px-3 py-3.5 text-center max-sm:px-2.5 max-sm:py-3 md:py-4"
+                    >
+                      <div className="text-xl font-medium tracking-tight text-white max-sm:text-lg md:text-2xl">
+                        {stat.value}
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </Reveal>
-
-              <Reveal delayMs={80}>
-                <div className="container-pricing">
-                  <div
-                    id="cta"
-                    className="rounded-2xl border border-white/8 bg-[linear-gradient(135deg,rgba(28,20,76,0.45),rgba(11,12,17,0.75))] px-5 py-5 text-center max-sm:px-4 max-sm:py-4 md:px-8 md:py-6"
-                  >
-                    <h2 className="text-[22px] font-medium tracking-[-0.4px] text-white max-sm:text-[20px] md:text-[28px]">
-                      {t.cta.title}
-                    </h2>
-                    <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-ink-muted">
-                      {t.cta.description}
-                    </p>
-                    <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-                      <Button className="h-10 px-5">{t.cta.primary}</Button>
-                      <Button variant="outline" className="h-10 px-5">
-                        {t.cta.secondary}
-                      </Button>
+                      <div className="mt-1 text-[11px] text-ink-muted max-sm:text-[10px] md:text-xs">
+                        {stat.label}
+                      </div>
                     </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delayMs={80}>
+              <div className="container-pricing">
+                <div
+                  id="cta"
+                  className="rounded-2xl border border-white/8 bg-[linear-gradient(135deg,rgba(28,20,76,0.45),rgba(11,12,17,0.75))] px-5 py-5 text-center max-sm:px-4 max-sm:py-4 md:px-8 md:py-6"
+                >
+                  <h2 className="text-[22px] font-medium tracking-tight text-white max-sm:text-[20px] md:text-[28px]">
+                    {t.cta.title}
+                  </h2>
+                  <p className="mx-auto mt-2 max-w-lg text-sm leading-6 text-ink-muted">
+                    {t.cta.description}
+                  </p>
+                  <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
+                    <Button className="h-10 px-5">{t.cta.primary}</Button>
+                    <Button variant="outline" className="h-10 px-5">
+                      {t.cta.secondary}
+                    </Button>
                   </div>
                 </div>
-              </Reveal>
-            </div>
-          </ClosingFx>
+              </div>
+            </Reveal>
+          </div>
 
           <div className="relative z-[2] shrink-0">
             <Footer bare compact />
           </div>
-        </div>
+        </ClosingFx>
       </SnapPanel>
     </div>
   );

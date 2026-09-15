@@ -48,7 +48,7 @@ export function Footer({ bare = false, compact = false }: FooterProps) {
   const body = (
     <div
       className={`container-site ${
-        compact ? 'py-8 lg:py-10' : 'py-16 lg:py-20'
+        compact ? 'pt-20 pb-16 lg:pt-28 lg:pb-20' : 'py-16 lg:py-20'
       }`}
     >
       <div
@@ -88,7 +88,7 @@ export function Footer({ bare = false, compact = false }: FooterProps) {
       </div>
       <div
         className={`flex items-center justify-between border-t border-white/8 text-sm text-ink-faint ${
-          compact ? 'mt-8 pt-5' : 'mt-14 pt-8'
+          compact ? 'mt-10 pt-5' : 'mt-14 pt-8'
         }`}
       >
         <p>{t.footer.copyright}</p>
@@ -97,8 +97,8 @@ export function Footer({ bare = false, compact = false }: FooterProps) {
   );
 
   if (bare) {
-    return <div className="border-t border-white/8 bg-bg">{body}</div>;
+    return <div className="bg-bg">{body}</div>;
   }
 
-  return <footer className="border-t border-white/8 bg-bg">{body}</footer>;
+  return <footer className="bg-bg">{body}</footer>;
 }

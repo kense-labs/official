@@ -64,7 +64,7 @@
   }
 
   html.home-fullpage-active {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: none;
     scroll-padding-top: 0;
     --home-section-pad-top: clamp(0.25rem, 1.2vh, 0.75rem);
     --home-section-pad-bottom: 1rem;
@@ -1982,10 +1982,13 @@
 .expert-pack-figure {
   position: relative;
   z-index: 1;
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
   width: 100%;
-  padding: 18px 8px 36px;
+  padding: 16px 8px 14px;
 }
 
 .expert-pack-figure .clay-avatar {
@@ -2019,9 +2022,7 @@
 }
 
 .expert-pack-sticker {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
+  position: relative;
   z-index: 3;
   width: min(78%, 108px);
   padding: 5px 6px 4px;
@@ -2031,7 +2032,6 @@
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 6px 14px rgba(0, 0, 0, 0.38);
-  transform: translateX(-50%);
 }
 
 .expert-pack-sticker-brand {
@@ -2331,7 +2331,8 @@ html.home-fullpage-active .snap-panel {
   max-height: 100dvh;
   min-height: 100dvh;
   overflow: hidden;
-  scroll-snap-align: start;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
   content-visibility: auto;
   contain-intrinsic-size: auto 100dvh;
 }
@@ -2431,13 +2432,23 @@ html.home-fullpage-active .snap-panel--fill.snap-panel--arch > .snap-panel-inner
   justify-content: center;
 }
 
+html.home-fullpage-active .snap-panel--closing {
+  height: auto;
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
 html.home-fullpage-active .snap-panel--closing .snap-panel-inner {
-  padding-bottom: 0;
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  padding-bottom: 3rem;
 }
 
 .snap-panel--fill.snap-panel--closing > .snap-panel-inner {
   justify-content: stretch;
-  padding-bottom: 0;
+  padding-bottom: 3rem;
 }
 
 .snap-panel--closing .snap-panel-inner > * {
@@ -2569,8 +2580,7 @@ html.home-fullpage-active .snap-panel--arch > .snap-panel-inner {
 }
 
 .home-fullpage-active .cloud-hero-copy {
-  /* Only change vs main: drop the heading a little. */
-  padding-top: 2.25rem;
+  padding-top: 4rem;
 }
 
 .home-fullpage-active .cloud-console-main {
@@ -2617,11 +2627,12 @@ html.home-fullpage-active .snap-panel--arch > .snap-panel-inner {
 }
 
 .home-fullpage-active .expert-pack-well {
-  min-height: 204px;
+  min-height: 214px;
 }
 
 .home-fullpage-active .expert-pack-figure {
-  padding: 14px 6px 32px;
+  gap: 20px;
+  padding: 12px 6px 12px;
 }
 
 .home-fullpage-active .expert-pack-figure .clay-avatar {
@@ -2733,7 +2744,8 @@ html.home-fullpage-active .snap-panel--arch > .snap-panel-inner {
   }
 
   .home-fullpage-active .expert-pack-figure {
-    padding: 12px 4px 28px;
+    gap: 16px;
+    padding: 12px 4px 10px;
   }
 
   .home-fullpage-active .expert-pack-figure .clay-avatar {

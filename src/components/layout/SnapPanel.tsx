@@ -8,7 +8,7 @@ type SnapPanelProps = HTMLAttributes<HTMLElement> & {
   as?: 'section' | 'div';
 };
 
-/** One homepage panel. Desktop uses CSS proximity snap; mobile is natural flow. */
+/** One homepage panel. Layout only — page scroll is native, not snapped. */
 export function SnapPanel({
   id,
   children,
@@ -28,8 +28,8 @@ export function SnapPanel({
 }
 
 /**
- * Desktop-only CSS class for proximity snap.
- * Wheel is left to the browser — JS hijacking was the main scroll hitch.
+ * Desktop-only compact homepage layout.
+ * Wheel is left to the browser — no snap, no JS hijack.
  */
 export function useHomeFullpage(enabled: boolean) {
   useEffect(() => {

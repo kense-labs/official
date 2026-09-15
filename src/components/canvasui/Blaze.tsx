@@ -739,7 +739,7 @@ export function Blaze({ children, className, style, ...options }: BlazeProps) {
         suppressHydrationWarning
         style={
           native
-            ? { position: "absolute", inset: 0, width: "100%", height: "100%" }
+            ? { position: "relative", display: "block", width: "100%", height: "auto" }
             : { display: "none" }
         }
       >
@@ -749,8 +749,8 @@ export function Blaze({ children, className, style, ...options }: BlazeProps) {
             style={{
               position: "relative",
               width: "100%",
-              height: "100%",
-              overflow: "hidden",
+              height: "auto",
+              overflow: "visible",
             }}
           >
             {children}
@@ -763,8 +763,8 @@ export function Blaze({ children, className, style, ...options }: BlazeProps) {
           style={{
             position: "relative",
             width: "100%",
-            height: "100%",
-            overflow: "hidden",
+            height: "auto",
+            overflow: "visible",
           }}
         >
           {children}
