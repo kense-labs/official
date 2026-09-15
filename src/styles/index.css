@@ -2575,6 +2575,7 @@ html.home-fullpage-active .snap-panel--closing .snap-panel-inner {
   height: auto;
   min-height: 0;
   justify-content: flex-start;
+  gap: clamp(6.5rem, 15vh, 9rem);
   padding-bottom: 0.75rem;
 }
 
