@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-hidden="true">
+  <rect width="960" height="640" fill="#0b0c11"/>
+  <rect x="96" y="88" width="768" height="464" rx="36" fill="#14151b"/>
+  <path d="M168 250 C240 246 272 188 328 204 S430 268 490 224 S600 150 676 176 S770 250 856 188" fill="none" stroke="#7dcea0" stroke-width="3"/>
+  <g fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22">
+    <text x="168" y="330">AAPL</text>
+    <text x="168" y="378">NVDA</text>
+    <text x="168" y="426">XAU</text>
+  </g>
+  <g fill="#8a8996" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" text-anchor="end">
+    <text x="820" y="330">188.42</text>
+    <text x="820" y="378">902.10</text>
+    <text x="820" y="426">2,348</text>
+  </g>
+</svg>

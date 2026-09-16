@@ -44,671 +44,223 @@ export const en: Messages = {
       {
         id: 'monitor',
         name: 'Kense Monitor',
-        tagline: 'External situational awareness for operational and trading decisions',
+        tagline: 'The world moved. Your plan did not.',
         description:
-          'Ingest conflict, sanctions, shipping, and macro signals — query, subscribe, and integrate them into systems that set plans and risk.',
-        cover: '/site/monitor-illust-cover.png',
+          'Conflict, sanctions, shipping, and macro — one feed you can ask, subscribe to, and plug into the tools that set plans.',
+        cover: '/site/cover-monitor.svg',
         to: '/solutions/monitor',
       },
       {
         id: 'finance',
         name: 'Kense Finance',
-        tagline: 'Unified market data for research and trading',
+        tagline: 'One market tape for research and the desk',
         description:
-          'Connect equity, macro, derivatives, and news once. Deliver the same normalized feeds through Python, research workspaces, MCP, and REST.',
-        cover: '/site/finance-hero.svg',
+          'Connect equity, macro, derivatives, and news once. Python, the workbench, MCP, and REST read the same book.',
+        cover: '/site/cover-finance.svg',
         to: '/solutions/finance',
       },
       {
         id: 'science',
         name: 'Kense Science',
-        tagline: 'Local research workbench with reproducible outputs',
+        tagline: 'Papers, notebooks, and the run that made them',
         description:
-          'Literature, notebooks, scientific connectors, and assistants in one workspace — with versioned artifacts and execution trails you can replay.',
-        cover: '/site/science-hero.svg',
+          'A local bench for analysis with a trail you can open later — and show someone else.',
+        cover: '/site/cover-science.svg',
         to: '/solutions/science',
       },
       {
         id: 'insight',
         name: 'Kense Insight',
-        tagline: 'Semantic metrics layer for BI, products, and automation',
+        tagline: 'Define the metric once. Everyone reads that number.',
         description:
-          'Define metrics, joins, and access policy in code. Serve them via SQL, REST, GraphQL, and MCP with caching and pre-aggregations.',
-        cover: '/site/insight-hero.svg',
+          'Metrics and access in code. BI, product, and bots consume them over SQL, API, or MCP.',
+        cover: '/site/cover-insight.svg',
         to: '/solutions/insight',
       },
     ],
     monitor: {
       documentTitle: 'Kense Monitor — Kense',
-      stake: 'When external conditions change faster than internal systems update, plans and risk limits become unreliable.',
-      lead: 'Consolidate conflict, sanctions, shipping, and macro signals into a shared situational layer that teams can query, subscribe to, and connect to existing tools.',
-      problem: {
-        title: 'Operational systems capture internal state, not external conditions',
-        body: 'ERP, trading, and scheduling platforms track inventory, orders, and positions. Material external events that reset lead times and risk still arrive through news feeds, chat, and informal briefings.',
-        points: [
-          {
-            title: 'Delayed awareness',
-            body: 'Port closures, sanctions, and similar events appear in public sources first. Once they are entered into operational systems, the decision window is often closed.',
-          },
-          {
-            title: 'Inconsistent interpretation',
-            body: 'Research, risk, and operations describe the same event differently. There is no shared, citable situational record.',
-          },
-          {
-            title: 'Limited auditability',
-            body: 'Decision rationale remains in email and chat. Failures are difficult to attribute; successful responses are difficult to reuse.',
-          },
-        ],
-      },
-      cost: {
-        title: 'Situational lag becomes P&L, exposure, and governance risk',
-        body: 'When external facts have changed and systems continue on prior assumptions, losses appear in performance, risk exposure, and organizational confidence in the plan.',
-      },
+      lead: 'Conflict, sanctions, shipping, macro — one feed you can ask, subscribe to, and plug into the tools that set plans.',
+      stats: [
+        { value: '4', label: 'signal lanes' },
+        { value: 'Read-only', label: 'no writes to ops' },
+        { value: 'Cited', label: 'every event sourced' },
+      ],
       capabilities: {
-        title: 'Query · Subscribe · Integrate',
+        kicker: 'Capabilities',
+        title: 'The world moved. The plan should know.',
+        body: 'Monitor produces evidence. Work starts the task. Writes go through OS.',
         items: [
-          {
-            title: 'Query',
-            body: 'Retrieve current situational context in natural language and map impact to relevant assets, sites, or objects.',
-          },
-          {
-            title: 'Subscribe',
-            body: 'Scheduled digests, alerts on material events, and an event stream that downstream systems can consume.',
-          },
-          {
-            title: 'Integrate',
-            body: 'Expose situation through widgets, MCP, and APIs so existing workbenches can treat it as structured input.',
-          },
+          { title: 'Ask', body: 'Query the current picture and land it on a name, a site, or an order.' },
+          { title: 'Subscribe', body: 'Digests, alerts, and an event stream other systems can consume.' },
+          { title: 'Connect', body: 'Widget, MCP, API. Existing desks take the feed as structured input.' },
+          { title: 'Read-only', body: 'Monitor does not change inventory, books, or schedules. Missing is not zero risk.' },
+          { title: 'Auditable', body: 'Each event keeps a source and a time. You can open it later. Chat logs are not the record.' },
         ],
       },
-      architecture: {
-        title: 'Read-only evidence, task entry in Work, controlled write-back via OS',
-        body: 'Kense Monitor provides situational evidence. Teams initiate work in Kense Work. Kense OS coordinates bots, policy checks, and publish. Monitor does not write to business systems directly.',
+      uses: {
+        kicker: 'How teams use it',
+        title: 'One feed. Two desks.',
+        items: [
+          { title: 'Research', body: 'External shocks show up with attribution, as hypotheses, not hallway news.' },
+          { title: 'Planning', body: 'Shipping, sanctions, and feedstock concentration enter lead times before the meeting.' },
+          { title: 'Compliance', body: 'List changes hit a subscription. Stops are documented.' },
+        ],
+      },
+      artifact: {
+        kicker: 'Architecture',
+        title: 'Evidence here. Action elsewhere.',
+        body: 'Monitor only emits situation. People decide in Work. Bots that change systems go through OS.',
+        inLabel: 'Signals',
+        outLabel: 'Use',
         points: [
-          {
-            title: 'Unified intake',
-            body: 'Markets and macro, conflict and sanctions, maritime and aviation, fire detection, central-bank and trade signals — ingested as read-only inputs.',
-          },
-          {
-            title: 'Usage policy',
-            body: 'Confirm availability before use. Missing values are not treated as zero risk. Permission denials do not retry silently. Access remains read-only.',
-          },
-          {
-            title: 'Write boundary',
-            body: 'Any write-back uses a controlled publish path with ACL and approval. Bots do not issue commands directly to production systems.',
-          },
+          'Conflict, sanctions, marine, macro — read-only',
+          'Denied access is not retried in silence',
+          'Writes need approval and a trail',
         ],
       },
-      loop: {
-        title: 'From external signal to an accountable change',
-        body: 'Monitor supplies evidence. Assessment and publish execute under Box and Sentry controls on the OS layer.',
-        steps: [
-          {
-            title: 'Signal intake',
-            body: 'Events arrive with freshness metadata and links to source evidence.',
-          },
-          {
-            title: 'Task initiation',
-            body: 'Operators define objectives in Work, with models, files, and skills available in one workspace.',
-          },
-          {
-            title: 'Domain assessment',
-            body: 'Subscriptions activate logistics, compliance, or cost bots; findings are retained in organizational memory.',
-          },
-          {
-            title: 'Approval and publish',
-            body: 'Sentry blocks high-risk actions; compute-intensive solves run in Box; write-back requires approval.',
-          },
-        ],
+      close: {
+        title: 'Keep the plan aligned with the world outside.',
+        body: 'Start free, or book a demo and walk one signal through to a decision.',
       },
-      cases: {
-        title: 'Trading research and production planning',
-        subtitle: 'One situational feed supporting two operating models',
-        items: [
-          {
-            kicker: 'Trading research',
-            title: 'Convert global events into research hypotheses',
-            points: [
-              'Material shocks surface on the research desk with source attribution',
-              'Digests and alerts inform open and close decisions',
-              'Historical responses remain available for comparison',
-              'Strategy parameters retain links to supporting evidence',
-            ],
-            accept: 'Acceptance criteria: research workflow completeness, signal freshness, explainability of decisions',
-          },
-          {
-            kicker: 'Production planning',
-            title: 'Incorporate situational risk into lead times and buffers',
-            points: [
-              'Shipping, sanctions, and feedstock concentration feed APS inputs',
-              'Events activate logistics, compliance, and cost bots',
-              'Solves execute in Box; Sentry can veto unsafe actions',
-              'Reconciliation precedes publish; write-back requires approval',
-            ],
-            accept: 'Acceptance criteria: OTD, recovery rate, complete change provenance',
-          },
-        ],
-      },
-      trust: {
-        title: 'Isolated execution for untrusted compute; kernel-level controls for dangerous writes',
-        items: [
-          {
-            title: 'Kense Box',
-            body: 'Hardware-isolated MicroVM supporting OCI images, with cold start around 200ms. Boundaries are explicit; execution does not silently fall back to the host.',
-          },
-          {
-            title: 'Kense Sentry',
-            body: 'Rule evaluation, model-assisted judgment, and escalation for investigation. Observes without modifying agent code; enforces in-kernel with auditable risk classification.',
-          },
-          {
-            title: 'Publish path',
-            body: 'Write-back is limited to the publish channel, with ACL, dual approval where required, centralized secrets, and evidence attached to each release.',
-          },
-        ],
-      },
-      path: {
-        title: 'Establish one mapped scope, validate, then expand',
-        body: 'Begin with object mapping and read-only intake. Confirm freshness, decision traceability, and write boundaries before scaling subscriptions.',
-        riskTitle: 'Implementation constraints',
-        riskBody:
-          'Do not introduce external shocks before objects are mapped. Apply dual thresholds for noisy signals. Peak wake-ups remain within subscription and quota limits; change diffs must identify primary drivers.',
-      },
-      ctaTitle: 'Align operational plans with live external conditions',
-      ctaBody: 'Start free, or book a demo to walk through one end-to-end decision workflow.',
     },
     finance: {
       documentTitle: 'Kense Finance — Kense',
-      stake: 'Eliminate duplicate market-data pipelines across research and trading desks.',
-      lead: 'Normalize public, licensed, and proprietary sources once. Analysts, quants, and automated consumers read from the same contracts.',
-      problem: {
-        title: 'Each team maintains a fragmented data stack',
-        body: 'Research relies on one terminal, quant teams scrape alternative feeds, and automation connects to a third API. Schemas diverge, history is incomplete, and access control remains inconsistent.',
-        points: [
-          {
-            title: 'Data silos',
-            body: 'Equity, macro, options, and news remain separated unless joined manually.',
-          },
-          {
-            title: 'Inconsistent interfaces',
-            body: 'Python, Excel, dashboards, and tooling each use different schemas and permission models.',
-          },
-          {
-            title: 'Insufficient evidence',
-            body: 'Generated commentary still requires prices, filings, and source attribution that can be verified later.',
-          },
-        ],
-      },
-      cost: {
-        title: 'Infrastructure toil displaces research capacity',
-        body: 'Senior staff spend time on vendor operations, field cleaning, and corporate-action handling while research delivery waits on data readiness.',
-      },
+      lead: 'Connect equity, macro, derivatives, and news once. Python, the workbench, MCP, and REST read the same book.',
+      stats: [
+        { value: '1', label: 'ingest' },
+        { value: '4', label: 'surfaces' },
+        { value: '0', label: 'second tape' },
+      ],
       capabilities: {
-        title: 'Asset coverage',
+        kicker: 'Capabilities',
+        title: 'One tape. Four doors.',
+        body: 'Normalize once. Research, quant, and tools stop wiring their own stack.',
         items: [
-          {
-            title: 'Equity',
-            body: 'Prices, fundamentals, valuations, ownership, short interest, and company profiles for research and backtesting.',
-          },
-          {
-            title: 'ETF / Index',
-            body: 'Holdings, constituents, and performance for benchmarks and factor analysis.',
-          },
-          {
-            title: 'Crypto / FX',
-            body: 'Spot rates, crosses, and liquidity snapshots through a consistent query interface.',
-          },
-          {
-            title: 'Derivatives',
-            body: 'Options chains, futures, and Greeks for volatility analysis and hedging.',
-          },
-          {
-            title: 'Macro',
-            body: 'GDP, CPI, rates, central-bank series, and economic calendars aligned with asset prices.',
-          },
-          {
-            title: 'Fixed income',
-            body: 'Sovereign and credit yields, spreads, and curves.',
-          },
-          {
-            title: 'Commodities',
-            body: 'Spot and futures prices for macro-to-industry impact analysis.',
-          },
-          {
-            title: 'News & filings',
-            body: 'Market news and regulatory filings with timestamps and source links.',
-          },
-          {
-            title: 'Provider extensibility',
-            body: 'Public, licensed, and internal sources can be plugged in, normalized once, and reused across consumers.',
-          },
+          { title: 'Equity & ETF', body: 'Prices, fundamentals, holdings, constituents. Research and backtests share fields.' },
+          { title: 'Macro & rates', body: 'Calendars, curves, spreads — aligned to the same clock as prices.' },
+          { title: 'Options & futures', body: 'Chains, greeks, futures. Vol and hedges do not need a second vendor.' },
+          { title: 'News & filings', body: 'Stories and disclosures with timestamps and links, next to the tape.' },
+          { title: 'One contract', body: 'SDK, workbench, MCP, REST. Schema and ACL are not rewritten per client.' },
         ],
       },
-      architecture: {
-        title: 'Connect once, consume across clients',
-        body: 'Kense Finance normalizes and caches market data. Python/SDK, research workspaces, MCP, and REST share the same contracts.',
+      uses: {
+        kicker: 'How teams use it',
+        title: 'Research and quant, same book.',
+        items: [
+          { title: 'Research', body: 'Price beside filing. Exports keep sources. When the world moves, ask Monitor.' },
+          { title: 'Quant', body: 'Load history in Python. The backtest reproduces because nobody edited the fields off-book.' },
+          { title: 'Tools', body: 'MCP for chains and briefs. Quotas per tenant. Orders still need approval.' },
+        ],
+      },
+      artifact: {
+        kicker: 'Architecture',
+        title: 'Normalize once. Read many times.',
+        body: 'Finance owns the data and the cache. Work is the task door. Accounts move through OS.',
+        inLabel: 'Sources',
+        outLabel: 'Doors',
         points: [
-          {
-            title: 'Data plane',
-            body: 'Organize by asset domain; normalize, cache, and annotate each packet with source provenance.',
-          },
-          {
-            title: 'Shared contracts',
-            body: 'Quants use the SDK, analysts use the workspace, tools use MCP, applications use REST.',
-          },
-          {
-            title: 'Coordination with Work and OS',
-            body: 'Initiate research tasks in Work; OS bots may subscribe to Finance evidence. Write operations still require approval.',
-          },
+          'Public, licensed, and internal sources wash into one book',
+          'Each series keeps provider and fetch time',
+          'Queries are read-only by default',
         ],
       },
-      loop: {
-        title: 'From source connection to verifiable outputs',
-        body: 'Finance manages data quality and access. Work is the task surface. OS governs what may be published downstream.',
-        steps: [
-          {
-            title: 'Connect sources',
-            body: 'Map public, licensed, and internal providers to equity, macro, news, and related domains.',
-          },
-          {
-            title: 'Normalize',
-            body: 'Unify schema, timezone handling, corporate actions, and ACL into consistent packets.',
-          },
-          {
-            title: 'Consume',
-            body: 'Query beside workspace widgets, or retrieve the same fields through MCP and REST.',
-          },
-          {
-            title: 'Governed action',
-            body: 'Bot findings enter organizational memory; backtests run in Box; Sentry can block unsafe actions.',
-          },
-        ],
+      close: {
+        title: 'One market tape for research and the desk.',
+        body: 'Start free, or book a demo and connect the first equity and news sources.',
       },
-      cases: {
-        title: 'Research and quantitative workflows',
-        subtitle: 'Shared feeds, distinct operating rhythms',
-        items: [
-          {
-            kicker: 'Research',
-            title: 'Combine equity, news, and filings in one workspace',
-            points: [
-              'Review price action and filings side by side',
-              'Use macro calendars to drive thematic research',
-              'Export without losing source attribution',
-              'Pair with Monitor when the driver is external to markets',
-            ],
-            accept: 'Acceptance criteria: cross-domain latency, field completeness, source-link integrity',
-          },
-          {
-            kicker: 'Quant & automation',
-            title: 'SDK and MCP under one contract',
-            points: [
-              'Load history and fundamentals in Python for backtests',
-              'Retrieve options chains and news digests over MCP',
-              'Apply tenant-level quotas and ACL',
-              'Keep order and egress paths behind Sentry',
-            ],
-            accept: 'Acceptance criteria: reproducible backtests, evidence on automated calls, no privilege escalation',
-          },
-        ],
-      },
-      trust: {
-        title: 'Market data requires provenance and access control',
-        items: [
-          {
-            title: 'Provenance',
-            body: 'Each series retains provider, fetch time, and transformation history so conclusions can be replayed.',
-          },
-          {
-            title: 'Kense Box / Sentry',
-            body: 'Backtests and custom scripts run in MicroVMs; sensitive reads and egress follow in-kernel policy.',
-          },
-          {
-            title: 'ACL & publish',
-            body: 'Queries are read-only by default. Trading or master-data writes require controlled publish and approval.',
-          },
-        ],
-      },
-      path: {
-        title: 'Establish equity and news first',
-        body: 'Start with one licensed provider and verify SDK, workspace, and MCP parity on the same fields. Expand to derivatives and macro after that baseline is stable.',
-        riskTitle: 'Commercial and operational constraints',
-        riskBody:
-          'Licenses and marks follow contract terms. Data accuracy does not constitute investment advice. Peak load is managed with quotas and cache; sensitive fields are masked by default.',
-      },
-      ctaTitle: 'Standardize market data across research and trading',
-      ctaBody: 'Start free, or book a demo to connect your first equity and news sources.',
     },
     science: {
       documentTitle: 'Kense Science — Kense',
-      stake: 'Research outputs without executable context cannot be reviewed or reused reliably.',
-      lead: 'Bring literature, Python/R notebooks, scientific connectors, and assistants into one local workspace — with versioned artifacts and execution trails that can be replayed.',
-      problem: {
-        title: 'Research workflows remain fragmented across tools',
-        body: 'Literature, notebooks, assistant chats, and figures live in separate environments. Reviewers cannot reconstruct how a result was produced.',
-        points: [
-          {
-            title: 'Tool fragmentation',
-            body: 'Chats, scripts, PDFs, and databases do not share a common project context or approval boundary.',
-          },
-          {
-            title: 'Opaque execution',
-            body: 'Assistants can draft analysis, but tool calls, kernel activity, and connector parameters are difficult to audit afterward.',
-          },
-          {
-            title: 'Detached artifacts',
-            body: 'Reports and figures separate from the code, inputs, environment, and conversation that produced them.',
-          },
-        ],
-      },
-      cost: {
-        title: 'Irreproducibility creates rework and review risk',
-        body: 'Teams spend capacity reconstructing prior work. Compliance reviews stall. Automated assistance remains difficult to trust on controlled studies.',
-      },
+      lead: 'Papers, notebooks, and the run that made them — one local bench. Open it later and see how the result happened.',
+      stats: [
+        { value: 'Local', label: 'stays on disk' },
+        { value: '3', label: 'cite formats' },
+        { value: 'Replay', label: 'keep the trail' },
+      ],
       capabilities: {
-        title: 'Workbench scope',
+        kicker: 'Capabilities',
+        title: 'Keep the result with the run.',
+        body: 'Literature, kernels, files, connectors — one project. Review does not guess.',
         items: [
-          {
-            title: 'Projects & sessions',
-            body: 'Pinned sessions, message branches, side conversations, and portable packages carrying files, notebooks, and verification records.',
-          },
-          {
-            title: 'Assisted workflow',
-            body: 'Define research objectives; stream tool activity; approve, stop, search, and recover after interruption.',
-          },
-          {
-            title: 'Models & runtimes',
-            body: 'Connect preferred providers and gateways. Select runtime and reasoning profile per session.',
-          },
-          {
-            title: 'Specialists',
-            body: 'Capability-scoped assistants, package import/export, and context-preserving handoff from the primary session.',
-          },
-          {
-            title: 'Python / R / HPC',
-            body: 'Persistent kernels, managed or self-hosted interpreters, SSH hosts, Slurm jobs, and background runs that retain execution trails.',
-          },
-          {
-            title: 'Literature',
-            body: 'Import by DOI, PMID, or arXiv; search open full text; extract figures and tables from PDFs; format citations.',
-          },
-          {
-            title: 'Files & preview',
-            body: 'Large uploads, `@` path references, and inline preview for PDFs, Office files, images, molecules, and notebook history.',
-          },
-          {
-            title: 'Versions & trails',
-            body: 'Checksummed versions with producer code, run history, inputs, environment inventory, and reviewer notes.',
-          },
-          {
-            title: 'Skills & connectors',
-            body: 'Built-in research skills and connectors, plus custom MCP servers under permission controls.',
-          },
-          {
-            title: 'Privacy & verification',
-            body: 'Local-first storage by default; approval profiles; credential vaulting; optional reviewer loops; replayable verification.',
-          },
+          { title: 'Literature', body: 'DOI, PMID, arXiv. Open full text, figures from PDFs, citations that format.' },
+          { title: 'Python / R', body: 'Persistent kernels. Local, SSH, or Slurm. Background jobs leave a trail.' },
+          { title: 'Versions', body: 'Code, inputs, environment, run — one checksum.' },
+          { title: 'Connectors', body: 'Research skills and MCP. Unauthorized sources are not called quietly.' },
+          { title: 'Local-first', body: 'Projects and credentials stay on disk. Leaving the bench goes through OS.' },
         ],
       },
-      architecture: {
-        title: 'Local workspace, inspectable execution, OS controls on egress',
-        body: 'Kense Science keeps research activity on the local machine. Work is the entry point. When outputs leave the workspace, OS applies Box and Sentry controls.',
+      uses: {
+        kicker: 'How teams use it',
+        title: 'Reproduce, or review the literature.',
+        items: [
+          { title: 'Reproduce', body: 'Paper, data, and thresholds sit together. Tables and figures have to match.' },
+          { title: 'Review', body: 'A shared library. PDFs extracted. A pack that opens on another machine.' },
+          { title: 'Jobs', body: 'HPC comes back and you can still see what was called.' },
+        ],
+      },
+      artifact: {
+        kicker: 'Architecture',
+        title: 'Finish it on this machine first.',
+        body: 'Science keeps the question and the artifact local. Leaving the bench is when Box and Sentry appear.',
+        inLabel: 'Material',
+        outLabel: 'Out',
         points: [
-          {
-            title: 'Local-first storage',
-            body: 'Projects, caches, and credentials remain on disk. External calls target only configured or approved services.',
-          },
-          {
-            title: 'Inspectable runs',
-            body: 'Tool activity, kernel execution, and connector parameters remain visible alongside reports, tables, and figures.',
-          },
-          {
-            title: 'OS coordination',
-            body: 'Specialists and OS bots may reuse Science evidence under Box / Sentry. Write-back still requires controlled publish.',
-          },
+          'Tool activity and kernel parameters sit beside the report',
+          'Unavailable evidence is marked unavailable',
+          'Whether the method is right stays the researcher’s job',
         ],
       },
-      loop: {
-        title: 'From research question to replayable output',
-        body: 'Science retains the question, execution, and artifacts together. Policy enforcement applies when results leave the workspace.',
-        steps: [
-          {
-            title: 'Define the task',
-            body: 'Specify objectives, inputs, methods, outputs, and acceptance criteria. Attach files or `@` project artifacts.',
-          },
-          {
-            title: 'Execute',
-            body: 'Use skills, connectors, search, and notebooks under the selected approval profile.',
-          },
-          {
-            title: 'Review in place',
-            body: 'Inspect reports and figures beside the session. Open the execution trail for any version.',
-          },
-          {
-            title: 'Verify and publish',
-            body: 'Replay in isolation when required. Box / Sentry govern high-risk egress and publish.',
-          },
-        ],
+      close: {
+        title: 'Keep the result with the run that made it.',
+        body: 'Start free, or book a demo and walk one question through to replay.',
       },
-      cases: {
-        title: 'Reproduction and literature review',
-        subtitle: 'Two common workflows on one workbench',
-        items: [
-          {
-            kicker: 'Reproduction',
-            title: 'Reproduce a published differential-expression study',
-            points: [
-              'Attach paper, datasets, and acceptance thresholds',
-              'Run notebooks with visible tool activity',
-              'Compare regenerated tables and figures in session',
-              'Retain versioned outputs with execution trails for review',
-            ],
-            accept: 'Acceptance criteria: recipe replay, table/byte checks, recorded reviewer notes',
-          },
-          {
-            kicker: 'Literature review',
-            title: 'Conduct a review with permissioned scientific connectors',
-            points: [
-              'Import DOI / PMID / arXiv into a shared library',
-              'Search open full text and extract content from PDFs',
-              'Invoke life-science connectors only when authorized',
-              'Export a package that another machine can import',
-            ],
-            accept: 'Acceptance criteria: citation completeness, connector ACL compliance, clean package import',
-          },
-        ],
-      },
-      trust: {
-        title: 'Assistance is permitted; fabricated evidence is not',
-        items: [
-          {
-            title: 'Explicit gaps',
-            body: 'Unavailable evidence is marked unavailable. Versions remain checksummed and session-scoped.',
-          },
-          {
-            title: 'Kense Box / Sentry',
-            body: 'Untrusted solves and remote jobs run in isolation. High-risk network and write paths follow in-kernel policy.',
-          },
-          {
-            title: 'Researcher accountability',
-            body: 'Ask / auto-edit / full-access profiles, per-connector grants, and optional reviewer loops. Methods, interpretation, and scientific validity remain the researcher’s responsibility.',
-          },
-        ],
-      },
-      path: {
-        title: 'Start with one project, one runtime, and a limited connector set',
-        body: 'Validate execution trails and approvals before introducing HPC and specialist packages.',
-        riskTitle: 'Scope boundaries',
-        riskBody:
-          'Researchers remain responsible for methods, interpretation, privacy, and scientific validity. Keep identifiers out of prompts and public logs. Connector licenses follow upstream terms.',
-      },
-      ctaTitle: 'Keep research outputs and execution context together',
-      ctaBody: 'Start free, or book a demo to walk one analysis from question through replay.',
     },
     insight: {
       documentTitle: 'Kense Insight — Kense',
-      stake: 'When every system redefines the same KPI, reporting and automation cannot stay consistent.',
-      lead: 'Define metrics, joins, and access rules once in code. Serve them through SQL, REST, GraphQL, and MCP, with caching and pre-aggregations to control warehouse load.',
-      problem: {
-        title: 'The same KPI resolves to conflicting values',
-        body: 'Dashboards, product interfaces, and automation each reinvent joins and grain. Figures diverge, warehouse cost rises, and row-level rules remain inconsistent.',
-        points: [
-          {
-            title: 'Metric drift',
-            body: 'Revenue in BI does not match revenue in the product — and consumers of raw tables introduce a third definition.',
-          },
-          {
-            title: 'Vendor lock-in of logic',
-            body: 'Semantic models embedded in a single BI platform do not transfer cleanly to APIs, embeds, or MCP tools.',
-          },
-          {
-            title: 'Ad-hoc SQL cost',
-            body: 'Without cache and rollups, interactive traffic and follow-up queries place sustained load on the warehouse.',
-          },
-        ],
-      },
-      cost: {
-        title: 'Incorrect metrics destroy trust faster than latency',
-        body: 'Teams debate which chart is authoritative while automation amplifies incorrect SQL. Governance fails before performance becomes the primary issue.',
-      },
+      lead: 'Write the metric in code. BI, product, and automation read that number over SQL, API, or MCP.',
+      stats: [
+        { value: '1', label: 'definition' },
+        { value: '4', label: 'APIs' },
+        { value: '0', label: 'shadow metrics' },
+      ],
       capabilities: {
-        title: 'Platform scope',
+        kicker: 'Capabilities',
+        title: 'Define it once.',
+        body: 'Definitions, access, and cache apply at runtime. A prompt cannot lift a row filter.',
         items: [
-          {
-            title: 'Modeling',
-            body: 'Metrics, dimensions, joins, hierarchies, and time grains defined in code and portable across environments.',
-          },
-          {
-            title: 'Access control',
-            body: 'Map identity into row-level and tenant policies applied before warehouse SQL execution.',
-          },
-          {
-            title: 'Data sources',
-            body: 'Cloud warehouses, query engines, and application databases through a unified SQL intake.',
-          },
-          {
-            title: 'In-memory cache',
-            body: 'Share buffers across identical concurrent queries to reduce source stampede under interactive load.',
-          },
-          {
-            title: 'Pre-aggregations',
-            body: 'Declare background-refreshed rollups; matching queries are routed to the cache layer.',
-          },
-          {
-            title: 'SQL API',
-            body: 'Postgres-compatible access with semantic extensions so BI and tools query defined metrics rather than base tables.',
-          },
-          {
-            title: 'REST & GraphQL',
-            body: 'JSON and GraphQL interfaces for applications and embedded analytics.',
-          },
-          {
-            title: 'Meta API',
-            body: 'Enumerate queryable measures and dimensions so clients discover the model instead of inferring schemas.',
-          },
-          {
-            title: 'MCP',
-            body: 'Expose the same metrics to tools over MCP — select defined measures rather than generating SQL against raw tables.',
-          },
-          {
-            title: 'Headless delivery',
-            body: 'No mandated UI. Support internal BI, product analytics, or automation on a shared metric foundation.',
-          },
+          { title: 'Model', body: 'Metrics, dimensions, joins, grains — as code you can move between environments.' },
+          { title: 'Access', body: 'Identity maps to rows and tenants before SQL leaves.' },
+          { title: 'Cache', body: 'Identical questions share a buffer. Rollups take the follow-ups.' },
+          { title: 'SQL / API', body: 'Postgres-compatible, REST, GraphQL. You query metrics, not base tables.' },
+          { title: 'MCP', body: 'Tools pick defined measures. They do not invent SQL on the raw warehouse.' },
         ],
       },
-      architecture: {
-        title: 'Define once, cache, and serve multiple clients',
-        body: 'Kense Insight owns metric definitions and query performance. Work initiates questions. When answers drive actions, OS applies Box / Sentry controls.',
+      uses: {
+        kicker: 'How teams use it',
+        title: 'Charts, product, bots — one number.',
+        items: [
+          { title: 'BI & product', body: 'Analysts explore in SQL. Product embeds over REST. Revenue means one thing.' },
+          { title: 'Automation', body: 'Meta API lists what can be asked. MCP picks those, not naked tables.' },
+          { title: 'Cost', body: 'Interactive traffic hits cache, not the warehouse every time.' },
+        ],
+      },
+      artifact: {
+        kicker: 'Architecture',
+        title: 'Define once. Cache. Serve many.',
+        body: 'Insight owns the dictionary and the performance. Work asks. Actions go through OS.',
+        inLabel: 'Sources',
+        outLabel: 'Doors',
         points: [
-          {
-            title: 'Semantic runtime',
-            body: 'Validate against the model, apply policy, then compile to source SQL or a matching pre-aggregation.',
-          },
-          {
-            title: 'One model, multiple APIs',
-            body: 'SQL, REST, GraphQL, Meta, and MCP share the same definitions.',
-          },
-          {
-            title: 'OS coordination',
-            body: 'Work and OS bots retrieve numbers from Insight. Write-back and egress still require approval.',
-          },
+          'Validate the model, then compile to source SQL or a matching rollup',
+          'Dev-mode auth stays on localhost',
+          'Production uses keys, JWT, least privilege',
         ],
       },
-      loop: {
-        title: 'From metric definition to consistent consumption',
-        body: 'Insight maintains the metric dictionary and cache. Work and OS determine subsequent actions.',
-        steps: [
-          {
-            title: 'Model',
-            body: 'Encode measures, dimensions, joins, and tenant rules.',
-          },
-          {
-            title: 'Cache',
-            body: 'Configure refresh keys and pre-aggregations for predictable interactive performance.',
-          },
-          {
-            title: 'Serve',
-            body: 'BI, embeds, REST/GraphQL applications, and MCP tools consume the same definitions.',
-          },
-          {
-            title: 'Act',
-            body: 'Operators and bots use the results; Box isolates heavy compute; Sentry can block unsafe publish paths.',
-          },
-        ],
+      close: {
+        title: 'Stop arguing about which chart is right.',
+        body: 'Start free, or book a demo and model the first subject area.',
       },
-      cases: {
-        title: 'Internal BI and product embedding',
-        subtitle: 'One metric dictionary across surfaces',
-        items: [
-          {
-            kicker: 'BI & product',
-            title: 'Align dashboard and product UI on shared definitions',
-            points: [
-              'Analysts explore through SQL',
-              'Product embeds the same measures via REST / GraphQL',
-              'Apply row-level rules by tenant and role',
-              'Use pre-aggregations to stabilize interactive latency',
-            ],
-            accept: 'Acceptance criteria: metric parity, policy coverage, cache hit rate',
-          },
-          {
-            kicker: 'Automation',
-            title: 'Tools query defined metrics, not raw tables',
-            points: [
-              'Meta API lists available measures',
-              'MCP and semantic SQL select defined metrics',
-              'ACL is applied before warehouse execution',
-              'Follow-up traffic is absorbed by cache and rollups',
-            ],
-            accept: 'Acceptance criteria: no raw-table SQL from tools, ACL auditability, bounded query cost',
-          },
-        ],
-      },
-      trust: {
-        title: 'Performance without correct definitions is not an improvement',
-        items: [
-          {
-            title: 'Runtime policy',
-            body: 'Access rules apply at query compilation. Prompt rewriting cannot bypass row filters.',
-          },
-          {
-            title: 'Kense Box / Sentry',
-            body: 'Automation acting on Insight results remains subject to isolation and in-kernel veto.',
-          },
-          {
-            title: 'Operational boundaries',
-            body: 'Development-mode authentication remains local. Production requires secrets, JWT, and least-privilege warehouse credentials.',
-          },
-        ],
-      },
-      path: {
-        title: 'Begin with one subject area, one warehouse, and SQL + REST consumers',
-        body: 'Validate metric parity and pre-aggregation hit rates. Introduce MCP clients after the dictionary is stable.',
-        riskTitle: 'Implementation constraints',
-        riskBody:
-          'Metric models are code and require review. Some pre-aggregation modes need warehouse write access under source policy. Do not expose development-mode instances publicly.',
-      },
-      ctaTitle: 'Standardize metrics across analytics and APIs',
-      ctaBody: 'Start free, or book a demo to model your first subject area.',
     },
   },
   hero: {

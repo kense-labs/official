@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-hidden="true">
+  <rect width="960" height="640" fill="#0b0c11"/>
+  <rect x="96" y="88" width="768" height="464" rx="36" fill="#14151b"/>
+  <rect x="168" y="160" width="624" height="72" rx="16" fill="#0d0e13"/>
+  <text x="196" y="204" fill="#d4b48a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22"># load counts + metadata</text>
+  <rect x="168" y="256" width="624" height="140" rx="16" fill="#0d0e13"/>
+  <text x="196" y="300" fill="#737373" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16">DE genes</text>
+  <text x="196" y="354" fill="#fff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="44">1,284</text>
+  <rect x="168" y="420" width="624" height="72" rx="16" fill="#0d0e13"/>
+  <text x="196" y="464" fill="#d4b48a" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="22">plot_volcano(res)</text>
+</svg>

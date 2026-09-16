@@ -14,50 +14,31 @@ export type FeatureTrio = {
 
 export type SolutionPageMessages = {
   documentTitle: string;
-  stake: string;
   lead: string;
-  problem: {
-    title: string;
-    body: string;
-    points: Array<{ title: string; body: string }>;
-  };
-  cost: { title: string; body: string };
+  stats: Array<{ value: string; label: string }>;
   capabilities: {
+    kicker: string;
+    title: string;
+    body: string;
+    items: Array<{ title: string; body: string }>;
+  };
+  uses: {
+    kicker: string;
     title: string;
     items: Array<{ title: string; body: string }>;
   };
-  architecture: {
+  artifact: {
+    kicker: string;
     title: string;
     body: string;
-    points: Array<{ title: string; body: string }>;
+    inLabel: string;
+    outLabel: string;
+    points: string[];
   };
-  loop: {
+  close: {
     title: string;
     body: string;
-    steps: Array<{ title: string; body: string }>;
   };
-  cases: {
-    title: string;
-    subtitle: string;
-    items: Array<{
-      kicker: string;
-      title: string;
-      points: string[];
-      accept: string;
-    }>;
-  };
-  trust: {
-    title: string;
-    items: Array<{ title: string; body: string }>;
-  };
-  path: {
-    title: string;
-    body: string;
-    riskTitle: string;
-    riskBody: string;
-  };
-  ctaTitle: string;
-  ctaBody: string;
 };
 
 export type Messages = {

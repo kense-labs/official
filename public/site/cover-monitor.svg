@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-hidden="true">
+  <rect width="960" height="640" fill="#0b0c11"/>
+  <rect x="96" y="88" width="768" height="464" rx="36" fill="#14151b"/>
+  <path d="M168 250 C260 220 320 180 410 196 S560 280 650 246 S760 180 820 196" fill="none" stroke="#e0b15a" stroke-opacity="0.35" stroke-width="2.4"/>
+  <path d="M150 340 C250 320 340 360 450 330 S650 280 820 310" fill="none" stroke="#e0b15a" stroke-opacity="0.22" stroke-width="2.2"/>
+  <circle cx="560" cy="220" r="7" fill="#e0b15a"/>
+  <circle cx="390" cy="300" r="7" fill="#e0b15a"/>
+  <circle cx="690" cy="290" r="7" fill="#e0b15a"/>
+  <g font-family="ui-sans-serif,system-ui,sans-serif">
+    <text x="180" y="430" fill="#fff" font-size="22">Red Sea</text>
+    <text x="180" y="462" fill="#8a8996" font-size="18">Transit advisory · 14 vessels</text>
+    <text x="180" y="510" fill="#fff" font-size="22">OFAC</text>
+    <text x="180" y="542" fill="#8a8996" font-size="18">Designation update · 3 entities</text>
+  </g>
+</svg>
