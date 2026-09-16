@@ -15,7 +15,7 @@ export function CloudSection() {
   ];
 
   return (
-    <section id="cloud" className="relative px-5 py-[72px] md:py-[128px]">
+    <section id="os" className="relative px-5 py-[72px] md:py-[128px]">
       <Reveal>
         <SectionHeader
           badge={t.cloud.badge}

@@ -17,7 +17,9 @@ function useArchFit(designWidth: number) {
     const sync = () => {
       const w = frame.clientWidth;
       if (w <= 0) return;
-      setScale(Math.min(1, w / designWidth));
+      // Keep a readable floor on phones; frame scrolls horizontally if needed.
+      const next = Math.min(1, w / designWidth);
+      setScale(next < 0.52 ? 0.52 : next);
     };
 
     sync();
@@ -231,7 +233,7 @@ function DesktopMap({ data }: { data: Diagram }) {
   );
 }
 
-/** Kense Cloud architecture map — aligned with A3S Cloud capability stack. */
+/** Kense OS architecture map — aligned with A3S capability stack. */
 export function CloudArchitectureDiagram({ data }: { data: Diagram }) {
   const { frameRef, scale } = useArchFit(ARCH_DESIGN_W);
 

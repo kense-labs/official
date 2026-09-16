@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="720" viewBox="0 0 1600 720" role="img" aria-hidden="true">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="48%" r="46%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78"/>
+      <stop offset="28%" stop-color="#e8ebf4" stop-opacity="0.42"/>
+      <stop offset="58%" stop-color="#9aa3bc" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#12141c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c2030"/>
+      <stop offset="100%" stop-color="#10131c"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="720" fill="url(#bg)"/>
+  <rect width="1600" height="720" fill="url(#glow)"/>
+
+  <!-- Centered scene around canvas midpoint -->
+  <g transform="translate(800 365)" stroke="#0a0a0c" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="-240" y="25" width="480" height="150" rx="14" fill="#ffffff" stroke-width="3.5"/>
+    <path d="M-180 175 V225 M180 175 V225" stroke-width="3.5"/>
+    <path d="M-240 225 H240" stroke-width="3.5"/>
+
+    <!-- left builder -->
+    <g stroke-width="3.4">
+      <circle cx="-180" cy="-115" r="34"/>
+      <path d="M-180 -81 V-5"/>
+      <path d="M-180 -45 C-240 -25, -280 -5, -300 25"/>
+      <path d="M-180 -35 C-120 -15, -100 5, -80 25"/>
+      <path d="M-100 -5 L-40 55"/>
+      <path d="M-100 -5 L-60 65"/>
+      <circle cx="-100" cy="-5" r="6" fill="#0a0a0c"/>
+    </g>
+
+    <!-- right builder -->
+    <g stroke-width="3.4">
+      <circle cx="180" cy="-115" r="34"/>
+      <path d="M180 -81 V-5"/>
+      <path d="M180 -45 C240 -25, 280 -5, 300 25"/>
+      <path d="M180 -35 C120 -15, 100 5, 80 25"/>
+      <path d="M60 -15 C40 -35, 20 -30, 25 -10 L100 65"/>
+      <circle cx="28" cy="-23" r="10"/>
+    </g>
+
+    <!-- craft mark -->
+    <g>
+      <circle cx="0" cy="-155" r="28" fill="#ffffff" stroke-width="3.2"/>
+      <path d="M0 -169 A14 14 0 1 1 -8 -143 L0 -151 L8 -143 A14 14 0 0 1 0 -169 Z" stroke-width="3"/>
+      <circle cx="0" cy="-155" r="5" fill="#0a0a0c" stroke="none"/>
+      <path d="M0 -207 L4 -197 L15 -196 L6 -189 L9 -178 L0 -184 L-9 -178 L-6 -189 L-15 -196 L-4 -197 Z" fill="#0a0a0c" stroke="none"/>
+    </g>
+  </g>
+</svg>

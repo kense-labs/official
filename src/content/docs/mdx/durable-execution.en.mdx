@@ -1,0 +1,22 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+Agent workflows wait: models, downstream APIs, humans, clocks. Processes exit. Durable execution turns “how far we got” into recoverable fact, not a for-loop in memory.
+
+<h2 id="journal">Journal and replay</h2>
+
+Each step records inputs, outputs, and side-effect marks. On recovery, replay is ordered: successful calls return the recorded result instead of hitting the external system again. That is the floor for a reliable agent.
+
+<h2 id="wait">Waiting is durable too</h2>
+
+- sleep / schedule is journaled; restarts keep the timeline
+- HumanTask and webhook suspend, then resume from the breakpoint
+- Waiting need not consume execution time (FaaS-friendly)
+
+<h2 id="rpc">Reliable calls</h2>
+
+OS proxies service-to-service traffic: retry, avoid duplicate execution, and keep the call chain visible. Business services can stay stateless; state lives in the control plane.
+
+<Callout>
+Treating “generate again” as recovery multiplies side effects. Recovery must follow the journal.
+</Callout>
+

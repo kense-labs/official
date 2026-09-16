@@ -2,7 +2,7 @@ import { ClayAvatar } from './ClayAvatar';
 import type { ClayBotId } from './clayPresets';
 import { publicUrl } from '../../lib/publicUrl';
 
-const LANYARD_LOGO = publicUrl('/logo/svg/kense-horizontal-dark-transparent.svg');
+const LANYARD_LOGO = publicUrl('/logo/png/kense-horizontal-dark-transparent.png');
 
 export type ExpertSpec = {
   id: ClayBotId;

@@ -1,28 +1,42 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useTitle } from 'ahooks';
 import { useI18n } from '../../i18n/useI18n';
 
 export function RouteEffects() {
   const { pathname, hash } = useLocation();
   const { t, locale } = useI18n();
 
-  const title =
+  const listTitle =
     pathname === '/pricing'
       ? t.meta.pricingTitle
-      : pathname === '/blog'
-        ? t.meta.blogTitle
-        : t.meta.homeTitle;
+      : pathname === '/docs'
+        ? t.meta.docsTitle
+        : pathname === '/blog'
+          ? t.meta.blogTitle
+          : pathname === '/login'
+            ? t.meta.loginTitle
+            : pathname === '/signup'
+              ? t.meta.signupTitle
+              : pathname.startsWith('/docs/') || pathname.startsWith('/blog/')
+                ? null
+                : t.meta.homeTitle;
 
-  useTitle(title);
+  useEffect(() => {
+    if (listTitle) document.title = listTitle;
+  }, [listTitle]);
 
   useEffect(() => {
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : 'en';
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
-      meta.setAttribute('content', t.meta.description);
+      const description = pathname.startsWith('/docs')
+        ? t.docs.description
+        : pathname.startsWith('/blog')
+          ? t.blog.description
+          : t.meta.description;
+      meta.setAttribute('content', description);
     }
-  }, [locale, t.meta.description]);
+  }, [locale, pathname, t.blog.description, t.docs.description, t.meta.description]);
 
   useEffect(() => {
     if (!hash) {

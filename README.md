@@ -3,7 +3,7 @@
 端云一体的 **AI 操作系统**。
 
 - **Kense Work**（端侧）：类似 WorkBuddy 的 AI 工作站，自然语言下达任务并真正执行
-- **Kense Cloud**（云侧）：类似 Restate 的耐久运行时，让智能体与工作流可恢复、可持久
+- **Kense OS**（系统侧）：类似 Restate 的耐久运行时，让智能体与工作流可恢复、可持久
 
 ## Stack
 

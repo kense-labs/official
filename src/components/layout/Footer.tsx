@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom';
 import { Logo } from '../ui/Logo';
 import { useI18n } from '../../i18n/useI18n';
 
+const OPEN_SOURCE_URL = 'https://github.com/kense-labs';
+
+type FooterLink =
+  | { label: string; to: string }
+  | { label: string; href: string; external: true };
+
 type FooterProps = {
   /** Content only — parent provides the shell. */
   bare?: boolean;
@@ -12,48 +18,52 @@ type FooterProps = {
 export function Footer({ bare = false, compact = false }: FooterProps) {
   const { t } = useI18n();
 
-  const columns = [
+  const columns: Array<{ title: string; links: FooterLink[] }> = [
     {
       title: t.footer.product,
       links: [
         { label: t.footer.links.work, to: '/#work' },
-        { label: t.footer.links.cloud, to: '/#cloud' },
+        { label: t.footer.links.cloud, to: '/#os' },
         { label: t.footer.links.pricing, to: '/pricing' },
       ],
     },
     {
       title: t.footer.resources,
       links: [
-        { label: t.footer.links.docs, to: '#' },
+        { label: t.footer.links.docs, to: '/docs' },
         { label: t.footer.links.blog, to: '/blog' },
-        { label: t.footer.links.security, to: '/#platform' },
+        {
+          label: t.footer.links.openSource,
+          href: OPEN_SOURCE_URL,
+          external: true,
+        },
       ],
     },
     {
       title: t.footer.company,
       links: [
-        { label: t.footer.links.about, to: '/#cta' },
-        { label: t.footer.links.careers, to: '#' },
+        { label: t.footer.links.about, to: '/about' },
+        { label: t.footer.links.careers, to: '/careers' },
       ],
     },
     {
       title: t.footer.legal,
       links: [
-        { label: t.footer.links.privacy, to: '#' },
-        { label: t.footer.links.terms, to: '#' },
+        { label: t.footer.links.privacy, to: '/privacy' },
+        { label: t.footer.links.terms, to: '/terms' },
       ],
     },
   ];
 
   const body = (
     <div
-      className={`container-site ${
+      className={`container-site footer-inner ${
         compact ? 'pt-20 pb-16 lg:pt-28 lg:pb-20' : 'py-16 lg:py-20'
       }`}
     >
       <div
-        className={`grid gap-8 lg:grid-cols-[1.2fr_2fr] ${
-          compact ? 'lg:gap-10' : 'gap-12'
+        className={`grid gap-10 lg:grid-cols-[1.2fr_2fr] ${
+          compact ? 'lg:gap-10' : 'lg:gap-12'
         }`}
       >
         <div>
@@ -66,19 +76,31 @@ export function Footer({ bare = false, compact = false }: FooterProps) {
             {t.footer.tagline}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+        <div className="footer-columns">
           {columns.map((col) => (
-            <div key={col.title}>
+            <div key={col.title} className="footer-col">
               <h3 className="text-sm font-medium text-white">{col.title}</h3>
-              <ul className={`mt-3 space-y-2 ${compact ? 'space-y-1.5' : 'mt-4 space-y-3'}`}>
+              <ul
+                className={`mt-3 space-y-2.5 ${
+                  compact ? 'space-y-2' : 'sm:mt-4 sm:space-y-3'
+                }`}
+              >
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
-                      to={link.to}
-                      className="text-sm text-ink-muted transition-colors hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
+                    {'external' in link ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="footer-link"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link to={link.to} className="footer-link">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

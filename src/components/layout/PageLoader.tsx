@@ -1,6 +1,5 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useI18n } from '../../i18n/useI18n';
+import { useId, useLayoutEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 const MIN_MS = 1000;
 const FADE_MS = 320;
@@ -22,26 +21,14 @@ const PATHS = {
 type Phase = 'drawing' | 'leaving' | 'hidden';
 
 /**
- * Brand flash on first paint, route changes, and language switches.
- * Does not lock overflow — the scrollbar stays visible.
+ * Brand flash on first paint / full page refresh only.
+ * Portaled to `document.body` so transforms/zoom on page ancestors cannot skew
+ * fixed centering (common on mobile Safari).
  */
 export function PageLoader() {
-  const { pathname } = useLocation();
-  const { locale } = useI18n();
   const uid = useId().replace(/:/g, '');
   const [phase, setPhase] = useState<Phase>('drawing');
-  const [ticket, setTicket] = useState(0);
   const svgRef = useRef<SVGSVGElement>(null);
-  const isFirstFlash = useRef(true);
-
-  useEffect(() => {
-    if (isFirstFlash.current) {
-      isFirstFlash.current = false;
-      return;
-    }
-    setPhase('drawing');
-    setTicket((n) => n + 1);
-  }, [pathname, locale]);
 
   useLayoutEffect(() => {
     const svg = svgRef.current;
@@ -73,11 +60,11 @@ export function PageLoader() {
       window.clearTimeout(leaveTimer);
       window.clearTimeout(hideTimer);
     };
-  }, [ticket]);
+  }, []);
 
   if (phase === 'hidden') return null;
 
-  return (
+  const node = (
     <div
       className={`page-loader${phase === 'leaving' ? ' is-leaving' : ''}`}
       role="status"
@@ -85,87 +72,90 @@ export function PageLoader() {
       aria-label="Loading"
       aria-busy={phase === 'drawing'}
     >
-      <svg
-        key={ticket}
-        ref={svgRef}
-        className="page-loader-mark"
-        viewBox="6 12 32 32"
-        width="72"
-        height="72"
-        aria-hidden
-      >
-        <defs>
-          <linearGradient id={`${uid}-sheen`} x1="20%" y1="0%" x2="80%" y2="100%">
-            <stop offset="0%" stopColor="#fff" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#fff" stopOpacity="0.55" />
-          </linearGradient>
-        </defs>
-        <g
-          fill="none"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          className="page-loader-draw-group"
+      <div className="page-loader-mark-wrap">
+        <svg
+          ref={svgRef}
+          className="page-loader-mark"
+          viewBox="6 12 32 32"
+          width="72"
+          height="72"
+          aria-hidden
         >
-          <path
-            data-draw
-            className="page-loader-stroke page-loader-stroke--body"
-            d={PATHS.body}
-            stroke={`url(#${uid}-sheen)`}
-            strokeWidth="1.15"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke"
-            d={PATHS.facetL}
-            stroke="#fff"
-            strokeWidth="1"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke"
-            d={PATHS.facetM}
-            stroke="#fff"
-            strokeWidth="1"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke"
-            d={PATHS.facetR}
-            stroke="#fff"
-            strokeWidth="1"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke page-loader-stroke--accent"
-            d={PATHS.blueL}
-            stroke="#4e60ff"
-            strokeWidth="1.05"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke page-loader-stroke--accent"
-            d={PATHS.blueM}
-            stroke="#4e60ff"
-            strokeWidth="1.05"
-          />
-          <path
-            data-draw
-            className="page-loader-stroke page-loader-stroke--accent"
-            d={PATHS.blueR}
-            stroke="#4e60ff"
-            strokeWidth="1.05"
-          />
-        </g>
-        <g className="page-loader-fill-group" opacity="0">
-          <path d={PATHS.body} fill="#fff" />
-          <path d={PATHS.facetL} fill="#fff" />
-          <path d={PATHS.facetM} fill="#fff" />
-          <path d={PATHS.facetR} fill="#fff" />
-          <path d={PATHS.blueL} fill="#4e60ff" />
-          <path d={PATHS.blueM} fill="#4e60ff" />
-          <path d={PATHS.blueR} fill="#4e60ff" />
-        </g>
-      </svg>
+          <defs>
+            <linearGradient id={`${uid}-sheen`} x1="20%" y1="0%" x2="80%" y2="100%">
+              <stop offset="0%" stopColor="#fff" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#fff" stopOpacity="0.55" />
+            </linearGradient>
+          </defs>
+          <g
+            fill="none"
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            className="page-loader-draw-group"
+          >
+            <path
+              data-draw
+              className="page-loader-stroke page-loader-stroke--body"
+              d={PATHS.body}
+              stroke={`url(#${uid}-sheen)`}
+              strokeWidth="1.15"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke"
+              d={PATHS.facetL}
+              stroke="#fff"
+              strokeWidth="1"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke"
+              d={PATHS.facetM}
+              stroke="#fff"
+              strokeWidth="1"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke"
+              d={PATHS.facetR}
+              stroke="#fff"
+              strokeWidth="1"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke page-loader-stroke--accent"
+              d={PATHS.blueL}
+              stroke="#4e60ff"
+              strokeWidth="1.05"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke page-loader-stroke--accent"
+              d={PATHS.blueM}
+              stroke="#4e60ff"
+              strokeWidth="1.05"
+            />
+            <path
+              data-draw
+              className="page-loader-stroke page-loader-stroke--accent"
+              d={PATHS.blueR}
+              stroke="#4e60ff"
+              strokeWidth="1.05"
+            />
+          </g>
+          <g className="page-loader-fill-group" opacity="0">
+            <path d={PATHS.body} fill="#fff" />
+            <path d={PATHS.facetL} fill="#fff" />
+            <path d={PATHS.facetM} fill="#fff" />
+            <path d={PATHS.facetR} fill="#fff" />
+            <path d={PATHS.blueL} fill="#4e60ff" />
+            <path d={PATHS.blueM} fill="#4e60ff" />
+            <path d={PATHS.blueR} fill="#4e60ff" />
+          </g>
+        </svg>
+      </div>
     </div>
   );
+
+  return createPortal(node, document.body);
 }

@@ -1,11 +1,12 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
+import { pluginMdx } from '@rsbuild/plugin-mdx';
 
 /** GitHub project Pages live at /official/ */
 const base = process.env.GITHUB_PAGES === '1' ? '/official/' : '/';
 
 export default defineConfig({
-  plugins: [pluginReact()],
+  plugins: [pluginReact(), pluginMdx({ extensions: ['.mdx'] })],
   source: {
     alias: {
       '@': './src',

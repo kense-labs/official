@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-hidden="true">
+  <rect width="1200" height="640" fill="#0e1018"/>
+  <g font-family="Inter, system-ui, sans-serif" font-size="14" fill="#bcbbc9">
+    <!-- providers -->
+    <rect x="60" y="80" width="220" height="480" rx="16" fill="#12141c" stroke="#32384d"/>
+    <text x="170" y="120" text-anchor="middle" fill="#9aabff" font-size="13" font-weight="500">PROVIDERS</text>
+    <text x="170" y="170" text-anchor="middle" fill="#fff">Equity / ETF / Index</text>
+    <text x="170" y="210" text-anchor="middle" fill="#fff">Crypto / FX</text>
+    <text x="170" y="250" text-anchor="middle" fill="#fff">Options / Futures</text>
+    <text x="170" y="290" text-anchor="middle" fill="#fff">Macro / Calendars</text>
+    <text x="170" y="330" text-anchor="middle" fill="#fff">Fixed Income</text>
+    <text x="170" y="370" text-anchor="middle" fill="#fff">Commodity</text>
+    <text x="170" y="410" text-anchor="middle" fill="#fff">News / Filings</text>
+    <text x="170" y="450" text-anchor="middle" fill="#fff">Custom / Licensed</text>
+
+    <!-- plane -->
+    <rect x="360" y="160" width="280" height="320" rx="16" fill="#141c48" stroke="#4e60ff"/>
+    <text x="500" y="210" text-anchor="middle" fill="#9aabff" font-size="13" font-weight="500">KENSE FINANCE</text>
+    <text x="500" y="250" text-anchor="middle" fill="#fff" font-size="18" font-weight="500">Data Plane</text>
+    <text x="500" y="290" text-anchor="middle">Normalize / Cache</text>
+    <text x="500" y="320" text-anchor="middle">Schema / Provenance</text>
+    <text x="500" y="350" text-anchor="middle">ACL / Quotas</text>
+    <text x="500" y="400" text-anchor="middle" fill="#9aabff">Connect once</text>
+    <text x="500" y="430" text-anchor="middle" fill="#9aabff">Consume everywhere</text>
+
+    <!-- surfaces -->
+    <rect x="720" y="70" width="400" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="920" y="130" text-anchor="middle" fill="#fff">Python / SDK / Quants</text>
+    <rect x="720" y="200" width="400" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="920" y="260" text-anchor="middle" fill="#fff">Workspace / Excel / Dashboards</text>
+    <rect x="720" y="330" width="400" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="920" y="390" text-anchor="middle" fill="#fff">MCP / AI Agents on Kense OS</text>
+    <rect x="720" y="460" width="400" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="920" y="520" text-anchor="middle" fill="#fff">REST API / Downstream apps</text>
+
+    <!-- arrows -->
+    <path d="M290 320 H350" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+    <path d="M650 220 H710" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+    <path d="M650 320 H710" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+    <path d="M650 420 H710" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+    <path d="M650 500 H710" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+  </g>
+</svg>

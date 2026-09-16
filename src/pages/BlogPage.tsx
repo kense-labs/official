@@ -1,31 +1,47 @@
+import { Link } from 'react-router-dom';
 import { Reveal } from '../components/ui/Reveal';
+import { postsSorted } from '../content/blog';
+import { loc } from '../content/types';
+import { publicUrl } from '../lib/publicUrl';
 import { useI18n } from '../i18n/useI18n';
 
 export function BlogPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
+  const posts = postsSorted();
 
   return (
-    <div className="pb-24 pt-16 max-sm:pb-20 max-sm:pt-8 md:pt-24">
-      <div className="container-prose">
+    <div className="content-page">
+      <div className="container-pricing">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
-            <h1 className="text-[36px] font-medium tracking-[-0.8px] text-white max-sm:text-[28px] md:text-[48px]">
-              {t.blog.title}
-            </h1>
-            <p className="mt-4 text-base leading-7 text-ink-muted max-sm:text-sm max-sm:leading-6">
-              {t.blog.description}
-            </p>
+            <p className="content-kicker">{t.nav.blog}</p>
+            <h1 className="content-title">{t.blog.title}</h1>
+            <p className="content-lead mx-auto">{t.blog.description}</p>
           </div>
         </Reveal>
 
-        <div className="mx-auto mt-14 grid max-w-3xl gap-4 max-sm:mt-10">
-          {t.blog.posts.map((post) => (
-            <Reveal key={post.title}>
-              <article className="rounded-xl border border-white/8 bg-white/[0.02] p-6 transition-colors hover:border-white/14 max-sm:p-5">
-                <time className="text-xs font-medium text-ink-faint">{post.date}</time>
-                <h2 className="mt-2 text-lg font-medium text-white max-sm:text-base">{post.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-ink-muted">{post.excerpt}</p>
-              </article>
+        <div className="blog-cover-grid">
+          {posts.map((post, index) => (
+            <Reveal key={post.slug} delayMs={index * 40}>
+              <Link to={`/blog/${post.slug}`} className="blog-cover-card">
+                <div className="blog-cover-media">
+                  <img
+                    src={publicUrl(post.cover)}
+                    alt=""
+                    width={480}
+                    height={640}
+                    loading={index < 3 ? 'eager' : 'lazy'}
+                  />
+                </div>
+                <div className="blog-cover-body">
+                  <p className="blog-cover-cat">{loc(locale, post.category)}</p>
+                  <h2>{loc(locale, post.title)}</h2>
+                  <p>{loc(locale, post.excerpt)}</p>
+                  <span>
+                    {post.date} · {post.readingMinutes} {t.blog.minuteRead}
+                  </span>
+                </div>
+              </Link>
             </Reveal>
           ))}
         </div>

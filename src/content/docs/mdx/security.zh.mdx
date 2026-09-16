@@ -1,0 +1,22 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+Agent 的能力边界必须显式。否则“很能干”会迅速变成不可审计的权限扩散。Kense 把安全当成执行路径的一部分，而不是事后补丁。
+
+<h2 id="grants">组织级策略</h2>
+
+模型、工具与数据范围由组织配置。个人可以在 Work 里探索，但不能绕过将进入 OS 的发布与策略。
+
+<h2 id="isolation">隔离执行</h2>
+
+Workload 进入 Box：隔离的运行时与节点供给。推理以普通 Service 承接，不把密钥散落在提示词里。
+
+<h2 id="evidence">证据</h2>
+
+- 谁在何时以何种授权调用了工具
+- 哪些文件或系统被读取或修改
+- 审批与拒绝如何改变期望状态
+
+<Callout>
+Enterprise 可自托管控制面，并接入 SSO / SCIM。本地优先并不等于没有审计——Work 同样留下可导出的痕迹。
+</Callout>
+

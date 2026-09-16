@@ -1,0 +1,22 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+An agent’s capability must be explicit. Otherwise “helpful” becomes unauditable permission sprawl. Kense treats security as part of the execution path, not a patch afterwards.
+
+<h2 id="grants">Organization policy</h2>
+
+Models, tools, and data scope are configured by the organization. People can explore in Work, but they cannot bypass the policy that governs what gets published into OS.
+
+<h2 id="isolation">Isolated execution</h2>
+
+Workloads enter Box: isolated runtime and node supply. Inference runs as an ordinary service. Secrets do not belong in prompts.
+
+<h2 id="evidence">Evidence</h2>
+
+- Who invoked which tool, when, and under which grant
+- Which files or systems were read or changed
+- How approval or denial changed desired state
+
+<Callout>
+Enterprise can self-host the control plane and connect SSO / SCIM. Local-first is not “no audit”: Work still leaves exportable traces.
+</Callout>
+

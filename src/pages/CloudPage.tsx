@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 
-/** Cloud marketing content lives on the homepage (`/#cloud`). */
+/** Kense OS marketing content lives on the homepage (`/#os`). */
 export function CloudPage() {
-  return <Navigate to="/#cloud" replace />;
+  return <Navigate to="/#os" replace />;
 }

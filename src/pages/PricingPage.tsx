@@ -117,6 +117,8 @@ function PlanCards() {
             <Button
               className="mt-6 w-full"
               variant={plan.highlighted ? 'primary' : 'outline'}
+              to={plan.custom ? undefined : '/signup'}
+              onClick={plan.custom ? () => uiActions.openDemoModal() : undefined}
             >
               {plan.cta}
             </Button>
@@ -231,7 +233,9 @@ function StartupProgram() {
           </div>
           <div className="flex flex-wrap gap-3 lg:justify-end">
             <Button>{p.cta}</Button>
-            <Button variant="outline">{p.secondary}</Button>
+            <Button variant="outline" onClick={() => uiActions.openDemoModal()}>
+              {p.secondary}
+            </Button>
           </div>
         </div>
       </div>
@@ -388,7 +392,11 @@ function BottomCta() {
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button className="h-11 px-5">{c.primary}</Button>
-            <Button variant="outline" className="h-11 px-5">
+            <Button
+              variant="outline"
+              className="h-11 px-5"
+              onClick={() => uiActions.openDemoModal()}
+            >
               {c.secondary}
             </Button>
           </div>

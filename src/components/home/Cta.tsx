@@ -1,6 +1,7 @@
 import { Button } from '../ui/Button';
 import { Reveal } from '../ui/Reveal';
 import { useI18n } from '../../i18n/useI18n';
+import { uiActions } from '../../store/ui';
 
 export function Cta() {
   const { t } = useI18n();
@@ -16,8 +17,14 @@ export function Cta() {
             {t.cta.description}
           </p>
           <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-            <Button className="h-10 px-5">{t.cta.primary}</Button>
-            <Button variant="outline" className="h-10 px-5">
+            <Button to="/signup" className="h-10 px-5">
+              {t.cta.primary}
+            </Button>
+            <Button
+              variant="outline"
+              className="h-10 px-5"
+              onClick={() => uiActions.openDemoModal()}
+            >
               {t.cta.secondary}
             </Button>
           </div>

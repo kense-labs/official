@@ -1,0 +1,31 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+The goal is not every integration. Finish one reviewable job in about 15 minutes. The order is conservative on purpose: boundary, then execution, then publish.
+
+<h2 id="step-1">1. Pick one real task</h2>
+
+- The task has inputs and an artifact (a brief, a repo, a spreadsheet).
+- It can complete on the machine without unapproved production secrets.
+- Success is explicit: for example, a reviewable summary, not a chat.
+
+<h2 id="step-2">2. Bound permission in Work</h2>
+
+Mount only the directories and tools you need. Least privilege makes failure diagnosable: if the agent cannot do something, it should be a missing grant, not implicit full access.
+
+<h2 id="step-3">3. Run and keep evidence</h2>
+
+Inspect steps, file changes, and tool calls. If a step fails, fix the boundary or the input before swapping to a larger model.
+
+```
+intent → grants → tools → artifacts
+         └─ journal (what ran, what waited, what finished)
+```
+
+<h2 id="step-4">4. Connect OS only when needed</h2>
+
+Promote the job to a durable OS flow when you need cross-session memory, human approval, timers, or multi-agent orchestration. Free starts with Work; Builder adds metered OS usage.
+
+<Callout>
+Quickstart is done only when a teammate can reconstruct what ran, what changed, and which grant is still missing.
+</Callout>
+

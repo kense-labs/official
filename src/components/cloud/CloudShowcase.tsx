@@ -115,7 +115,7 @@ function CloudConsole() {
   );
 }
 
-/** Cloud product proof + architecture map. */
+/** Kense OS product proof + architecture map. */
 export function CloudShowcase() {
   const { t } = useI18n();
   const p = t.cloudPage;
@@ -124,7 +124,7 @@ export function CloudShowcase() {
 
   return (
     <>
-      <SnapPanel id="cloud" className="snap-panel--cloud-hero snap-panel--fill bg-bg-elevated/30">
+      <SnapPanel id="os" className="snap-panel--cloud-hero snap-panel--fill bg-bg-elevated/30">
         <div className="cloud-hero cloud-hero-stage cloud-hero--stacked relative gap-4 py-2">
           {fx ? <HeroLightBeam targetSelector=".cloud-console-frame" /> : null}
 

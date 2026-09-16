@@ -12,12 +12,63 @@ export type FeatureTrio = {
   };
 };
 
+export type SolutionPageMessages = {
+  documentTitle: string;
+  stake: string;
+  lead: string;
+  problem: {
+    title: string;
+    body: string;
+    points: Array<{ title: string; body: string }>;
+  };
+  cost: { title: string; body: string };
+  capabilities: {
+    title: string;
+    items: Array<{ title: string; body: string }>;
+  };
+  architecture: {
+    title: string;
+    body: string;
+    points: Array<{ title: string; body: string }>;
+  };
+  loop: {
+    title: string;
+    body: string;
+    steps: Array<{ title: string; body: string }>;
+  };
+  cases: {
+    title: string;
+    subtitle: string;
+    items: Array<{
+      kicker: string;
+      title: string;
+      points: string[];
+      accept: string;
+    }>;
+  };
+  trust: {
+    title: string;
+    items: Array<{ title: string; body: string }>;
+  };
+  path: {
+    title: string;
+    body: string;
+    riskTitle: string;
+    riskBody: string;
+  };
+  ctaTitle: string;
+  ctaBody: string;
+};
+
 export type Messages = {
   meta: {
     homeTitle: string;
     pricingTitle: string;
     blogTitle: string;
+    docsTitle: string;
     cloudTitle: string;
+    loginTitle: string;
+    signupTitle: string;
     description: string;
     cloudDescription: string;
   };
@@ -30,6 +81,7 @@ export type Messages = {
     customers: string;
     docs: string;
     blog: string;
+    solutions: string;
     login: string;
     demo: string;
     start: string;
@@ -41,6 +93,23 @@ export type Messages = {
   };
   a11y: {
     backToTop: string;
+  };
+  solutions: {
+    panelAria: string;
+    listLabel: string;
+    learnMore: string;
+    items: Array<{
+      id: string;
+      name: string;
+      tagline: string;
+      description: string;
+      cover: string;
+      to: string;
+    }>;
+    monitor: SolutionPageMessages;
+    finance: SolutionPageMessages;
+    science: SolutionPageMessages;
+    insight: SolutionPageMessages;
   };
   hero: {
     title: string;
@@ -132,9 +201,69 @@ export type Messages = {
       careers: string;
       privacy: string;
       terms: string;
-      security: string;
+      openSource: string;
     };
     copyright: string;
+  };
+  site: {
+    tocLabel: string;
+    about: {
+      documentTitle: string;
+      kicker: string;
+      title: string;
+      lead: string;
+      missionTitle: string;
+      missionBody: string;
+      pillars: Array<{ title: string; body: string }>;
+      ctaTitle: string;
+      ctaBody: string;
+      ctaPrimary: string;
+      ctaSecondary: string;
+    };
+    careers: {
+      documentTitle: string;
+      kicker: string;
+      title: string;
+      lead: string;
+      culture: Array<{ title: string; body: string }>;
+      openingsTitle: string;
+      openingsEmpty: string;
+      openings: Array<{
+        title: string;
+        location: string;
+        type: string;
+        summary: string;
+      }>;
+      howTitle: string;
+      howSteps: string[];
+      applyCta: string;
+    };
+    privacy: {
+      documentTitle: string;
+      kicker: string;
+      title: string;
+      updated: string;
+      lead: string;
+      sections: Array<{
+        id: string;
+        title: string;
+        paragraphs: string[];
+        bullets?: string[];
+      }>;
+    };
+    terms: {
+      documentTitle: string;
+      kicker: string;
+      title: string;
+      updated: string;
+      lead: string;
+      sections: Array<{
+        id: string;
+        title: string;
+        paragraphs: string[];
+        bullets?: string[];
+      }>;
+    };
   };
   pricing: {
     title: string;
@@ -193,7 +322,96 @@ export type Messages = {
   blog: {
     title: string;
     description: string;
-    posts: Array<{ title: string; excerpt: string; date: string }>;
+    minuteRead: string;
+    readArticle: string;
+    related: string;
+    notFound: { title: string; description: string; back: string };
+  };
+  docs: {
+    title: string;
+    description: string;
+    startCta: string;
+    contents: string;
+    onThisPage: string;
+    updated: string;
+    prev: string;
+    next: string;
+    productSwitch: {
+      label: string;
+    };
+    products: {
+      overview: { name: string; blurb: string };
+      work: { name: string; blurb: string };
+      os: { name: string; blurb: string };
+      platform: { name: string; blurb: string };
+    };
+    sections: {
+      start: string;
+      work: string;
+      os: string;
+      platform: string;
+    };
+    notFound: { title: string; description: string; back: string };
+  };
+  auth: {
+    backHome: string;
+    eyebrow: string;
+    oauthGroup: string;
+    orEmail: string;
+    orSocial: string;
+    connecting: string;
+    oauthSoon: string;
+    emailSoon: string;
+    forgot: string;
+    showPassword: string;
+    hidePassword: string;
+    agreePrefix: string;
+    agreeAnd: string;
+    providers: {
+      github: string;
+      wechat: string;
+    };
+    fields: {
+      name: string;
+      namePlaceholder: string;
+      email: string;
+      emailPlaceholder: string;
+      password: string;
+      passwordPlaceholder: string;
+    };
+    aside: {
+      title: string;
+    };
+    login: {
+      documentTitle: string;
+      title: string;
+      subtitle: string;
+      submit: string;
+      switchPrompt: string;
+      switchAction: string;
+    };
+    signup: {
+      documentTitle: string;
+      title: string;
+      subtitle: string;
+      submit: string;
+      switchPrompt: string;
+      switchAction: string;
+    };
+  };
+  demoModal: {
+    title: string;
+    subtitle: string;
+    name: string;
+    namePlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
+    submit: string;
+    submitting: string;
+    close: string;
+    successTitle: string;
+    successBody: string;
+    successDone: string;
   };
   cloudPage: {
     brand: string;

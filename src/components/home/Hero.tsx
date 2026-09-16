@@ -6,6 +6,7 @@ import { BlackHole } from './BlackHole';
 import { HeroProductMobile } from './HeroProductMobile';
 import { ExpertPack } from '../bot/ExpertPack';
 import { useI18n } from '../../i18n/useI18n';
+import { uiActions } from '../../store/ui';
 import { kenseFx } from '../../lib/canvasEffects';
 import { useDesktopFx } from '../../lib/media';
 
@@ -237,8 +238,14 @@ export function Hero() {
           </Reveal>
           <Reveal delayMs={140}>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3 max-sm:mt-6 max-sm:gap-2.5">
-              <Button className="h-11 px-5 max-sm:h-10 max-sm:px-4">{t.hero.ctaPrimary}</Button>
-              <Button variant="outline" className="h-11 px-5 max-sm:h-10 max-sm:px-4">
+              <Button to="/signup" className="h-11 px-5 max-sm:h-10 max-sm:px-4">
+                {t.hero.ctaPrimary}
+              </Button>
+              <Button
+                variant="outline"
+                className="h-11 px-5 max-sm:h-10 max-sm:px-4"
+                onClick={() => uiActions.openDemoModal()}
+              >
                 {t.hero.ctaSecondary}
               </Button>
             </div>

@@ -6,6 +6,7 @@ export const uiStore = proxy({
   mobileNavOpen: false,
   pricingCycle: 'annual' as PricingCycle,
   heroPlaying: false,
+  demoModalOpen: false,
 });
 
 export const uiActions = {
@@ -20,5 +21,12 @@ export const uiActions = {
   },
   setHeroPlaying(playing: boolean) {
     uiStore.heroPlaying = playing;
+  },
+  openDemoModal() {
+    uiStore.demoModalOpen = true;
+    uiStore.mobileNavOpen = false;
+  },
+  closeDemoModal() {
+    uiStore.demoModalOpen = false;
   },
 };

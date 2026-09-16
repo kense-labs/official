@@ -10,7 +10,10 @@ type LogoProps = {
   layout?: LogoLayout;
   /** Height in px. Width follows the asset aspect ratio. */
   size?: number;
-  /** `dark` = for dark backgrounds; `light` = for light backgrounds. */
+  /**
+   * `dark` = white mark for dark backgrounds (site default).
+   * `light` = dark mark for light backgrounds.
+   */
   tone?: LogoTone;
   alt?: string;
 };
@@ -21,8 +24,9 @@ const ASPECT: Record<LogoLayout, number> = {
   icon: 1,
 };
 
+/** Prefer PNG lockups in chrome — crisp wordmark, no font fallback text. */
 function logoSrc(layout: LogoLayout, tone: 'light' | 'dark') {
-  return publicUrl(`/logo/svg/kense-${layout}-${tone}-transparent.svg`);
+  return publicUrl(`/logo/png/kense-${layout}-${tone}-transparent.png`);
 }
 
 export function LogoMark({
@@ -68,7 +72,8 @@ export function Logo({
       height={size}
       alt={alt}
       decoding="async"
-      className={className}
+      className={`site-logo site-logo--${layout} ${className}`.trim()}
+      draggable={false}
     />
   );
 }

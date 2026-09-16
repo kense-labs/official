@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { BackToTop } from '../ui/BackToTop';
+import { DemoModal } from '../ui/DemoModal';
 import { PageLoader } from './PageLoader';
 
 export function Layout() {
@@ -17,6 +18,7 @@ export function Layout() {
       </main>
       {!isHome ? <Footer /> : null}
       <BackToTop />
+      <DemoModal />
     </div>
   );
 }

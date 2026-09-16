@@ -85,7 +85,7 @@ export function HeroLightBeam({
       const productLeft = pr.left - parentRect.left;
       const beamAnchorX =
         productLeft + prodW * IMPACT_X_RATIO + BEAM_OFFSET_X;
-      // Height from the Cloud panel top so the bloom is not a needle.
+      // Height from the OS panel top so the bloom is not a needle.
       const beamAnchorY = Math.max(
         0,
         settledTop(product, panel) + BEAM_OFFSET_Y,

@@ -1,0 +1,24 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+Treat Kense as an operating system: processes run locally (Work); the kernel schedules, stores state, and enforces permission (OS). Models are replaceable executors.
+
+<h2 id="intent">Intent</h2>
+
+Users express work to finish, not a completion. Intent becomes observable steps: what to read, what to change, what to call, when to wait. OS stores intent and desired state, not a disposable token stream.
+
+<h2 id="boundary">Boundary</h2>
+
+Every tool call happens inside a grant: files, repos, network, secrets. Local Work still obeys the same policy. Running in OS does not widen permission by default.
+
+<h2 id="state">State</h2>
+
+Sessions, tool results, approvals, and timers are entity state. After interruption, the journal replays; completed steps do not run again. That is durable execution, not “ask the model again”.
+
+<h2 id="publish">Publish</h2>
+
+Working methods can be versioned: prompts, tool graphs, flows, and policy. Personal exploration stays in Work; team reuse is published through OS. Without publish, there is no organizational memory.
+
+<Callout>
+The Work–OS contract is bidirectional: local sessions and cloud flows should share identity, objects, and permission semantics.
+</Callout>
+

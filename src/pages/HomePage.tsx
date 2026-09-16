@@ -12,6 +12,7 @@ import { Blaze } from '../components/canvasui/Blaze';
 import { useI18n } from '../i18n/useI18n';
 import { kenseFx } from '../lib/canvasEffects';
 import { useDesktopFx } from '../lib/media';
+import { uiActions } from '../store/ui';
 
 function WorkPanel({ children }: { children: ReactNode }) {
   const fx = useDesktopFx();
@@ -121,8 +122,14 @@ export function HomePage() {
                     {t.cta.description}
                   </p>
                   <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-                    <Button className="h-10 px-5">{t.cta.primary}</Button>
-                    <Button variant="outline" className="h-10 px-5">
+                    <Button to="/signup" className="h-10 px-5">
+                      {t.cta.primary}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="h-10 px-5"
+                      onClick={() => uiActions.openDemoModal()}
+                    >
                       {t.cta.secondary}
                     </Button>
                   </div>

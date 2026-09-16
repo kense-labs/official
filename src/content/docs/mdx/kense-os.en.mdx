@@ -1,0 +1,23 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+Kense OS makes agents and workflows recoverable and durable. The control plane stores intent and policy. Operations / Flow coordinates durably. Workloads land on nodes through Fleet, Runtime, and Box. Gateway is the only public ingress.
+
+<h2 id="plane">What the control plane does</h2>
+
+- Identity and grants
+- Desired state and the journal (Operations · Flow)
+- Publish, versions, and organizational memory
+- Evidence: audit, traces, replay
+
+<h2 id="services">First-class services</h2>
+
+AaaS, WaaS, FaaS, and Durable Cell share one control plane. Agent, workflow, and function are different doors into the same semantics, not three unrelated products.
+
+```
+Gateway → Identity → Operations / Flow → Workloads → Box
+```
+
+<h2 id="when">When to use OS</h2>
+
+Use OS when you need cross-session consistency, exactly-once calls, human approval, timers, or team publish. Editing one local file does not require it.
+

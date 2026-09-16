@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1088" height="560" viewBox="0 0 1088 560" role="img" aria-hidden="true">
+  <rect width="1088" height="560" fill="#0e1018"/>
+  <g font-family="Inter, system-ui, sans-serif" font-size="14">
+    <rect x="48" y="200" width="200" height="160" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="148" y="270" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">01 MODEL</text>
+    <text x="148" y="305" text-anchor="middle" fill="#fff">Metrics / ACL</text>
+
+    <rect x="312" y="200" width="200" height="160" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="412" y="270" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">02 CACHE</text>
+    <text x="412" y="305" text-anchor="middle" fill="#fff">Pre-aggregations</text>
+
+    <rect x="576" y="200" width="200" height="160" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="676" y="270" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">03 SERVE</text>
+    <text x="676" y="305" text-anchor="middle" fill="#fff">SQL / REST / MCP</text>
+
+    <rect x="840" y="200" width="200" height="160" rx="14" fill="#141c48" stroke="#4e60ff"/>
+    <text x="940" y="270" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">04 ACT</text>
+    <text x="940" y="305" text-anchor="middle" fill="#fff">OS / Publish</text>
+
+    <path d="M258 280 H302 M472 280 H516 M736 280 H780" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+    <text x="544" y="120" text-anchor="middle" fill="#bcbbc9" font-size="16">Certified metrics  governed answers</text>
+  </g>
+</svg>

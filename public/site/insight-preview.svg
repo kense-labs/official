@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="560" viewBox="0 0 1080 560" role="img" aria-hidden="true">
+  <rect width="1080" height="560" fill="#0e1018"/>
+  <g font-family="Inter, system-ui, sans-serif" font-size="13" fill="#bcbbc9">
+    <rect x="48" y="48" width="300" height="464" rx="16" fill="#12141c" stroke="#32384d"/>
+    <text x="198" y="90" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">DATA MODEL</text>
+    <text x="198" y="150" text-anchor="middle" fill="#fff">Metrics / Dimensions</text>
+    <text x="198" y="190" text-anchor="middle">Joins / Time grains</text>
+    <text x="198" y="250" text-anchor="middle" fill="#fff">Access policies</text>
+    <text x="198" y="290" text-anchor="middle">Multi-tenant rules</text>
+    <rect x="88" y="340" width="220" height="120" rx="12" fill="#141c48" stroke="#4e60ff"/>
+    <text x="198" y="390" text-anchor="middle" fill="#fff">Code-defined</text>
+    <text x="198" y="420" text-anchor="middle">Portable model</text>
+
+    <rect x="400" y="48" width="280" height="210" rx="16" fill="#141c48" stroke="#4e60ff"/>
+    <text x="540" y="110" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">KENSE INSIGHT</text>
+    <text x="540" y="160" text-anchor="middle" fill="#fff" font-size="16">Semantic runtime</text>
+    <text x="540" y="200" text-anchor="middle">Validate / Compile / ACL</text>
+
+    <rect x="400" y="290" width="280" height="222" rx="16" fill="#12141c" stroke="#32384d"/>
+    <text x="540" y="350" text-anchor="middle" fill="#9aabff" font-size="12" font-weight="500">CACHE</text>
+    <text x="540" y="400" text-anchor="middle" fill="#fff">In-memory</text>
+    <text x="540" y="440" text-anchor="middle">Pre-aggregations</text>
+    <text x="540" y="480" text-anchor="middle">Distributed cache</text>
+
+    <rect x="730" y="48" width="302" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="881" y="108" text-anchor="middle" fill="#fff">SQL API / Semantic queries</text>
+    <rect x="730" y="168" width="302" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="881" y="228" text-anchor="middle" fill="#fff">REST / GraphQL</text>
+    <rect x="730" y="288" width="302" height="100" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="881" y="348" text-anchor="middle" fill="#fff">Meta API / Discovery</text>
+    <rect x="730" y="408" width="302" height="104" rx="14" fill="#12141c" stroke="#32384d"/>
+    <text x="881" y="470" text-anchor="middle" fill="#fff">MCP / AI Agents</text>
+
+    <path d="M358 280 H390 M690 150 H720 M690 400 H720" stroke="#4e60ff" stroke-width="2.5" fill="none"/>
+  </g>
+</svg>

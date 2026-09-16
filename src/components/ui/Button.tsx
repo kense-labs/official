@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 
 type Variant = 'primary' | 'secondary' | 'ghost' | 'outline';
 
@@ -6,6 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: Variant;
   children: ReactNode;
   href?: string;
+  to?: string;
 };
 
 const styles: Record<Variant, string> = {
@@ -23,20 +25,30 @@ export function Button({
   className = '',
   children,
   href,
+  to,
+  onClick,
   ...props
 }: ButtonProps) {
   const cls = `inline-flex h-10 items-center justify-center gap-2 rounded-md px-4 text-sm font-medium leading-[1.43] transition-colors duration-200 ${styles[variant]} ${className}`;
 
+  if (to) {
+    return (
+      <Link to={to} className={cls} onClick={onClick as never}>
+        {children}
+      </Link>
+    );
+  }
+
   if (href) {
     return (
-      <a href={href} className={cls}>
+      <a href={href} className={cls} onClick={onClick as never}>
         {children}
       </a>
     );
   }
 
   return (
-    <button type="button" className={cls} {...props}>
+    <button type="button" className={cls} onClick={onClick} {...props}>
       {children}
     </button>
   );

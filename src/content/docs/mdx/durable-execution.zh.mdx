@@ -1,0 +1,22 @@
+import { Callout } from '../../../components/mdx/Callout';
+
+智能体工作流会等待：模型、下游 API、人、时钟。进程随时可能退出。耐久执行把“进行到哪一步”变成可恢复的事实，而不是内存里的 for 循环。
+
+<h2 id="journal">Journal 与重放</h2>
+
+每一步的输入、输出与副作用标记写入 journal。恢复时按序重放：已成功的调用返回记录结果，而不是再打一遍外部系统。这是可靠 Agent 的底线。
+
+<h2 id="wait">等待也耐久</h2>
+
+- sleep / schedule 入账，重启不丢时间线
+- HumanTask 与 webhook 挂起后从断点继续
+- 等待可不占用执行配额（对 FaaS 友好）
+
+<h2 id="rpc">可靠调用</h2>
+
+服务间通信由 OS 代理：自动重试、避免重复执行、调用链可查。业务服务可以保持无状态，状态留在控制面。
+
+<Callout>
+把“再生成一次”当成恢复策略，会放大副作用。恢复应以 journal 为准。
+</Callout>
+

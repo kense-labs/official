@@ -7,3 +7,9 @@ declare module '*.svg?react' {
   const ReactComponent: FunctionComponent<SVGProps<SVGSVGElement>>;
   export default ReactComponent;
 }
+
+declare module '*.mdx' {
+  import type { ComponentType } from 'react';
+  const MDXComponent: ComponentType;
+  export default MDXComponent;
+}
