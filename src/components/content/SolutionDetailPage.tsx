@@ -1,5 +1,4 @@
-import { Button } from '../ui/Button';
-import { Reveal } from '../ui/Reveal';
+import { Button, Reveal } from '@kense/ui';
 import {
   SolutionArchVisual,
   SolutionHeroVisual,

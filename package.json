@@ -1,15 +1,15 @@
 {
-  "name": "kense-labs",
+  "name": "@kense/official",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "bun@1.4.2",
   "scripts": {
     "dev": "rsbuild",
     "build": "rsbuild build",
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@kense/ui": "workspace:*",
     "ahooks": "^3.10.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",

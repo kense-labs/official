@@ -1,6 +1,4 @@
 import { type ReactNode } from 'react';
-import { Button } from '../ui/Button';
-import { Reveal } from '../ui/Reveal';
 import { ParticleReveal } from '../canvasui/ParticleReveal';
 import { BlackHole } from './BlackHole';
 import { HeroProductMobile } from './HeroProductMobile';
@@ -9,6 +7,7 @@ import { useI18n } from '../../i18n/useI18n';
 import { uiActions } from '../../store/ui';
 import { kenseFx } from '../../lib/canvasEffects';
 import { useDesktopFx } from '../../lib/media';
+import { Button, Reveal } from '@kense/ui';
 
 function HeroCopyFx({ children }: { children: ReactNode }) {
   const fx = useDesktopFx();

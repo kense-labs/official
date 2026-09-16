@@ -1,7 +1,5 @@
-import { Reveal } from '../ui/Reveal';
-import { SectionHeader } from '../ui/SectionHeader';
-import { Button } from '../ui/Button';
 import { useI18n } from '../../i18n/useI18n';
+import { Reveal, SectionHeader, Button } from '@kense/ui';
 
 export function About() {
   const { t } = useI18n();

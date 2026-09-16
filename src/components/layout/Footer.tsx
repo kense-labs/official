@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Logo } from '../ui/Logo';
 import { useI18n } from '../../i18n/useI18n';
+import { Logo } from '@kense/ui';
 
 const OPEN_SOURCE_URL = 'https://github.com/kense-labs';
 

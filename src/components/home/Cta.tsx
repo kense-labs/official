@@ -1,7 +1,6 @@
-import { Button } from '../ui/Button';
-import { Reveal } from '../ui/Reveal';
 import { useI18n } from '../../i18n/useI18n';
 import { uiActions } from '../../store/ui';
+import { Button, Reveal } from '@kense/ui';
 
 export function Cta() {
   const { t } = useI18n();

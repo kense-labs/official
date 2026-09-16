@@ -1,9 +1,8 @@
 import { useTitle } from 'ahooks';
 import { SitePageBanner } from '../components/content/SitePageBanner';
-import { Button } from '../components/ui/Button';
-import { Reveal } from '../components/ui/Reveal';
 import { useI18n } from '../i18n/useI18n';
 import { uiActions } from '../store/ui';
+import { Button, Reveal } from '@kense/ui';
 
 export function CareersPage() {
   const { t } = useI18n();

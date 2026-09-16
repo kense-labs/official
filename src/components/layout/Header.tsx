@@ -3,13 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { useSnapshot } from 'valtio';
 import { useResponsive } from 'ahooks';
 import { useScrolled } from '../../lib/media';
-import { Button } from '../ui/Button';
-import { Logo } from '../ui/Logo';
 import { LangSwitch } from '../ui/LangSwitch';
 import { SolutionsMenu } from './SolutionsMenu';
 import { uiActions, uiStore } from '../../store/ui';
 import { useI18n } from '../../i18n/useI18n';
 import { publicUrl } from '../../lib/publicUrl';
+import { Button, Logo } from '@kense/ui';
 
 export function Header() {
   const snap = useSnapshot(uiStore);

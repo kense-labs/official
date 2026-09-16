@@ -1,6 +1,5 @@
-import { Reveal } from '../ui/Reveal';
-import { SectionHeader } from '../ui/SectionHeader';
 import { useI18n } from '../../i18n/useI18n';
+import { Reveal, SectionHeader } from '@kense/ui';
 
 export function WorkSection() {
   const { t } = useI18n();

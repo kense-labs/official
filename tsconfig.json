@@ -1,28 +1,14 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["DOM", "ES2020"],
-    "jsx": "react-jsx",
-    "target": "ES2020",
-    "noEmit": true,
-    "skipLibCheck": true,
     "types": ["@rsbuild/core/types", "node"],
-    "useDefineForClassFields": true,
-    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    },
-
-    /* modules */
-    "moduleDetection": "force",
-    "moduleResolution": "bundler",
-    "verbatimModuleSyntax": true,
-    "resolveJsonModule": true,
-    "allowImportingTsExtensions": true,
-
-    /* type checking */
-    "noUnusedLocals": true,
-    "noUnusedParameters": true
+      "@/*": ["./src/*"],
+      "@kense/ui": ["../../packages/ui/src/index.ts"],
+      "@kense/ui/*": ["../../packages/ui/src/*"],
+      "@kense/ui/rsbuild": ["../../packages/ui/rsbuild.ts"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "rsbuild.config.ts"]
 }

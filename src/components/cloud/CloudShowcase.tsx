@@ -1,9 +1,9 @@
-import { Reveal } from '../ui/Reveal';
 import { HeroLightBeam } from '../home/HeroLightBeam';
 import { SnapPanel } from '../layout/SnapPanel';
 import { CloudArchitectureDiagram } from './CloudArchitectureDiagram';
 import { useI18n } from '../../i18n/useI18n';
 import { useDesktopFx } from '../../lib/media';
+import { Reveal } from '@kense/ui';
 
 function stageTone(state: string) {
   const s = state.toLowerCase();

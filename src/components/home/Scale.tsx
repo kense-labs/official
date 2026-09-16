@@ -1,6 +1,6 @@
-import { Reveal } from '../ui/Reveal';
 import { Glass } from '../canvasui/Glass';
 import { useI18n } from '../../i18n/useI18n';
+import { Reveal } from '@kense/ui';
 
 export function Scale() {
   const { t } = useI18n();

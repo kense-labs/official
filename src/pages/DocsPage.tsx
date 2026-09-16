@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { DocsShell } from '../components/docs/DocsShell';
-import { Reveal } from '../components/ui/Reveal';
 import { DOC_SECTION_ORDER, docsBySection, docsSorted } from '../content/docs';
 import { loc } from '../content/types';
 import { useI18n } from '../i18n/useI18n';
+import { Reveal } from '@kense/ui';
 
 export function DocsPage() {
   const { t, locale } = useI18n();

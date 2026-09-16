@@ -3,8 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useTitle } from 'ahooks';
 import { AuthCover } from '../components/auth/AuthCover';
 import { GitHubIcon, WeChatIcon } from '../components/auth/AuthIcons';
-import { Button } from '../components/ui/Button';
 import { useI18n } from '../i18n/useI18n';
+import { Button } from '@kense/ui';
 
 type Mode = 'login' | 'signup';
 

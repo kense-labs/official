@@ -1,6 +1,5 @@
-import { Button } from '../ui/Button';
-import { Reveal } from '../ui/Reveal';
 import { useI18n } from '../../i18n/useI18n';
+import { Button, Reveal } from '@kense/ui';
 
 export function Compliance() {
   const { t } = useI18n();

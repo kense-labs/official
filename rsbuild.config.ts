@@ -1,16 +1,20 @@
 import { defineConfig } from '@rsbuild/core';
 import { pluginReact } from '@rsbuild/plugin-react';
 import { pluginMdx } from '@rsbuild/plugin-mdx';
+import { kenseAppResolve } from '@kense/ui/rsbuild';
 
 /** GitHub project Pages live at /official/ */
 const base = process.env.GITHUB_PAGES === '1' ? '/official/' : '/';
+const { alias, include, dedupe } = kenseAppResolve(import.meta.url);
 
 export default defineConfig({
   plugins: [pluginReact(), pluginMdx({ extensions: ['.mdx'] })],
   source: {
-    alias: {
-      '@': './src',
-    },
+    alias,
+    include,
+  },
+  resolve: {
+    dedupe,
   },
   server: {
     base,

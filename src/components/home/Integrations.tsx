@@ -1,5 +1,5 @@
-import { Reveal } from '../ui/Reveal';
 import { useI18n } from '../../i18n/useI18n';
+import { Reveal } from '@kense/ui';
 
 export function Integrations() {
   const { t } = useI18n();

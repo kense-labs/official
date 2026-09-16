@@ -5,14 +5,13 @@ import { WorkBotStage } from '../components/home/WorkBotStage';
 import { CloudShowcase } from '../components/cloud/CloudShowcase';
 import { Footer } from '../components/layout/Footer';
 import { SnapPanel, useHomeFullpage } from '../components/layout/SnapPanel';
-import { Reveal } from '../components/ui/Reveal';
-import { Button } from '../components/ui/Button';
 import { Liquid } from '../components/canvasui/Liquid';
 import { Blaze } from '../components/canvasui/Blaze';
 import { useI18n } from '../i18n/useI18n';
 import { kenseFx } from '../lib/canvasEffects';
 import { useDesktopFx } from '../lib/media';
 import { uiActions } from '../store/ui';
+import { Reveal, Button } from '@kense/ui';
 
 function WorkPanel({ children }: { children: ReactNode }) {
   const fx = useDesktopFx();

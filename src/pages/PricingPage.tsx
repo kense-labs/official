@@ -1,11 +1,10 @@
 import { Fragment, useState } from 'react';
 import { useSnapshot } from 'valtio';
-import { Button } from '../components/ui/Button';
-import { Reveal } from '../components/ui/Reveal';
 import { FlameWrap } from '../components/canvasui/FlameWrap';
 import { useI18n } from '../i18n/useI18n';
 import { uiActions, uiStore } from '../store/ui';
 import { kenseFx } from '../lib/canvasEffects';
+import { Button, Reveal } from '@kense/ui';
 
 function CheckIcon() {
   return (

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@kense/ui/styles.css';
 
 /* DESIGN.md — Featurebase system, adapted for Kense Labs */
 @font-face {

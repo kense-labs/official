@@ -1,10 +1,9 @@
 import { useEffect, useId, useState, type FormEvent } from 'react';
 import { createPortal } from 'react-dom';
 import { useSnapshot } from 'valtio';
-import { ConfettiBurst } from './ConfettiBurst';
-import { Button } from './Button';
 import { useI18n } from '../../i18n/useI18n';
 import { uiActions, uiStore } from '../../store/ui';
+import { ConfettiBurst, Button } from '@kense/ui';
 
 export function DemoModal() {
   const snap = useSnapshot(uiStore);

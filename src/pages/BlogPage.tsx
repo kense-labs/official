@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Reveal } from '../components/ui/Reveal';
 import { postsSorted } from '../content/blog';
 import { loc } from '../content/types';
 import { publicUrl } from '../lib/publicUrl';
 import { useI18n } from '../i18n/useI18n';
+import { Reveal } from '@kense/ui';
 
 export function BlogPage() {
   const { t, locale } = useI18n();

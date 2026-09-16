@@ -1,8 +1,8 @@
 import { Link, Outlet } from 'react-router-dom';
 import { LangSwitch } from '../ui/LangSwitch';
-import { Logo } from '../ui/Logo';
 import { PageLoader } from '../layout/PageLoader';
 import { useI18n } from '../../i18n/useI18n';
+import { Logo } from '@kense/ui';
 
 /** Full-bleed auth shell with corner chrome. */
 export function AuthLayout() {

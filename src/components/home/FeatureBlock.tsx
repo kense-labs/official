@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import { Reveal } from '../ui/Reveal';
 import type { FeatureTrio } from '../../i18n/types';
 import { EncryptionField } from './EncryptionField';
+import { Reveal } from '@kense/ui';
 
 type Props = {
   id?: string;
