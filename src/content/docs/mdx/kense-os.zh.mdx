@@ -2,22 +2,34 @@ import { Callout } from '../../../components/mdx/Callout';
 
 Kense OS 让智能体与工作流可恢复、可持久。控制面保存意图与策略；Operations / Flow 做耐久协调；Workload 经 Fleet、Runtime、Box 落到节点。Gateway 是唯一公网入口。
 
+<Callout>
+OS 是控制面，不是业务系统。行业闭环由解决方案（如 Kense Monitor）或 OEM 实现；OS 提供编排、权限、计量与审计原语。
+</Callout>
+
 <h2 id="plane">控制面做什么</h2>
 
 - 身份与授权（Identity · Grants）
 - 期望状态与日记账（Operations · Flow）
 - 发布、版本与组织记忆
-- 观测：审计、追踪、回放
+- 能力市场：多 Provider 目录与开通（模型 · 工具 · API · Feed）
+- 观测：审计、追踪、回放、用量 showback
 
 <h2 id="services">一等服务</h2>
 
-AaaS、WaaS、FaaS 与 Durable Cell 共用同一套控制面。Agent、Workflow、Function 不是三套互不相认的产品，而是同一语义上的不同入口。
+AaaS、WaaS、FaaS 与 Durable Cell 共用同一套控制面。Agent、Workflow、Function 不是三套互不相认的产品，而是同一语义上的不同入口。Inference 管模型路由与策略；Marketplace 管可发现、可开通、可计量的上游能力（World Monitor、Polymarket、AIsa 等均为 Provider）。
 
 ```
 Gateway → Identity → Operations / Flow → Workloads → Box
+                 ↘ Inference · Marketplace
 ```
+
+<h2 id="layers">与方案、Work 的边界</h2>
+
+- **Kense Work**：一等客户端。配置 **一把** OS Capability Key（+ Gateway 地址）即可调用已开通的模型、API、检索与解析等能力；开通与限额在 OS Console。其它智能体 / IDE 可用同一契约接入。
+- **Kense OS**：跨会话一致性、审批、发布、机群与 Gateway 治理；运营能力市场与一等平台服务。
+- **解决方案 / OEM**：垂直场景与客户交付；方案 API 以 Provider 入驻市场；写回业务系统必须过 OS 的授权与 Flow。
 
 <h2 id="when">何时使用 OS</h2>
 
-需要跨会话一致性、exactly-once 调用、人工审批、定时器或团队发布时使用 OS。只在本机改一个文件，Work 就足够。
+需要跨会话一致性、exactly-once 调用、人工审批、定时器、团队发布或统一调用外部能力时使用 OS。只在本机改一个文件，Work 就足够。
 

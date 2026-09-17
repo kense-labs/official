@@ -23,7 +23,6 @@ export const en: Messages = {
     customers: 'Customers',
     docs: 'Docs',
     blog: 'Blog',
-    solutions: 'Solutions',
     login: 'Log in',
     demo: 'Book a demo',
     start: 'Start for free',
@@ -35,233 +34,6 @@ export const en: Messages = {
   },
   a11y: {
     backToTop: 'Back to top',
-  },
-  solutions: {
-    panelAria: 'Solutions menu',
-    listLabel: 'Solutions',
-    learnMore: 'Learn more',
-    items: [
-      {
-        id: 'monitor',
-        name: 'Kense Monitor',
-        tagline: 'The world moved. Your plan did not.',
-        description:
-          'Conflict, sanctions, shipping, and macro — one feed you can ask, subscribe to, and plug into the tools that set plans.',
-        cover: '/site/cover-monitor.svg',
-        to: '/solutions/monitor',
-      },
-      {
-        id: 'finance',
-        name: 'Kense Finance',
-        tagline: 'One market tape for research and the desk',
-        description:
-          'Connect equity, macro, derivatives, and news once. Python, the workbench, MCP, and REST read the same book.',
-        cover: '/site/cover-finance.svg',
-        to: '/solutions/finance',
-      },
-      {
-        id: 'science',
-        name: 'Kense Science',
-        tagline: 'Papers, notebooks, and the run that made them',
-        description:
-          'A local bench for analysis with a trail you can open later — and show someone else.',
-        cover: '/site/cover-science.svg',
-        to: '/solutions/science',
-      },
-      {
-        id: 'insight',
-        name: 'Kense Insight',
-        tagline: 'Define the metric once. Everyone reads that number.',
-        description:
-          'Metrics and access in code. BI, product, and bots consume them over SQL, API, or MCP.',
-        cover: '/site/cover-insight.svg',
-        to: '/solutions/insight',
-      },
-    ],
-    monitor: {
-      documentTitle: 'Kense Monitor — Kense',
-      lead: 'Conflict, sanctions, shipping, macro — one feed you can ask, subscribe to, and plug into the tools that set plans.',
-      stats: [
-        { value: '4', label: 'signal lanes' },
-        { value: 'Read-only', label: 'no writes to ops' },
-        { value: 'Cited', label: 'every event sourced' },
-      ],
-      capabilities: {
-        kicker: 'Capabilities',
-        title: 'The world moved. The plan should know.',
-        body: 'Monitor produces evidence. Work starts the task. Writes go through OS.',
-        items: [
-          { title: 'Ask', body: 'Query the current picture and land it on a name, a site, or an order.' },
-          { title: 'Subscribe', body: 'Digests, alerts, and an event stream other systems can consume.' },
-          { title: 'Connect', body: 'Widget, MCP, API. Existing desks take the feed as structured input.' },
-          { title: 'Read-only', body: 'Monitor does not change inventory, books, or schedules. Missing is not zero risk.' },
-          { title: 'Auditable', body: 'Each event keeps a source and a time. You can open it later. Chat logs are not the record.' },
-        ],
-      },
-      uses: {
-        kicker: 'How teams use it',
-        title: 'One feed. Two desks.',
-        items: [
-          { title: 'Research', body: 'External shocks show up with attribution, as hypotheses, not hallway news.' },
-          { title: 'Planning', body: 'Shipping, sanctions, and feedstock concentration enter lead times before the meeting.' },
-          { title: 'Compliance', body: 'List changes hit a subscription. Stops are documented.' },
-        ],
-      },
-      artifact: {
-        kicker: 'Architecture',
-        title: 'Evidence here. Action elsewhere.',
-        body: 'Monitor only emits situation. People decide in Work. Bots that change systems go through OS.',
-        inLabel: 'Signals',
-        outLabel: 'Use',
-        points: [
-          'Conflict, sanctions, marine, macro — read-only',
-          'Denied access is not retried in silence',
-          'Writes need approval and a trail',
-        ],
-      },
-      close: {
-        title: 'Keep the plan aligned with the world outside.',
-        body: 'Start free, or book a demo and walk one signal through to a decision.',
-      },
-    },
-    finance: {
-      documentTitle: 'Kense Finance — Kense',
-      lead: 'Connect equity, macro, derivatives, and news once. Python, the workbench, MCP, and REST read the same book.',
-      stats: [
-        { value: '1', label: 'ingest' },
-        { value: '4', label: 'surfaces' },
-        { value: '0', label: 'second tape' },
-      ],
-      capabilities: {
-        kicker: 'Capabilities',
-        title: 'One tape. Four doors.',
-        body: 'Normalize once. Research, quant, and tools stop wiring their own stack.',
-        items: [
-          { title: 'Equity & ETF', body: 'Prices, fundamentals, holdings, constituents. Research and backtests share fields.' },
-          { title: 'Macro & rates', body: 'Calendars, curves, spreads — aligned to the same clock as prices.' },
-          { title: 'Options & futures', body: 'Chains, greeks, futures. Vol and hedges do not need a second vendor.' },
-          { title: 'News & filings', body: 'Stories and disclosures with timestamps and links, next to the tape.' },
-          { title: 'One contract', body: 'SDK, workbench, MCP, REST. Schema and ACL are not rewritten per client.' },
-        ],
-      },
-      uses: {
-        kicker: 'How teams use it',
-        title: 'Research and quant, same book.',
-        items: [
-          { title: 'Research', body: 'Price beside filing. Exports keep sources. When the world moves, ask Monitor.' },
-          { title: 'Quant', body: 'Load history in Python. The backtest reproduces because nobody edited the fields off-book.' },
-          { title: 'Tools', body: 'MCP for chains and briefs. Quotas per tenant. Orders still need approval.' },
-        ],
-      },
-      artifact: {
-        kicker: 'Architecture',
-        title: 'Normalize once. Read many times.',
-        body: 'Finance owns the data and the cache. Work is the task door. Accounts move through OS.',
-        inLabel: 'Sources',
-        outLabel: 'Doors',
-        points: [
-          'Public, licensed, and internal sources wash into one book',
-          'Each series keeps provider and fetch time',
-          'Queries are read-only by default',
-        ],
-      },
-      close: {
-        title: 'One market tape for research and the desk.',
-        body: 'Start free, or book a demo and connect the first equity and news sources.',
-      },
-    },
-    science: {
-      documentTitle: 'Kense Science — Kense',
-      lead: 'Papers, notebooks, and the run that made them — one local bench. Open it later and see how the result happened.',
-      stats: [
-        { value: 'Local', label: 'stays on disk' },
-        { value: '3', label: 'cite formats' },
-        { value: 'Replay', label: 'keep the trail' },
-      ],
-      capabilities: {
-        kicker: 'Capabilities',
-        title: 'Keep the result with the run.',
-        body: 'Literature, kernels, files, connectors — one project. Review does not guess.',
-        items: [
-          { title: 'Literature', body: 'DOI, PMID, arXiv. Open full text, figures from PDFs, citations that format.' },
-          { title: 'Python / R', body: 'Persistent kernels. Local, SSH, or Slurm. Background jobs leave a trail.' },
-          { title: 'Versions', body: 'Code, inputs, environment, run — one checksum.' },
-          { title: 'Connectors', body: 'Research skills and MCP. Unauthorized sources are not called quietly.' },
-          { title: 'Local-first', body: 'Projects and credentials stay on disk. Leaving the bench goes through OS.' },
-        ],
-      },
-      uses: {
-        kicker: 'How teams use it',
-        title: 'Reproduce, or review the literature.',
-        items: [
-          { title: 'Reproduce', body: 'Paper, data, and thresholds sit together. Tables and figures have to match.' },
-          { title: 'Review', body: 'A shared library. PDFs extracted. A pack that opens on another machine.' },
-          { title: 'Jobs', body: 'HPC comes back and you can still see what was called.' },
-        ],
-      },
-      artifact: {
-        kicker: 'Architecture',
-        title: 'Finish it on this machine first.',
-        body: 'Science keeps the question and the artifact local. Leaving the bench is when Box and Sentry appear.',
-        inLabel: 'Material',
-        outLabel: 'Out',
-        points: [
-          'Tool activity and kernel parameters sit beside the report',
-          'Unavailable evidence is marked unavailable',
-          'Whether the method is right stays the researcher’s job',
-        ],
-      },
-      close: {
-        title: 'Keep the result with the run that made it.',
-        body: 'Start free, or book a demo and walk one question through to replay.',
-      },
-    },
-    insight: {
-      documentTitle: 'Kense Insight — Kense',
-      lead: 'Write the metric in code. BI, product, and automation read that number over SQL, API, or MCP.',
-      stats: [
-        { value: '1', label: 'definition' },
-        { value: '4', label: 'APIs' },
-        { value: '0', label: 'shadow metrics' },
-      ],
-      capabilities: {
-        kicker: 'Capabilities',
-        title: 'Define it once.',
-        body: 'Definitions, access, and cache apply at runtime. A prompt cannot lift a row filter.',
-        items: [
-          { title: 'Model', body: 'Metrics, dimensions, joins, grains — as code you can move between environments.' },
-          { title: 'Access', body: 'Identity maps to rows and tenants before SQL leaves.' },
-          { title: 'Cache', body: 'Identical questions share a buffer. Rollups take the follow-ups.' },
-          { title: 'SQL / API', body: 'Postgres-compatible, REST, GraphQL. You query metrics, not base tables.' },
-          { title: 'MCP', body: 'Tools pick defined measures. They do not invent SQL on the raw warehouse.' },
-        ],
-      },
-      uses: {
-        kicker: 'How teams use it',
-        title: 'Charts, product, bots — one number.',
-        items: [
-          { title: 'BI & product', body: 'Analysts explore in SQL. Product embeds over REST. Revenue means one thing.' },
-          { title: 'Automation', body: 'Meta API lists what can be asked. MCP picks those, not naked tables.' },
-          { title: 'Cost', body: 'Interactive traffic hits cache, not the warehouse every time.' },
-        ],
-      },
-      artifact: {
-        kicker: 'Architecture',
-        title: 'Define once. Cache. Serve many.',
-        body: 'Insight owns the dictionary and the performance. Work asks. Actions go through OS.',
-        inLabel: 'Sources',
-        outLabel: 'Doors',
-        points: [
-          'Validate the model, then compile to source SQL or a matching rollup',
-          'Dev-mode auth stays on localhost',
-          'Production uses keys, JWT, least privilege',
-        ],
-      },
-      close: {
-        title: 'Stop arguing about which chart is right.',
-        body: 'Start free, or book a demo and model the first subject area.',
-      },
-    },
   },
   hero: {
     title: 'Complete work locally. Preserve capability across the organization.',
@@ -1443,15 +1215,15 @@ export const en: Messages = {
           { title: 'Durable Cell', tags: ['Shared state', 'Alarms', 'Fence'] },
         ],
         ingress: ['Unified Gateway', 'Identity · Grants'],
-        egress: ['Workloads', 'Fleet · Claims', 'Runtime · Box', 'Inference'],
+        egress: ['Workloads', 'Fleet · Claims', 'Runtime · Box', 'Inference', 'Marketplace'],
         outputs: [
           { title: 'Isolated workloads', tags: ['Box', 'OCI', 'Sandbox'] },
           { title: 'Power inference', tags: ['GPU', 'Health', 'Route'] },
-          { title: 'Your handlers', tags: ['SDK', 'Service', 'Connector'] },
+          { title: 'Capability entitlements', tags: ['Listing', 'Entitlement', 'One key'] },
           { title: 'Artifacts & supply', tags: ['OCI', 'Use', 'Weights'] },
         ],
-        tools: ['ACL', 'CLI', 'SDK', 'MCP'],
-        observe: ['Audit', 'Traces', 'Replay', 'Metrics'],
+        tools: ['Console', 'CLI', 'SDK', 'MCP'],
+        observe: ['Audit', 'Usage', 'Traces', 'Replay'],
       },
     },
     deploy: {

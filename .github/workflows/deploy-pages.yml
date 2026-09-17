@@ -18,8 +18,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout official
         uses: actions/checkout@v4
+
+      - name: Checkout @kense/ui
+        uses: actions/checkout@v4
+        with:
+          repository: kense-labs/ui
+          path: packages/ui
+
+      - name: Wire workspace for @kense/ui
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("package.json")
+          data = json.loads(path.read_text())
+          data["workspaces"] = ["packages/ui"]
+          path.write_text(json.dumps(data, indent=2) + "\n")
+          PY
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -27,7 +44,7 @@ jobs:
           bun-version: 1.4.2
 
       - name: Install
-        run: bun install --frozen-lockfile
+        run: bun install
 
       - name: Build
         run: bun run build

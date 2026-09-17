@@ -2,22 +2,33 @@ import { Callout } from '../../../components/mdx/Callout';
 
 Kense OS makes agents and workflows recoverable and durable. The control plane stores intent and policy. Operations / Flow coordinates durably. Workloads land on nodes through Fleet, Runtime, and Box. Gateway is the only public ingress.
 
+<Callout>
+OS is a control plane, not a line-of-business system. Vertical loops ship as solutions (for example Kense Monitor) or OEM apps; OS supplies orchestration, authz, metering, and audit primitives.
+</Callout>
+
 <h2 id="plane">What the control plane does</h2>
 
 - Identity and grants
 - Desired state and the journal (Operations · Flow)
 - Publish, versions, and organizational memory
-- Evidence: audit, traces, replay
+- Capability marketplace: multi-provider catalog and entitlements (models · tools · APIs · feeds)
+- Evidence: audit, traces, replay, usage showback
 
 <h2 id="services">First-class services</h2>
 
-AaaS, WaaS, FaaS, and Durable Cell share one control plane. Agent, workflow, and function are different doors into the same semantics, not three unrelated products.
+AaaS, WaaS, FaaS, and Durable Cell share one control plane. Agent, workflow, and function are different doors into the same semantics, not three unrelated products. Inference owns model routes and policy; Marketplace owns discoverable, entitleable, metered upstream capability (World Monitor, Polymarket, AIsa, and others are Providers).
 
 ```
 Gateway → Identity → Operations / Flow → Workloads → Box
+                 ↘ Inference · Marketplace
 ```
+
+<h2 id="layers">Boundaries with Work and solutions</h2>
+
+- **Kense Work**: first-party client. Configure **one** OS Capability Key (plus Gateway URL) to call entitled models, APIs, search, and parse; entitlements and limits live in the OS Console. Other agents / IDEs use the same contract.
+- **Kense OS**: cross-session consistency, approvals, publish, fleet, and Gateway governance; operate the capability marketplace and first-party platform services.
+- **Solutions / OEM**: vertical scenarios and customer delivery; solution APIs onboard as Providers; writes into business systems must pass OS authz and Flow.
 
 <h2 id="when">When to use OS</h2>
 
-Use OS when you need cross-session consistency, exactly-once calls, human approval, timers, or team publish. Editing one local file does not require it.
-
+Use OS when you need cross-session consistency, exactly-once calls, human approval, timers, team publish, or unified external capability calls. Editing one local file does not require it.

@@ -15,6 +15,9 @@ configResponsive({
 
 initLocale();
 
+document.documentElement.dataset.theme = 'dark';
+document.documentElement.style.colorScheme = 'dark';
+
 const rootEl = document.getElementById('root');
 if (rootEl) {
   createRoot(rootEl).render(

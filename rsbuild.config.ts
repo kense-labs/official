@@ -26,12 +26,13 @@ export default defineConfig({
   html: {
     template: './index.html',
     title: 'Kense — AI-native OS for Agent work',
-    favicon: './public/logo/web-icons/favicon-light.ico',
+    favicon: './public/logo/web-icons/favicon-dark.ico',
     meta: {
       viewport: 'width=device-width, initial-scale=1',
       description:
         'Building an AI-native operating system for the Agent era. Turn every personal contribution into crystal intelligence the team can call next time.',
       'theme-color': '#0b0c11',
+      'color-scheme': 'dark only',
     },
     tags: [
       {
@@ -39,7 +40,7 @@ export default defineConfig({
         attrs: {
           rel: 'icon',
           type: 'image/svg+xml',
-          href: `${base}logo/svg/kense-icon-light-transparent.svg`,
+          href: `${base}logo/svg/kense-icon-dark-transparent.svg`,
         },
       },
       {
@@ -48,7 +49,7 @@ export default defineConfig({
           rel: 'icon',
           type: 'image/png',
           sizes: '32x32',
-          href: `${base}logo/web-icons/kense-icon-light-32.png`,
+          href: `${base}logo/web-icons/kense-icon-dark-32.png`,
         },
       },
       {
@@ -56,7 +57,7 @@ export default defineConfig({
         attrs: {
           rel: 'apple-touch-icon',
           sizes: '180x180',
-          href: `${base}logo/web-icons/kense-icon-light-180.png`,
+          href: `${base}logo/web-icons/kense-icon-dark-180.png`,
         },
       },
       {

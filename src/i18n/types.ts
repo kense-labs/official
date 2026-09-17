@@ -12,35 +12,6 @@ export type FeatureTrio = {
   };
 };
 
-export type SolutionPageMessages = {
-  documentTitle: string;
-  lead: string;
-  stats: Array<{ value: string; label: string }>;
-  capabilities: {
-    kicker: string;
-    title: string;
-    body: string;
-    items: Array<{ title: string; body: string }>;
-  };
-  uses: {
-    kicker: string;
-    title: string;
-    items: Array<{ title: string; body: string }>;
-  };
-  artifact: {
-    kicker: string;
-    title: string;
-    body: string;
-    inLabel: string;
-    outLabel: string;
-    points: string[];
-  };
-  close: {
-    title: string;
-    body: string;
-  };
-};
-
 export type Messages = {
   meta: {
     homeTitle: string;
@@ -62,7 +33,6 @@ export type Messages = {
     customers: string;
     docs: string;
     blog: string;
-    solutions: string;
     login: string;
     demo: string;
     start: string;
@@ -74,23 +44,6 @@ export type Messages = {
   };
   a11y: {
     backToTop: string;
-  };
-  solutions: {
-    panelAria: string;
-    listLabel: string;
-    learnMore: string;
-    items: Array<{
-      id: string;
-      name: string;
-      tagline: string;
-      description: string;
-      cover: string;
-      to: string;
-    }>;
-    monitor: SolutionPageMessages;
-    finance: SolutionPageMessages;
-    science: SolutionPageMessages;
-    insight: SolutionPageMessages;
   };
   hero: {
     title: string;

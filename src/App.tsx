@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { PageLoading } from '@kense/ui';
 import { Layout } from './components/layout/Layout';
 import { AuthLayout } from './components/auth/AuthLayout';
 import { RouteEffects } from './components/layout/RouteEffects';
@@ -14,16 +15,13 @@ import { AboutPage } from './pages/AboutPage';
 import { CareersPage } from './pages/CareersPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
-import { MonitorSolutionPage } from './pages/MonitorSolutionPage';
-import { FinanceSolutionPage } from './pages/FinanceSolutionPage';
-import { ScienceSolutionPage } from './pages/ScienceSolutionPage';
-import { InsightSolutionPage } from './pages/InsightSolutionPage';
 
 export default function App() {
   const basename = (import.meta.env.BASE_URL || '/').replace(/\/$/, '') || undefined;
 
   return (
     <BrowserRouter basename={basename}>
+      <PageLoading variant="global" />
       <RouteEffects />
       <Routes>
         <Route element={<AuthLayout />}>
@@ -43,10 +41,6 @@ export default function App() {
           <Route path="careers" element={<CareersPage />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="terms" element={<TermsPage />} />
-          <Route path="solutions/monitor" element={<MonitorSolutionPage />} />
-          <Route path="solutions/finance" element={<FinanceSolutionPage />} />
-          <Route path="solutions/science" element={<ScienceSolutionPage />} />
-          <Route path="solutions/insight" element={<InsightSolutionPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

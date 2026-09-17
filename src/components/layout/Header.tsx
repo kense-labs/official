@@ -4,10 +4,8 @@ import { useSnapshot } from 'valtio';
 import { useResponsive } from 'ahooks';
 import { useScrolled } from '../../lib/media';
 import { LangSwitch } from '../ui/LangSwitch';
-import { SolutionsMenu } from './SolutionsMenu';
 import { uiActions, uiStore } from '../../store/ui';
 import { useI18n } from '../../i18n/useI18n';
-import { publicUrl } from '../../lib/publicUrl';
 import { Button, Logo } from '@kense/ui';
 
 export function Header() {
@@ -49,6 +47,7 @@ export function Header() {
       <div className="container-site relative z-[2] flex h-16 items-center justify-between lg:h-[72px]">
         <Link
           to="/"
+          aria-label="Kense"
           onClick={(e) => {
             uiActions.closeMobileNav();
             if (location.pathname === '/') {
@@ -58,12 +57,15 @@ export function Header() {
           }}
           className="relative z-[2] min-w-0 shrink-0"
         >
-          <Logo layout="horizontal" size={32} tone="dark" className="site-header-logo" />
+          <Logo layout="horizontal" size={32} tone="dark" className="site-header-logo" alt="" />
         </Link>
 
         <nav className="absolute left-1/2 z-[2] hidden -translate-x-1/2 items-center gap-1 lg:flex">
-          {nav.slice(0, 1).map((item) => {
-            const active = location.pathname === '/';
+          {nav.map((item) => {
+            const active =
+              item.to === '/'
+                ? location.pathname === '/'
+                : location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
             return (
               <Link
                 key={item.label}
@@ -73,31 +75,12 @@ export function Header() {
                   active ? 'text-white' : 'text-ink-muted hover:text-white'
                 }`}
                 onClick={(e) => {
-                  if (location.pathname === '/') {
+                  if (item.to === '/' && location.pathname === '/') {
                     e.preventDefault();
                     uiActions.closeMobileNav();
                     document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-
-          <SolutionsMenu />
-
-          {nav.slice(1).map((item) => {
-            const active =
-              location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
-            return (
-              <Link
-                key={item.label}
-                to={item.to}
-                aria-current={active ? 'page' : undefined}
-                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors [text-shadow:0_1px_12px_rgba(11,12,17,0.85)] ${
-                  active ? 'text-white' : 'text-ink-muted hover:text-white'
-                }`}
               >
                 {item.label}
               </Link>
@@ -145,52 +128,11 @@ export function Header() {
       {snap.mobileNavOpen ? (
         <div className="max-h-[calc(100dvh-var(--site-header-h)-env(safe-area-inset-bottom,0px))] overflow-y-auto overscroll-contain border-t border-white/8 bg-bg px-5 py-6 lg:hidden">
           <ul className="flex flex-col gap-1">
-            <li>
-              <Link
-                to="/"
-                className={`block rounded-md px-3 py-3 text-base ${
-                  location.pathname === '/' ? 'bg-white/[0.04] text-white' : 'text-white'
-                }`}
-                onClick={(e) => {
-                  uiActions.closeMobileNav();
-                  if (location.pathname === '/') {
-                    e.preventDefault();
-                    document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                {t.nav.home}
-              </Link>
-            </li>
-            <li className="nav-mobile-solutions">
-              <p className="nav-mobile-solutions-label">{t.nav.solutions}</p>
-              <ul className="nav-mobile-solutions-list">
-                {t.solutions.items.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      to={item.to}
-                      className="nav-mobile-solutions-item"
-                      onClick={() => uiActions.closeMobileNav()}
-                    >
-                      <img
-                        src={publicUrl(item.cover)}
-                        alt=""
-                        width={72}
-                        height={48}
-                        className="nav-mobile-solutions-thumb"
-                      />
-                      <span>
-                        <span className="nav-mobile-solutions-name">{item.name}</span>
-                        <span className="nav-mobile-solutions-tagline">{item.tagline}</span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
-            {nav.slice(1).map((item) => {
+            {nav.map((item) => {
               const active =
-                location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
+                item.to === '/'
+                  ? location.pathname === '/'
+                  : location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
               return (
                 <li key={item.label}>
                   <Link
@@ -199,7 +141,13 @@ export function Header() {
                     className={`block rounded-md px-3 py-3 text-base ${
                       active ? 'bg-white/[0.04] text-white' : 'text-white'
                     }`}
-                    onClick={() => uiActions.closeMobileNav()}
+                    onClick={(e) => {
+                      uiActions.closeMobileNav();
+                      if (item.to === '/' && location.pathname === '/') {
+                        e.preventDefault();
+                        document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                   >
                     {item.label}
                   </Link>

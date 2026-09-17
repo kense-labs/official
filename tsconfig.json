@@ -4,10 +4,7 @@
     "types": ["@rsbuild/core/types", "node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@kense/ui": ["../../packages/ui/src/index.ts"],
-      "@kense/ui/*": ["../../packages/ui/src/*"],
-      "@kense/ui/rsbuild": ["../../packages/ui/rsbuild.ts"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["src", "rsbuild.config.ts"]

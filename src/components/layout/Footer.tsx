@@ -67,7 +67,7 @@ export function Footer({ bare = false, compact = false }: FooterProps) {
         }`}
       >
         <div>
-          <Logo layout="vertical" size={compact ? 56 : 72} />
+          <Logo layout="vertical" size={compact ? 56 : 72} tone="dark" />
           <p
             className={`mt-3 max-w-xs text-sm leading-6 text-ink-muted ${
               compact ? 'line-clamp-2' : ''
