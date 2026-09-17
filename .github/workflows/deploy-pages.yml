@@ -26,6 +26,7 @@ jobs:
         with:
           repository: kense-labs/ui
           path: packages/ui
+          token: ${{ secrets.UI_REPO_TOKEN }}
 
       - name: Wire workspace for @kense/ui
         run: |
