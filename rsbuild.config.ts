@@ -19,6 +19,16 @@ export default defineConfig({
   server: {
     base,
     historyApiFallback: true,
+    proxy: {
+      // Member /app and Console /api both enter kense-gateway (:8080).
+      // Gateway forwards those prefixes to kense-api on host :3000.
+      '/app': {
+        target: 'http://127.0.0.1:8080',
+      },
+      '/api': {
+        target: 'http://127.0.0.1:8080',
+      },
+    },
   },
   output: {
     assetPrefix: base,

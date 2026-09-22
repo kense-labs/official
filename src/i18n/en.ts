@@ -843,6 +843,8 @@ export const en: Messages = {
     connecting: 'Connecting…',
     oauthSoon: 'OAuth providers will connect soon. This is a UI preview.',
     emailSoon: 'Email sign-in will connect soon. This is a UI preview.',
+    loginSuccess: 'Signed in as',
+    signupSuccess: 'Account created for',
     forgot: 'Forgot password?',
     showPassword: 'Show',
     hidePassword: 'Hide',
@@ -898,7 +900,7 @@ export const en: Messages = {
     brand: 'Kense OS',
     title: 'Control plane orchestrates; nodes execute',
     subtitle:
-      'AaaS / WaaS / FaaS / Durable Cell share one control plane. Gateway is the only public ingress.',
+      'WaaS / FaaS / Durable Cell share one control plane. Gateway is the only public ingress.',
     ctaPrimary: 'Start for free',
     ctaSecondary: 'View architecture',
     marquee: [
@@ -907,7 +909,6 @@ export const en: Messages = {
       'Workloads · Fleet',
       'Runtime · Box',
       'Inference · Power',
-      'AaaS',
       'WaaS',
       'FaaS',
       'Durable Cell',
@@ -1185,9 +1186,9 @@ export const en: Messages = {
         'Intent and policy live in OS. Durable coordination runs through Operations / Flow. Workloads converge via Fleet, Runtime, and Box. Gateway is the only public ingress.',
       parts: [
         {
-          title: 'Four first-class services',
+          title: 'Three first-class services',
           description:
-            'AaaS, WaaS, FaaS, and Durable Cell share one control plane and execution stack.',
+            'WaaS, FaaS, and Durable Cell share one control plane and execution stack.',
         },
         {
           title: 'Kense OS control plane',
@@ -1209,7 +1210,6 @@ export const en: Messages = {
         observeLabel: 'Evidence',
         core: 'Operations · Flow',
         sources: [
-          { title: 'AaaS · Agents', tags: ['Session', 'Approval', 'Checkpoint'] },
           { title: 'WaaS · Workflow', tags: ['Plan', 'HumanTask', 'Replay'] },
           { title: 'FaaS · Functions', tags: ['Task', 'Service', 'MCP'] },
           { title: 'Durable Cell', tags: ['Shared state', 'Alarms', 'Fence'] },

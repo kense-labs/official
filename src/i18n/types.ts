@@ -296,6 +296,8 @@ export type Messages = {
     connecting: string;
     oauthSoon: string;
     emailSoon: string;
+    loginSuccess: string;
+    signupSuccess: string;
     forgot: string;
     showPassword: string;
     hidePassword: string;

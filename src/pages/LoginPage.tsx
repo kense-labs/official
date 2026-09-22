@@ -1,10 +1,15 @@
 import { useId, useState, type FormEvent } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useTitle } from 'ahooks';
 import { AuthCover } from '../components/auth/AuthCover';
 import { GitHubIcon, WeChatIcon } from '../components/auth/AuthIcons';
 import { useI18n } from '../i18n/useI18n';
 import { Button } from '@kense/ui';
+import {
+  loginMember,
+  registerMember,
+  setMemberToken,
+} from '../lib/memberApi';
 
 type Mode = 'login' | 'signup';
 
@@ -15,6 +20,7 @@ const OAUTH = [
 
 export function LoginPage({ mode: modeProp }: { mode?: Mode }) {
   const { t } = useI18n();
+  const navigate = useNavigate();
   const [params] = useSearchParams();
   const mode: Mode =
     modeProp ?? (params.get('mode') === 'signup' ? 'signup' : 'login');
@@ -42,14 +48,30 @@ export function LoginPage({ mode: modeProp }: { mode?: Mode }) {
     }, 500);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setBusy('email');
     setMessage(null);
-    window.setTimeout(() => {
+    try {
+      const result = isSignup
+        ? await registerMember({
+            email,
+            password,
+            display_name: name || undefined,
+          })
+        : await loginMember({ email, password });
+      setMemberToken(result.token);
+      setMessage(
+        isSignup
+          ? `${t.auth.signupSuccess} ${result.member.email}`
+          : `${t.auth.loginSuccess} ${result.member.email}`,
+      );
+      navigate('/', { replace: true });
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : String(error));
+    } finally {
       setBusy(null);
-      setMessage(t.auth.emailSoon);
-    }, 500);
+    }
   }
 
   return (

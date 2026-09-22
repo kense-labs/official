@@ -5,7 +5,8 @@
 - **Kense Work**（端侧）：local-first 工作站；可配置 **一把** OS Capability Key 调用已开通能力；其它智能体 / IDE 同契约接入。
 - **Kense OS**（系统侧）：控制面与耐久运行时（Gateway · Identity · Flow · Inference · Marketplace · Fleet）；**不是**行业业务系统。
 
-架构权威：主仓 [`apps/web/docs/console/ARCHITECTURE.md`](../web/docs/console/ARCHITECTURE.md)（若本仓库独立检出，见 OS 主仓同路径）。产品叙述见本站 `kense-os` / `kense-work` 文档。
+架构权威：主仓 [`apps/web/docs/console/ARCHITECTURE.md`](../web/docs/console/ARCHITECTURE.md)（若本仓库独立检出，见 OS 主仓同路径）。  
+**账户体系（法定）：** 本站登录/注册 = **Member（前台）**；Console（`@kense/web`）= **User（后台）**。见 [`IDENTITY.md`](../web/docs/console/IDENTITY.md)。产品叙述见本站 `kense-os` / `kense-work` 文档。
 
 ## Stack
 

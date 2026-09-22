@@ -815,6 +815,8 @@ export const zh: Messages = {
     connecting: '连接中…',
     oauthSoon: '第三方授权即将接入。当前为界面预览。',
     emailSoon: '邮箱登录即将接入。当前为界面预览。',
+    loginSuccess: '已登录',
+    signupSuccess: '已创建账户',
     forgot: '忘记密码？',
     showPassword: '显示',
     hidePassword: '隐藏',
@@ -870,7 +872,7 @@ export const zh: Messages = {
     brand: 'Kense OS',
     title: '控制面编排，节点执行',
     subtitle:
-      'AaaS / WaaS / FaaS / Durable Cell 共用一套控制面；Gateway 是唯一公网入口。',
+      'WaaS / FaaS / Durable Cell 共用一套控制面；Gateway 是唯一公网入口。',
     ctaPrimary: '免费开始',
     ctaSecondary: '查看架构',
     marquee: [
@@ -879,7 +881,6 @@ export const zh: Messages = {
       'Workloads · Fleet',
       'Runtime · Box',
       'Inference · Power',
-      'AaaS',
       'WaaS',
       'FaaS',
       'Durable Cell',
@@ -1126,8 +1127,8 @@ export const zh: Messages = {
         '意图与策略在 OS；耐久协调走 Operations / Flow；Workload 经 Fleet、Runtime、Box 收敛。Gateway 是唯一公网入口。',
       parts: [
         {
-          title: '四类一等服务',
-          description: 'AaaS、WaaS、FaaS 与 Durable Cell 共用同一套控制面与执行栈。',
+          title: '三类一等服务',
+          description: 'WaaS、FaaS 与 Durable Cell 共用同一套控制面与执行栈。',
         },
         {
           title: 'Kense OS 控制面',
@@ -1147,7 +1148,6 @@ export const zh: Messages = {
         observeLabel: '证据与观测',
         core: 'Operations · Flow',
         sources: [
-          { title: 'AaaS · Agents', tags: ['会话', '审批', 'Checkpoint'] },
           { title: 'WaaS · Workflow', tags: ['Plan', 'HumanTask', 'Replay'] },
           { title: 'FaaS · Functions', tags: ['Task', 'Service', 'MCP'] },
           { title: 'Durable Cell', tags: ['共享状态', '告警', '围栏'] },
